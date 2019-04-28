@@ -6,28 +6,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import {} from './componets/pricipal/pricipal.component'
-import { MotivosDeAjustesComponent } from './componets/motivos-de-ajustes/motivos-de-ajustes.component';
-import { DiasInhabilesComponent, agregarDiasInhabiles } from './componets/dias-inhabiles/dias-inhabiles.component';
-import { CobrosAdicionalesComponent, Agregar } from './componets/cobros-adicionales/cobros-adicionales.component';
-import { InstitucionesCobrosAdicionalesComponent } from './componets/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
-import { LimpiezaDeArchivosComponent } from './componets/limpieza-de-archivos/limpieza-de-archivos.component';
+import {} from './components/pricipal/pricipal.component';
+import { MotivosDeAjustesComponent } from './components/motivos-de-ajustes/motivos-de-ajustes.component';
+import { DiasInhabilesComponent, agregarDiasInhabiles } from './components/dias-inhabiles/dias-inhabiles.component';
+import { CobrosAdicionalesComponent, Agregar } from './components/cobros-adicionales/cobros-adicionales.component';
+import { InstitucionesCobrosAdicionalesComponent } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
+import { LimpiezaDeArchivosComponent } from './components/limpieza-de-archivos/limpieza-de-archivos.component';
 import { routing, appRoutingProviders } from './app.routing';
-import { ProductosComponent } from './componets/productos/productos.component';
-//***********************SAMUEL***************************/
-import { MotivoDeReversaComponent } from './componets/motivo-de-reversa/motivo-de-reversa.component'
-import { FormasDeDesembolsoComponent } from './componets/formas-de-desembolso/formas-de-desembolso.component';
-import { MotivosReferenciasClientesComponent } from './componets/motivos-referencias-clientes/motivos-referencias-clientes.component';
-import { RelacionTransaccionesDepositosComponent } from './componets/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { ParametrosAdicionalPorProductoComponent } from './componets/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
-import { EventosDeSolicitudesComponent } from './componets/eventos-de-solicitudes/eventos-de-solicitudes.component';
-import { DocumentosAPresentarPorProductoComponent } from './componets/documentos-a-presentar-por-producto/documentos-a-presentar-por-producto.component';
-import { MontosPorPlazoComponent } from './componets/montos-por-plazo/montos-por-plazo.component'
+import { ProductosComponent } from './components/productos/productos.component';
 
+//***********************SAMUEL***************************
+
+import { MotivoDeReversaComponent } from './components/motivo-de-reversa/motivo-de-reversa.component';
+import { FormasDeDesembolsoComponent } from './components/formas-de-desembolso/formas-de-desembolso.component';
+import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
+import { RelacionTransaccionesDepositosComponent } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
+import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitudes/eventos-de-solicitudes.component';
+import { DocumentosAPresentarPorProductoComponent } from './components/documentos-a-presentar-por-producto/documentos-a-presentar-por-producto.component';
+import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
 
 //----------------------- ANGULAR MATERIAL
-import { 
+
+import {
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -64,30 +66,30 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import { PricipalComponent } from './componets/pricipal/pricipal.component';
+import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
-import { SidenavComponent } from './componets/sidenav/sidenav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    MotivosDeAjustesComponent,   
-    DiasInhabilesComponent,  
+    AppComponent,
+    MotivosDeAjustesComponent,
+    DiasInhabilesComponent,
     CobrosAdicionalesComponent,
     InstitucionesCobrosAdicionalesComponent,
     Agregar,
     agregarDiasInhabiles,
     LimpiezaDeArchivosComponent,
     ProductosComponent,
-    
+
     MotivoDeReversaComponent,
-    FormasDeDesembolsoComponent, 
+    FormasDeDesembolsoComponent,
     MotivosReferenciasClientesComponent,
     RelacionTransaccionesDepositosComponent,
     ParametrosAdicionalPorProductoComponent,
-    EventosDeSolicitudesComponent, 
+    EventosDeSolicitudesComponent,
     DocumentosAPresentarPorProductoComponent,
     MontosPorPlazoComponent,
     PricipalComponent,
@@ -98,7 +100,7 @@ import { SidenavComponent } from './componets/sidenav/sidenav.component';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MatInputModule, 
+    MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
@@ -153,8 +155,9 @@ import { SidenavComponent } from './componets/sidenav/sidenav.component';
     routing,
     LayoutModule
   ],
-  exports:[
-    MatInputModule, 
+
+  exports: [
+    MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
@@ -162,11 +165,14 @@ import { SidenavComponent } from './componets/sidenav/sidenav.component';
     MatTableModule,
     MatDialogModule,
   ],
+
   entryComponents: [
     Agregar,
     agregarDiasInhabiles
   ],
+
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

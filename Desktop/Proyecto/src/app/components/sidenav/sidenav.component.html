@@ -1,0 +1,85 @@
+<div id="side" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar id="barra-top" class="example-toolbar">
+    <button id="boton-menu" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">ByteApp</h1>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav id="siden" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+          <div>
+            <h1>Vistas</h1>
+            <hr>
+              <br>
+              <mat-grid-list cols="1" rowHeight="25">
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link"  routerLink="/Formas-de-desembolso" >Formas de Desembolso</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link"  routerLink="/Motivo-de-reversa" >Motivo de Reversa</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link"  routerLink="/Motivos-referencias-clientes" >Motivos de Referencias de Clientes</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link"  routerLink="/Relacion-transacciones-depositos" >Relación Transiciones de Depósitos</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link" routerLink="/Parametros-Adicional-por-Producto" >Parámetros Adicionales por Producto</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link" routerLink="/Eventos-de-solicitudes" >Eventos de Solicitudes</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link" routerLink="/Documentos-a-Presentar-por-Producto" >Documentos a Presentar por Producto</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <button id="boton-enlace" role="link" routerLink="/Montos-por-Plazo" >Montos por Plazo</button>
+                </mat-grid-tile>
+
+              </mat-grid-list>
+                <mat-grid-list cols="1" rowHeight="25">
+
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" routerLink="/motivosDeAjustes" >Motivos de Ajustes</button>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" routerLink="/diasInhabiles">Dias Inhabiles</button>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" routerLink="/cobrosAdicionales">Cobros Adicionales</button>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" routerLink="/institucionesCobrosAdicionales">Instituciones Cobros Adicionales</button>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" routerLink="/limpiezaDeArchivos">Limpieza de Archivos</button>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                      <button id="boton-enlace" role="link" routerLink="/productos">Productos</button>
+                    </mat-grid-tile>
+
+                  </mat-grid-list>
+
+              <hr>
+          </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <h1>
+      <router-outlet></router-outlet>
+    </h1>
+  </mat-sidenav-container>
+</div>
