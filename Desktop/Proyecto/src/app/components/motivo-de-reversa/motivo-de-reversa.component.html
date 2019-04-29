@@ -19,7 +19,7 @@
         <table mat-table [dataSource]="dataSource">
       
           <!-- Position Column -->
-          <ng-container matColumnDef="position">
+          <ng-container id="cabecera" matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
           </ng-container>
@@ -50,10 +50,10 @@
   <div align="center">
   <button class="material-icons">add_box</button>
   <button class="material-icons">create</button>
-  <button mat-raised-button>Visualizar</button>
-  <button mat-raised-button>Registrar</button>
-  <button mat-raised-button>Guardar</button>
-  <button mat-raised-button>Next View</button>
-  <button mat-icon-button>?</button>
+  <button class="material-icons">undo</button>
+  <button class="material-icons">redo</button>
+  <button class="material-icons">refresh</button>
+  <button class="material-icons">cancel</button>
+  <button class="material-icons">?</button>
   </div>
 
