@@ -1,7 +1,7 @@
 <div id="side" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar id="barra-top" class="example-toolbar">
     <button id="boton-menu" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">ByteApp</h1>
+    <h1 id="titulo">ByteApp</h1>
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -9,9 +9,14 @@
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
           <div>
-            <h1>Vistas</h1>
+            <h1 id="titulo">Vistas</h1>
             <hr>
-              <br>
+            <div id="fil">
+              <mat-form-field>
+                  <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+              </div>
+            <hr>
               <mat-grid-list cols="1" rowHeight="25">
                 <mat-grid-tile>
                   <button id="boton-enlace" role="link"  routerLink="/Formas-de-desembolso" >Formas de Desembolso</button>

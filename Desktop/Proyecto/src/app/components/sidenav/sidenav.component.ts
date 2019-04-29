@@ -1,4 +1,3 @@
-
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
 
@@ -12,6 +11,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   showFiller = false;
   ngOnInit() {
   }
+
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
   fillerContent = Array.from({length: 50}, () =>
