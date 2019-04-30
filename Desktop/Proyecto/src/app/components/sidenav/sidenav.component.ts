@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   showFiller = false;
   ngOnInit() {
   }
+  
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -35,3 +36,4 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
+export class NestedMenuExample {}
