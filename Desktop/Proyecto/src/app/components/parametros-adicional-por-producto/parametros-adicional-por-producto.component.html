@@ -5,26 +5,25 @@
             <input matInput placeholder="Producto" value="">
           </mat-form-field>
         </form>
-    <br>
     <div id="titulos">
-    <h2>1) Eventos de solicitud</h2>
-    <h2>2) Documentos a presentar x Producto</h2>
-    <h2>3) Montos por Plazo</h2>
-    <h2>4) Porcentajes de Financiamiento</h2>
-    <h2>5) Rango de Plazos por Interés</h2>
+    <h5>1) Eventos de solicitud</h5>
+    <h5>2) Documentos a presentar x Producto</h5>
+    <h5>3) Montos por Plazo</h5>
+    <h5>4) Porcentajes de Financiamiento</h5>
+    <h5>5) Rango de Plazos por Interés</h5>
   </div>
   <form id="opcion">
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Opción" value="">
       </mat-form-field>
     </form>
-    <br>
-    <div class="botones" align="center">
-    <button mat-raised-button>Editar</button>
-    <button mat-raised-button>Eliminar</button>
-    <button mat-raised-button>Visualizar</button>
-    <button mat-raised-button>Registrar</button>
-    <button mat-raised-button>Guardar</button>
-    <button mat-raised-button>Next View</button>
-    <button mat-icon-button>?</button>
-    </div>
+    <div align="center">
+        <button class="material-icons" (click)="openDialog()">add_box</button>
+        <button class="material-icons">create</button>
+        <button class="material-icons">undo</button>
+        <button class="material-icons">redo</button>
+        <button class="material-icons">refresh</button>
+        <button class="material-icons">cancel</button>
+        <button class="material-icons">?</button>
+        </div>
+      
