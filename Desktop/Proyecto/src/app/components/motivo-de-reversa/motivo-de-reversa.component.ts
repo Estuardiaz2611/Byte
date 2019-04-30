@@ -1,6 +1,7 @@
 import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-motivo-de-reversa',
@@ -8,15 +9,35 @@ import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
   styleUrls: ['./motivo-de-reversa.component.scss']
 })
 export class MotivoDeReversaComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumnss = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  numero: number;
+  descripcion: string;
 
-  constructor(){
+  openDialog(): void {
+    const dialogRef = this.dialog.open(agregarMotivoDeReversa, {
+      width: '700px',
+      height: '600px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  title = 'Agregar';
+  selectedValue: string = "";
+  //dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+
+  constructor(public dialog: MatDialog){
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  ngOnInit() {
   }
 }
 
@@ -40,3 +61,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
+@Component({
+  selector: 'app-motivo-de-reversa',
+  templateUrl: './agregarMotivoDeReversa.html',
+})
+export class agregarMotivoDeReversa implements OnInit {
+
+  constructor() { }
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}

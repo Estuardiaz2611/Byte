@@ -17,7 +17,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 
 //***********************SAMUEL***************************
 
-import { MotivoDeReversaComponent } from './components/motivo-de-reversa/motivo-de-reversa.component';
+import { MotivoDeReversaComponent, agregarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
 import { FormasDeDesembolsoComponent } from './components/formas-de-desembolso/formas-de-desembolso.component';
 import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
 import { RelacionTransaccionesDepositosComponent } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
@@ -93,7 +93,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DocumentosAPresentarPorProductoComponent,
     MontosPorPlazoComponent,
     PricipalComponent,
-    SidenavComponent
+    SidenavComponent,
+    agregarMotivoDeReversa,
   ],
   imports: [
     BrowserModule,
@@ -168,7 +169,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
   entryComponents: [
     Agregar,
-    agregarDiasInhabiles
+    agregarDiasInhabiles,
+    agregarMotivoDeReversa,
   ],
 
   providers: [appRoutingProviders],
