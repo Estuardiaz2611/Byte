@@ -1,4 +1,5 @@
 <h1>Mantenimiento a Motivo de Reversa</h1>
+<br>
 <mat-form-field class="example-full-width">
     <input matInput placeholder="Motivo" value="">
   </mat-form-field>
@@ -6,11 +7,15 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Descripción" value="">
   </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Cargo Automático" value="">
-  </mat-form-field>
-  <br>
+
+  <!---->
+  <section id="section">
+      <label class="example-margin">Cargo Automático:  </label>
+        <mat-radio-button class="sino" value="after">Si</mat-radio-button>
+        <mat-radio-button class="sino" value="before">No</mat-radio-button>
+    </section>
+<!---->
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Retención Cargo" value="">
   </mat-form-field>
@@ -22,10 +27,9 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Referencias" value="">
   </mat-form-field>
-  
 <hr>
-  <div class="botones" align="center">
+  <div id="botones">
     <button class="material-icons">save</button>
     <button class="material-icons">cancel</button>
     <button class="material-icons">?</button>
-    </div>
+  </div>

@@ -64,8 +64,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-motivo-de-reversa',
   templateUrl: './agregarMotivoDeReversa.html',
+  styleUrls: ['./motivo-de-reversa.component.scss']
 })
 export class agregarMotivoDeReversa implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
 
   constructor() { }
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
