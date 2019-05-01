@@ -17,6 +17,14 @@ import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitud
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
 import { PricipalComponent } from './components/pricipal/pricipal.component';
+import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
+import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
+import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
+import { MediosDeContactoComponent } from './components/medios-de-contacto/medios-de-contacto.component';
+import { PorcentajesDeFinanciamientoComponent } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
+import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de-plazos.component';
+import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
+import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
 
 const appRoutes: Routes = [
     {path: 'cobrosAdicionales', component: CobrosAdicionalesComponent},
@@ -25,6 +33,8 @@ const appRoutes: Routes = [
     {path: 'motivosDeAjustes', component: MotivosDeAjustesComponent},
     {path: 'limpiezaDeArchivos', component: LimpiezaDeArchivosComponent},
     {path: 'productos', component: ProductosComponent},
+    {path: 'principal', component: PricipalComponent},
+
     {path: 'Formas-de-desembolso', component: FormasDeDesembolsoComponent},
     {path: 'Motivo-de-reversa', component: MotivoDeReversaComponent},
     {path: 'Motivos-referencias-clientes', component: MotivosReferenciasClientesComponent},
@@ -33,7 +43,15 @@ const appRoutes: Routes = [
     {path: 'Eventos-de-solicitudes', component: EventosDeSolicitudesComponent},
     {path: 'Parametros-Adicional-por-Producto', component: ParametrosAdicionalPorProductoComponent},
     {path: 'Montos-por-Plazo', component: MontosPorPlazoComponent},
-    {path: 'principal', component: PricipalComponent}
+
+    {path: 'Acercamientos', component: AcercamientosComponent},
+    {path: 'Asignación-de-categorias', component: AsignacionDeCategoriasComponent},
+    {path: 'Canales-de-venta', component: CanalesDeVentaComponent},
+    {path: 'Medios-de-contacto', component: MediosDeContactoComponent},
+    {path: 'Porcentajes-de-financiamiento', component: PorcentajesDeFinanciamientoComponent},
+    {path: 'Rangos-de-plazos', component: RangosDePlazosComponent},
+    {path: 'Tipo-de-producto', component: TipoDeProductoComponent},
+    {path: 'Tipos-de-canales-de-distribución', component: TiposDeCanalesDeDistribucionComponent}
 ]
 
 export const appRoutingProviders: any[] = [];

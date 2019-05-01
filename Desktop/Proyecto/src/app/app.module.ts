@@ -27,6 +27,17 @@ import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitud
 import { DocumentosAPresentarPorProductoComponent } from './components/documentos-a-presentar-por-producto/documentos-a-presentar-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
 
+//*********************DANIEL OVANDO************************
+import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
+import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
+import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
+import { MediosDeContactoComponent } from './components/medios-de-contacto/medios-de-contacto.component';
+import { PorcentajesDeFinanciamientoComponent } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
+import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de-plazos.component';
+import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
+import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
+
+
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -95,6 +106,16 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     PricipalComponent,
     SidenavComponent,
     agregarMotivoDeReversa,
+
+    AcercamientosComponent,
+    AsignacionDeCategoriasComponent,
+    CanalesDeVentaComponent,
+    MediosDeContactoComponent,
+    PorcentajesDeFinanciamientoComponent,
+    RangosDePlazosComponent,
+    TipoDeProductoComponent,
+    TiposDeCanalesDeDistribucionComponent,
+
   ],
   imports: [
     BrowserModule,
