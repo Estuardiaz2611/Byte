@@ -29,6 +29,21 @@ import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de
 import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
 import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
 
+//Muñoz
+import{NotariosComponent} from "./components/notarios/notarios.component";
+import{AltasComponent} from "./components/altas/altas.component";
+import {CobrosAdicionalesAltasComponent } from './components/cobros-adicionales-altas/cobros-adicionales-altas.component';
+import{DiasInhabilesAltasComponent}from "./components/dias-inhabiles-altas/dias-inhabiles-altas.component";
+import{AjustesAltasComponent} from "./components/ajustes-altas/ajustes-altas.component";
+import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
+import { SubEstadosComponent } from './components/sub-estados/sub-estados.component';
+import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
+import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-prestamos.component';
+import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
+import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
+
+
 const appRoutes: Routes = [
     //Alan
     {path: 'cobrosAdicionales', component: CobrosAdicionalesComponent},
@@ -56,7 +71,23 @@ const appRoutes: Routes = [
     {path: 'Porcentajes-de-financiamiento', component: PorcentajesDeFinanciamientoComponent},
     {path: 'Rangos-de-plazos', component: RangosDePlazosComponent},
     {path: 'Tipo-de-producto', component: TipoDeProductoComponent},
-    {path: 'Tipos-de-canales-de-distribución', component: TiposDeCanalesDeDistribucionComponent}
+    {path: 'Tipos-de-canales-de-distribución', component: TiposDeCanalesDeDistribucionComponent},
+
+  //Muñoz
+  {path: 'notarios',component:NotariosComponent},
+  {path: 'notariosAltas',component:AltasComponent},
+  {path: 'inhabiles',component:DiasInhabilesComponent},
+  {path: 'inhabilesAltas',component:DiasInhabilesAltasComponent},
+  {path: 'adicionales',component:CobrosAdicionalesComponent},
+  {path: 'adicionalesAltas',component:CobrosAdicionalesAltasComponent},
+  {path: 'ajustesinhabilesAltas',component:AjustesAltasComponent},
+  {path: 'estadosPrestamos',component:EstadosPrestamosComponent},
+  {path: 'subEstados',component:SubEstadosComponent},
+  {path: 'subEstadosAltas',component:SubEstadosAltasComponent},
+  {path: 'numeroPrestamos',component:NumeroPrestamosComponent},
+  {path: 'numeroPrestamosAltas',component:NumeroPrestamosAltasComponent},
+  {path: 'pasosCierre',component:PasosCierreComponent},
+  {path: 'pasosCierreAltas',component:PasosCierreAltasComponent},
 ]
 export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
