@@ -13,7 +13,7 @@ export class FormasDeDesembolsoComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   numero: number;
   descripcion: string;
-  
+   
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   title = 'Agregar';
   selectedValue: string = "";

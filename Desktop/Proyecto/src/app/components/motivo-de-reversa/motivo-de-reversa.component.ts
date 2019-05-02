@@ -2,7 +2,7 @@ import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
+ 
 @Component({
   selector: 'app-motivo-de-reversa',
   templateUrl: './motivo-de-reversa.component.html',

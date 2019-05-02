@@ -12,7 +12,7 @@ export class DocumentosAPresentarPorProductoComponent implements OnInit, OnDestr
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   mobileQuery: MediaQueryList;
   showFiller = false;
-
+ 
 applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

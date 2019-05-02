@@ -22,7 +22,7 @@ export class MotivosReferenciasClientesComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+  } 
   openDialog1(): void { ///AGREGAR
     const dialogRef = this.dialog.open(agregarMotivosReferenciasClientes, {
       width: '450px',
