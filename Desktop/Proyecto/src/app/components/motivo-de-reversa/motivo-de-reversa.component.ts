@@ -14,19 +14,6 @@ export class MotivoDeReversaComponent implements OnInit {
   numero: number;
   descripcion: string;
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(agregarMotivoDeReversa, {
-      width: '700px',
-      height: '600px',
-      data: {numero: this.numero, descripcion: this.descripcion}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.numero = result;
-    });
-  }
-
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   title = 'Agregar';
   selectedValue: string = "";
@@ -39,6 +26,62 @@ export class MotivoDeReversaComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  openDialog1(): void { ///AGREGAR
+    const dialogRef = this.dialog.open(agregarMotivoDeReversa, {
+      width: '650px',
+      height: '530px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+
+  openDialog2(): void { ///EDITAR
+    const dialogRef = this.dialog.open(editarMotivoDeReversa, {
+      width: '350px',
+      height: '200px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+}
+
+@Component({ ///AGREGAR
+  selector: 'app-motivo-de-reversa',
+  templateUrl: './agregarMotivoDeReversa.html',
+  styleUrls: ['./motivo-de-reversa.component.scss']
+})
+export class agregarMotivoDeReversa implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
+
+@Component({ ///EDITAR
+  selector: 'app-motivo-de-reversa',
+  templateUrl: './editarMotivoDeReversa.html',
+  styleUrls: ['./motivo-de-reversa.component.scss']
+})
+export class editarMotivoDeReversa implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 }
 
 export interface PeriodicElement {
@@ -47,7 +90,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -61,21 +103,3 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
-@Component({
-  selector: 'app-motivo-de-reversa',
-  templateUrl: './agregarMotivoDeReversa.html',
-  styleUrls: ['./motivo-de-reversa.component.scss']
-})
-export class agregarMotivoDeReversa implements OnInit {
-  checked = false;
-  indeterminate = false;
-  disabled = false;
-
-
-  constructor() { }
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
-  ngOnInit() {
-  }
-}

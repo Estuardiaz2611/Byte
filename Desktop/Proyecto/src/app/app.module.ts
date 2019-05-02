@@ -17,10 +17,10 @@ import { ProductosComponent } from './components/productos/productos.component';
 
 //***********************SAMUEL***************************
 
-import { MotivoDeReversaComponent, agregarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
-import { FormasDeDesembolsoComponent } from './components/formas-de-desembolso/formas-de-desembolso.component';
-import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
-import { RelacionTransaccionesDepositosComponent } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
+import { MotivoDeReversaComponent, agregarMotivoDeReversa, editarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
+import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
+import { MotivosReferenciasClientesComponent, agregarMotivosReferenciasClientes, editarMotivosReferenciasClientes } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
+import { RelacionTransaccionesDepositosComponent, agregarRelacionTransaccionesDepositos, editarRelacionTransaccionesDepositos } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitudes/eventos-de-solicitudes.component';
@@ -106,6 +106,13 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     PricipalComponent,
     SidenavComponent,
     agregarMotivoDeReversa,
+    editarMotivoDeReversa,
+    agregarFormasDeDesembolso,
+    editarFormasDeDesembolso,
+    agregarMotivosReferenciasClientes,
+    editarMotivosReferenciasClientes,
+    agregarRelacionTransaccionesDepositos,
+    editarRelacionTransaccionesDepositos,
 
     AcercamientosComponent,
     AsignacionDeCategoriasComponent,
@@ -189,9 +196,21 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   ],
 
   entryComponents: [
+    //////Alan
     Agregar,
     agregarDiasInhabiles,
-    agregarMotivoDeReversa,
+    //////Samuel
+    agregarMotivoDeReversa,//
+    editarMotivoDeReversa,
+    agregarFormasDeDesembolso,//
+    editarFormasDeDesembolso,
+    agregarMotivosReferenciasClientes,//
+    editarMotivosReferenciasClientes,
+    agregarRelacionTransaccionesDepositos,//
+    editarRelacionTransaccionesDepositos,
+
+
+    //////
   ],
 
   providers: [appRoutingProviders],
