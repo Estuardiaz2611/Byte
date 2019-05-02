@@ -1,0 +1,65 @@
+<mat-toolbar color ="warn">Sub Estados Component</mat-toolbar>
+<div class = "Estados de Prestamos">
+
+<br>
+<br>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Estado" value="Vigente">
+</mat-form-field>
+
+  <br>
+  <mat-checkbox> </mat-checkbox>
+  
+  <mat-form-field>
+  <input matInput placeholder=" " value = " ">
+</mat-form-field>
+<table width="80%" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef> Codigo </th>
+    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
+<br>
+<br>
+
+<div class="botones" align="center">
+  <button mat-raised-button>Editar</button>
+  <button mat-raised-button>Eliminar</button>
+  <button mat-raised-button>Visualizar</button>
+  <button mat-raised-button>Registrar</button>
+  <button mat-raised-button>Guardar</button>
+  <button mat-raised-button>Next View</button>
+  <button mat-icon-button>?</button>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div id="side" [class.example-is-mobile]="mobileQuery.matches" >
+    <mat-toolbar id="barra-top" class="example-toolbar" color ="warn">
+      <button id="boton-menu" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name"></h1>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+            <div>
+                <button id="boton-p" (click)="show1 = !show1">
+                 Ventanas
+                </button>
+                <br>
+                <mat-grid-list cols="1" rowHeight="25" *ngIf="show1">
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/notarios'">Notarios</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/notariosAltas'">NotariosAltas</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/inhabiles'">DiasInhabiles</button> 
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/inhabilesAltas'">DiasInhabilesAltas</button>  
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/adicionales'">Cobros adicionales</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/adicionalesAltas'">cobros Adicionales Altas</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/ajustesinhabiles'">Ajustes Inhabiles</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/ajustesinhabilesAltas'">Ajustes Inhabiles Altas</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/estadosPrestamos'">Estado Prestamo</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/subEstados'">SubEstados</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/subEstadosAltas'">SubEstadosAltas</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/numeroPrestamos'">NumeroPrestamos</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/numeroPrestamosAltas'">NumeroPrestamos Altas</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/pasosCierre'">PasosCierre</button>
+                  </mat-grid-tile>
+                   <mat-grid-tile>
+                    <button id="boton-enlace" role="link" *ngIf="show1" onclick="window.location='http://localhost:4200/pasosCierreAltas'">PasosCierreAltas</button>
+                  </mat-grid-tile>
+                   
+                                    
+
+                </mat-grid-list>       
+            </div>
+        </mat-nav-list>
+      </mat-sidenav>
+      <h1>
+       HOGAR
+      </h1>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+    <div class="botones" align="center">
+    <button mat-raised-button>Editar</button>
+    <button mat-raised-button>Eliminar</button>
+    <button mat-raised-button>Visualizar</button>
+    <button mat-raised-button>Registrar</button>
+    <button mat-raised-button>Guardar</button>
+    <button mat-raised-button>Next View</button>
+    <button mat-icon-button>?</button>
+    </div>
+  
+    </mat-sidenav-container>
+  </div>

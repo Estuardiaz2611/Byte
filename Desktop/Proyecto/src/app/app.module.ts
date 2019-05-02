@@ -37,6 +37,20 @@ import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de
 import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
 import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
 
+//********************************MUÑOZ*******************/
+import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
+import { SidebarsComponent } from './components/sidebars/sidebars.component';
+import { NotariosComponent } from './components/notarios/notarios.component';
+import { AltasComponent } from './components/altas/altas.component';
+import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
+import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-prestamos.component';
+import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { AjustesAltasComponent } from './components/ajustes-altas/ajustes-altas.component';
+import { CobrosAdicionalesAltasComponent } from './components/cobros-adicionales-altas/cobros-adicionales-altas.component';
+import { DiasInhabilesAltasComponent } from './components/dias-inhabiles-altas/dias-inhabiles-altas.component';
+import { SubEstadosComponent } from './components/sub-estados/sub-estados.component';
+import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
+import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 
 //----------------------- ANGULAR MATERIAL
 
@@ -115,6 +129,21 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     RangosDePlazosComponent,
     TipoDeProductoComponent,
     TiposDeCanalesDeDistribucionComponent,
+
+    NotariosComponent,
+    AltasComponent,
+
+    EstadosPrestamosComponent,
+    NumeroPrestamosComponent,
+    PasosCierreComponent,
+    AjustesAltasComponent,
+    CobrosAdicionalesAltasComponent,
+    DiasInhabilesAltasComponent,
+    SubEstadosComponent,
+    SubEstadosAltasComponent,
+    NumeroPrestamosAltasComponent,
+    PasosCierreAltasComponent,
+    SidebarsComponent
 
   ],
   imports: [
