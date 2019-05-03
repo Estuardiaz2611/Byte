@@ -1,50 +1,95 @@
 import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-formas-de-desembolso',
   templateUrl: './formas-de-desembolso.component.html',
   styleUrls: ['./formas-de-desembolso.component.scss']
 })
-export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+export class FormasDeDesembolsoComponent implements OnInit {
+  displayedColumnss = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  mobileQuery: MediaQueryList;
-  showFiller = false;
-  
-  
+  numero: number;
+  descripcion: string;
+   
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  title = 'Agregar';
+  selectedValue: string = "";
+  //dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+///////  
+  constructor(public dialog: MatDialog){
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
+//////
+openDialog1(): void { ///AGREGAR
+  const dialogRef = this.dialog.open(agregarFormasDeDesembolso, {
+    width: '450px',
+    height: '350px',
+    data: {numero: this.numero, descripcion: this.descripcion}
+  });
 
-  ngOnInit() {
-  }
-  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
-
-  fillerContent = Array.from({length: 50}, () =>
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
-
-  private _mobileQueryListener: () => void;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.numero = result;
+  });
 }
 
+openDialog2(): void { ///EDITAR
+  const dialogRef = this.dialog.open(editarFormasDeDesembolso, {
+    width: '350px',
+    height: '200px',
+    data: {numero: this.numero, descripcion: this.descripcion}
+  });
 
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.numero = result;
+  });
+}
+}
+
+@Component({ ///AGREGAR
+  selector: 'app-formas-de-desembolso',
+  templateUrl: './agregarFormasDeDesembolso.html',
+  styleUrls: ['./formas-de-desembolso.component.scss']
+})
+export class agregarFormasDeDesembolso implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
+
+@Component({ ///EDITAR
+  selector: 'app-formas-de-desembolso',
+  templateUrl: './editarFormasDeDesembolso.html',
+  styleUrls: ['./formas-de-desembolso.component.scss']
+})
+export class editarFormasDeDesembolso implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
 export interface PeriodicElement {
   name: string;
   position: number;

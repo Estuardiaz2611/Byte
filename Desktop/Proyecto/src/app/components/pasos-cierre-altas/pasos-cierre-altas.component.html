@@ -1,0 +1,81 @@
+<mat-toolbar class="dialog" color= "warn">Pasos Cierrre Altas</mat-toolbar>
+<form class = "cierre">
+  <table style="margin: auto;">
+  <tr>
+  <td><h4>Numero de secuencia </h4></td>
+  <td>
+  <mat-form-field>
+      <input matInput placeholder="Input">
+      </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Fecha Vigente:  </h4></td>
+  <td>
+      <mat-form-field>
+    <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Nombre Programa:</h4></td>
+  <td>
+  <mat-form-field>
+      <input matInput placeholder="Input">
+      </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Descripcion Programa:  </h4></td>
+  <td>
+    <mat-form-field class="cierre">
+      <input matInput #message maxlength="256" placeholder="Message">
+      <mat-hint align="start"><strong>Ingrese descripcion</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+    
+  </td>
+  </tr>
+  
+  <tr>
+  <td><h4>Tipo de Frecuencia </h4></td>
+  <td>
+  <mat-form-field>
+      <input matInput placeholder="Input">
+      </mat-form-field>
+  </td>
+  </tr>       
+  <tr>
+  <td><h4>Fecha Ultima incurrida</h4></td>
+  <td>
+      <mat-form-field>
+    <input matInput [matDatepicker]="picker2" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Fecha siguiente corrida  </h4></td>
+  <td>
+      <mat-form-field>
+    <input matInput [matDatepicker]="picker3" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Estado del programa:  </h4></td>
+  <td>
+          <mat-form-field>
+                  <input matInput placeholder="Input">
+                  </mat-form-field>
+  </td>
+  </tr>
+  </table > 
+
+  </form>
+  

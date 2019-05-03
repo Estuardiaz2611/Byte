@@ -1,0 +1,49 @@
+<h1>
+  Mantenimiento a Rangos
+</h1>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Producto" value="">
+    </mat-form-field>
+   
+  </form>
+  <div id="filtro">
+<mat-form-field>
+    <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+  <div class="example-container mat-elevation-z8" align="center">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="minimo">
+        <th mat-header-cell *matHeaderCellDef> Plazo Minimo </th>
+        <td mat-cell *matCellDef="let element"> {{element.minimo}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="maximo">
+        <th mat-header-cell *matHeaderCellDef> Plazo Maximo </th>
+        <td mat-cell *matCellDef="let element"> {{element.maximo}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="tasa">
+        <th mat-header-cell *matHeaderCellDef> Tasa </th>
+        <td mat-cell *matCellDef="let element"> {{element.tasa}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+<br>
+<div align="center">
+<button class="material-icons">add_box</button>
+<button class="material-icons">create</button>
+<button class="material-icons">undo</button>
+<button class="material-icons">redo</button>
+<button class="material-icons">refresh</button>
+<button class="material-icons">cancel</button>
+<button class="material-icons">?</button>
+</div>

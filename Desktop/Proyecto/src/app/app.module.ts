@@ -17,15 +17,40 @@ import { ProductosComponent } from './components/productos/productos.component';
 
 //***********************SAMUEL***************************
 
-import { MotivoDeReversaComponent } from './components/motivo-de-reversa/motivo-de-reversa.component';
-import { FormasDeDesembolsoComponent } from './components/formas-de-desembolso/formas-de-desembolso.component';
-import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
-import { RelacionTransaccionesDepositosComponent } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
+import { MotivoDeReversaComponent, agregarMotivoDeReversa, editarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
+import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
+import { MotivosReferenciasClientesComponent, agregarMotivosReferenciasClientes, editarMotivosReferenciasClientes } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
+import { RelacionTransaccionesDepositosComponent, agregarRelacionTransaccionesDepositos, editarRelacionTransaccionesDepositos } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitudes/eventos-de-solicitudes.component';
 import { DocumentosAPresentarPorProductoComponent } from './components/documentos-a-presentar-por-producto/documentos-a-presentar-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
+
+//*********************DANIEL OVANDO************************
+import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
+import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
+import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
+import { MediosDeContactoComponent } from './components/medios-de-contacto/medios-de-contacto.component';
+import { PorcentajesDeFinanciamientoComponent } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
+import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de-plazos.component';
+import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
+import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
+
+//********************************MUÑOZ*******************/
+import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
+import { SidebarsComponent } from './components/sidebars/sidebars.component';
+import { NotariosComponent } from './components/notarios/notarios.component';
+import { AltasComponent } from './components/altas/altas.component';
+import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
+import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-prestamos.component';
+import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { AjustesAltasComponent } from './components/ajustes-altas/ajustes-altas.component';
+import { CobrosAdicionalesAltasComponent } from './components/cobros-adicionales-altas/cobros-adicionales-altas.component';
+import { DiasInhabilesAltasComponent } from './components/dias-inhabiles-altas/dias-inhabiles-altas.component';
+import { SubEstadosComponent } from './components/sub-estados/sub-estados.component';
+import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
+import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 
 //----------------------- ANGULAR MATERIAL
 
@@ -101,6 +126,7 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     MontosPorPlazoComponent,
     PricipalComponent,
     SidenavComponent,
+<<<<<<< HEAD
     AgrupacionesDeCreditoComponent,
     agregarACredito,
     AlmacenadoraComponent, 
@@ -116,6 +142,41 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     aTipoDeduc,
     TipoDePrestamoComponent, 
     aTipoP,
+=======
+    agregarMotivoDeReversa,
+    editarMotivoDeReversa,
+    agregarFormasDeDesembolso,
+    editarFormasDeDesembolso,
+    agregarMotivosReferenciasClientes,
+    editarMotivosReferenciasClientes,
+    agregarRelacionTransaccionesDepositos,
+    editarRelacionTransaccionesDepositos,
+
+    AcercamientosComponent,
+    AsignacionDeCategoriasComponent,
+    CanalesDeVentaComponent,
+    MediosDeContactoComponent,
+    PorcentajesDeFinanciamientoComponent,
+    RangosDePlazosComponent,
+    TipoDeProductoComponent,
+    TiposDeCanalesDeDistribucionComponent,
+
+    NotariosComponent,
+    AltasComponent,
+
+    EstadosPrestamosComponent,
+    NumeroPrestamosComponent,
+    PasosCierreComponent,
+    AjustesAltasComponent,
+    CobrosAdicionalesAltasComponent,
+    DiasInhabilesAltasComponent,
+    SubEstadosComponent,
+    SubEstadosAltasComponent,
+    NumeroPrestamosAltasComponent,
+    PasosCierreAltasComponent,
+    SidebarsComponent
+
+>>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
   ],
   imports: [
     BrowserModule,
@@ -189,8 +250,10 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
   ],
 
   entryComponents: [
+    //////Alan
     Agregar,
     agregarDiasInhabiles,
+<<<<<<< HEAD
     agregarACredito,
     aAlmacenadora,
     aAseguradora,   
@@ -198,6 +261,20 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     agregarAprestamos,
     aTipoDeduc,
     aTipoP,
+=======
+    //////Samuel
+    agregarMotivoDeReversa,//
+    editarMotivoDeReversa,
+    agregarFormasDeDesembolso,//
+    editarFormasDeDesembolso,
+    agregarMotivosReferenciasClientes,//
+    editarMotivosReferenciasClientes,
+    agregarRelacionTransaccionesDepositos,//
+    editarRelacionTransaccionesDepositos,
+
+
+    //////
+>>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
   ],
 
   providers: [appRoutingProviders],

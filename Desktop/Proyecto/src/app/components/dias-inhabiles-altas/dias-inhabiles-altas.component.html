@@ -1,0 +1,33 @@
+<mat-toolbar class="dialog" color= "warn">AjustesAltas</mat-toolbar>
+<form>
+  <table style="margin: auto;">
+  <tr>
+  <td><h4>Tipo Feriado:  </h4></td>
+  <td>
+    <mat-checkbox> </mat-checkbox>
+  </td>
+  </tr>
+  <tr>
+  <td><h4>fecha: </h4></td>
+  <td>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+  </td>
+  </tr>
+  <tr>
+  <td><h4>Descripcion:</h4></td>
+  <td>
+    <mat-form-field>
+      <input matInput placeholder="Input">
+      </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+  </table > 
+
+  </form>
+  

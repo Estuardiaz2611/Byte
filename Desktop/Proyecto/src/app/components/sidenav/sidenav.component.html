@@ -2,15 +2,70 @@
   <mat-toolbar id="barra-top" class="example-toolbar">
     <button id="boton-menu" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 id="titulo">ByteApp</h1>
+<!--
+<div id="menu">
+   <button [matMenuTriggerFor]="animals" mat-icon-button>Menú</button>
+<mat-menu #animals="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+  <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+</mat-menu>
+
+<mat-menu #vertebrates="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+  <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+  <button mat-menu-item>Birds</button>
+  <button mat-menu-item>Mammals</button>
+</mat-menu>
+
+<mat-menu #invertebrates="matMenu">
+  <button mat-menu-item>Insects</button>
+  <button mat-menu-item>Molluscs</button>
+  <button mat-menu-item>Crustaceans</button>
+  <button mat-menu-item>Corals</button>
+  <button mat-menu-item>Arachnids</button>
+  <button mat-menu-item>Velvet worms</button>
+  <button mat-menu-item>Horseshoe crabs</button>
+</mat-menu>
+
+<mat-menu #fish="matMenu">
+  <button mat-menu-item>Baikal oilfish</button>
+  <button mat-menu-item>Bala shark</button>
+  <button mat-menu-item>Ballan wrasse</button>
+  <button mat-menu-item>Bamboo shark</button>
+  <button mat-menu-item>Banded killifish</button>
+</mat-menu>
+
+<mat-menu #amphibians="matMenu">
+  <button mat-menu-item>Sonoran desert toad</button>
+  <button mat-menu-item>Western toad</button>
+  <button mat-menu-item>Arroyo toad</button>
+  <button mat-menu-item>Yosemite toad</button>
+</mat-menu>
+
+<mat-menu #reptiles="matMenu">
+  <button mat-menu-item>Banded Day Gecko</button>
+  <button mat-menu-item>Banded Gila Monster</button>
+  <button mat-menu-item>Black Tree Monitor</button>
+  <button mat-menu-item>Blue Spiny Lizard</button>
+  <button mat-menu-item disabled>Velociraptor</button>
+</mat-menu>
+</div>
+-->
+    <div id="boton-home">
+      <button mat-icon-button role="link"  routerLink="/principal"><mat-icon>home</mat-icon></button>
+      <button mat-icon-button role="link"  routerLink="/Motivo-de-reversa"><mat-icon>account_box</mat-icon></button>
+    </div>
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav id="siden" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-          <div>
-            <h1 id="titulo">Vistas</h1>
+        <div>
+          <h1 id="titulo">Vistas</h1>
             <hr>
+<<<<<<< HEAD
               <mat-grid-list cols="1" rowHeight="25"> 
                   <mat-grid-tile>
                       <button id="boton-enlace" role="link"  routerLink="/almacenadora" >Almacenadora</button>
@@ -96,8 +151,46 @@
                     </mat-grid-tile>
 
                   </mat-grid-list>
+=======
+            <!--SAMUEL-->
+            <button class="boton-enlace" role="link" routerLink="/Formas-de-desembolso" >Formas de Desembolso</button>
+            <button class="boton-enlace" role="link" routerLink="/Motivo-de-reversa" >Motivo de Reversa</button>
+            <button class="boton-enlace" role="link" routerLink="/Motivos-referencias-clientes" >Motivos de Referencias de Clientes</button>
+            <button class="boton-enlace" role="link" routerLink="/Relacion-transacciones-depositos" >Relación Transiciones de Depósitos</button>
+            <button class="boton-enlace" role="link" routerLink="/Parametros-Adicional-por-Producto" >Parámetros Adicionales por Producto</button>
+            <button class="boton-enlace" role="link" routerLink="/Eventos-de-solicitudes" >Eventos de Solicitudes</button>
+            <button class="boton-enlace" role="link" routerLink="/Documentos-a-Presentar-por-Producto" >Documentos a Presentar por Producto</button>
+            <button class="boton-enlace" role="link" routerLink="/Montos-por-Plazo" >Montos por Plazo</button>
+            <hr>
+            <!--ALAN - 7 vistas -->
+            <button class="boton-enlace" role="link" routerLink="/motivosDeAjustes" >Motivos de Ajustes</button>
+            <button class="boton-enlace" role="link" routerLink="/diasInhabiles">Dias Inhabiles</button>
+            <button class="boton-enlace" role="link" routerLink="/cobrosAdicionales">Cobros Adicionales</button>
+            <button class="boton-enlace" role="link" routerLink="/institucionesCobrosAdicionales">Instituciones Cobros Adicionales</button>
+            <button class="boton-enlace" role="link" routerLink="/limpiezaDeArchivos">Limpieza de Archivos</button>
+            <button class="boton-enlace" role="link" routerLink="/productos">Productos</button>
+            <hr>
+            <!--OVANDO-->
+            <button class="boton-enlace" role="link" routerLink="/Acercamientos">Acercamientos</button>
+            <button class="boton-enlace" role="link" routerLink="/Asignación-de-categorias">Asignación de Categorias</button>
+            <button class="boton-enlace" role="link" routerLink="/Canales-de-venta">Canales de Venta</button>
+            <button class="boton-enlace" role="link" routerLink="/Medios-de-contacto">Medios de Contacto</button>
+            <button class="boton-enlace" role="link" routerLink="/Porcentajes-de-financiamiento">Porcentajes de Financiamiento</button>
+            <button class="boton-enlace" role="link" routerLink="/Rangos-de-plazos">Rangos de Plazos</button>
+            <button class="boton-enlace" role="link" routerLink="/Tipo-de-producto">Tipo de Producto</button>
+            <button class="boton-enlace" role="link" routerLink="/Tipos-de-canales-de-distribución">Tipos de Canales de Distribución</button>
+            <hr>
+            <!--MUÑOZ-->
+            <button class="boton-enlace" role="link" routerLink="/notarios">Notarios</button>
+            <button class="boton-enlace" role="link" routerLink="/inhabiles">Inhabiles</button>
+            <button class="boton-enlace" role="link" routerLink="/adicionales">Adicionales</button>
+            <button class="boton-enlace" role="link" routerLink="/estadosPrestamos">Estados Prestamos</button>
+            <button class="boton-enlace" role="link" routerLink="/subEstados">Sub Estados</button>
+            <button class="boton-enlace" role="link" routerLink="/numeroPrestamos">Número Prestamos</button>
+            <button class="boton-enlace" role="link" routerLink="/pasosCierre">Pasos Cierre</button>
+>>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
 
-              <hr>
+            <hr>
           </div>
       </mat-nav-list>
     </mat-sidenav>

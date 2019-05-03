@@ -1,21 +1,85 @@
 import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+ 
 @Component({
   selector: 'app-motivo-de-reversa',
   templateUrl: './motivo-de-reversa.component.html',
   styleUrls: ['./motivo-de-reversa.component.scss']
 })
 export class MotivoDeReversaComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumnss = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  numero: number;
+  descripcion: string;
 
-  constructor(){
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  title = 'Agregar';
+  selectedValue: string = "";
+  //dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+
+  constructor(public dialog: MatDialog){
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  openDialog1(): void { ///AGREGAR
+    const dialogRef = this.dialog.open(agregarMotivoDeReversa, {
+      width: '650px',
+      height: '530px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+
+  openDialog2(): void { ///EDITAR
+    const dialogRef = this.dialog.open(editarMotivoDeReversa, {
+      width: '350px',
+      height: '200px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+}
+
+@Component({ ///AGREGAR
+  selector: 'app-motivo-de-reversa',
+  templateUrl: './agregarMotivoDeReversa.html',
+  styleUrls: ['./motivo-de-reversa.component.scss']
+})
+export class agregarMotivoDeReversa implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
+
+@Component({ ///EDITAR
+  selector: 'app-motivo-de-reversa',
+  templateUrl: './editarMotivoDeReversa.html',
+  styleUrls: ['./motivo-de-reversa.component.scss']
+})
+export class editarMotivoDeReversa implements OnInit {
+
+  constructor() { }
+
   ngOnInit() {
   }
 }
@@ -26,7 +90,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
