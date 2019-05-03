@@ -17,6 +17,13 @@ import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitud
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
 import { PricipalComponent } from './components/pricipal/pricipal.component';
+import { AgrupacionesDeCreditoComponent } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
+import { AlmacenadoraComponent } from './components/almacenadora/almacenadora.component';
+import { AseguradoraComponent } from './components/aseguradora/aseguradora.component';
+import { LugarDeInversionComponent } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { AsesorDePrestamosComponent } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
+import { TipoDeDeduccionComponent } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
+import { TipoDePrestamoComponent } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
 
 const appRoutes: Routes = [
     {path: 'cobrosAdicionales', component: CobrosAdicionalesComponent},
@@ -33,7 +40,14 @@ const appRoutes: Routes = [
     {path: 'Eventos-de-solicitudes', component: EventosDeSolicitudesComponent},
     {path: 'Parametros-Adicional-por-Producto', component: ParametrosAdicionalPorProductoComponent},
     {path: 'Montos-por-Plazo', component: MontosPorPlazoComponent},
-    {path: 'principal', component: PricipalComponent}
+    {path: 'principal', component: PricipalComponent},
+    {path: 'agrupacionesDeCredito', component: AgrupacionesDeCreditoComponent},
+    {path: 'almacenadora', component: AlmacenadoraComponent},
+    {path: 'aseguradora', component:AseguradoraComponent},
+    {path: 'lugarInversion', component:LugarDeInversionComponent},
+    {path: 'asesorPrestamos',component:AsesorDePrestamosComponent}, 
+    {path: 'tipoDeduccion',component: TipoDeDeduccionComponent},
+    {path: 'tipoPrestamo',component: TipoDePrestamoComponent}
 ]
 
 export const appRoutingProviders: any[] = [];

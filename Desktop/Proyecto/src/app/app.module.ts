@@ -69,7 +69,14 @@ import {
 import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-
+import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
+import { AlmacenadoraComponent, aAlmacenadora } from './components/almacenadora/almacenadora.component';
+import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
+import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
+import { BancosComponent } from './components/bancos/bancos.component';
+import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
+import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
 
 
 @NgModule({
@@ -93,7 +100,22 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DocumentosAPresentarPorProductoComponent,
     MontosPorPlazoComponent,
     PricipalComponent,
-    SidenavComponent
+    SidenavComponent,
+    AgrupacionesDeCreditoComponent,
+    agregarACredito,
+    AlmacenadoraComponent, 
+    aAlmacenadora,
+    AseguradoraComponent,
+    aAseguradora,
+    AsesorDePrestamosComponent,
+    agregarAprestamos,
+    BancosComponent,
+    LugarDeInversionComponent, 
+    aLuagrInv,
+    TipoDeDeduccionComponent,
+    aTipoDeduc,
+    TipoDePrestamoComponent, 
+    aTipoP,
   ],
   imports: [
     BrowserModule,
@@ -168,7 +190,14 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
   entryComponents: [
     Agregar,
-    agregarDiasInhabiles
+    agregarDiasInhabiles,
+    agregarACredito,
+    aAlmacenadora,
+    aAseguradora,   
+    aLuagrInv,
+    agregarAprestamos,
+    aTipoDeduc,
+    aTipoP,
   ],
 
   providers: [appRoutingProviders],
