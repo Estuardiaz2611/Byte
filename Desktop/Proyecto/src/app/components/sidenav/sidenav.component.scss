@@ -1,6 +1,7 @@
   #titulo{
     text-align: center;
     font-size: 35px;
+    font-family: 'Times New Roman', Times, serif
   }
 
 #fil{
@@ -9,11 +10,23 @@
   size: 3px;
 }
 
+#btn{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 130%;
+}
+
 #menu{
-  margin-left: 50px;
+  //margin-left: 82%;
   font-size: 50px;
   size: 50px;
+  border: 0px;
+  border-color: goldenrod;
 }
+
+#botonn{
+  font-family: 'Times New Roman', Times, serif
+}
+
 #boton-home{
   margin-left: 82%;
   font-size: 50px;

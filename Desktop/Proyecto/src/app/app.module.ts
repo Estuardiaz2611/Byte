@@ -26,7 +26,10 @@ import { ParametrosAdicionalPorProductoComponent } from './components/parametros
 import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitudes/eventos-de-solicitudes.component';
 import { DocumentosAPresentarPorProductoComponent } from './components/documentos-a-presentar-por-producto/documentos-a-presentar-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
-
+///
+import { SeleccionDeAgenciasPorEmpresaComponent } from './components/seleccion-de-agencias-por-empresa/seleccion-de-agencias-por-empresa.component';
+import { RegistroDeTipoDeDocumentoComponent } from './components/registro-de-tipo-de-documento/registro-de-tipo-de-documento.component';
+//
 //*********************DANIEL OVANDO************************
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
@@ -52,6 +55,15 @@ import { SubEstadosComponent } from './components/sub-estados/sub-estados.compon
 import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 
+//********************************CHINO*******************/
+import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
+import { AlmacenadoraComponent, aAlmacenadora } from './components/almacenadora/almacenadora.component';
+import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
+import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
+import { BancosComponent } from './components/bancos/bancos.component';
+import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
+import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -94,15 +106,6 @@ import {
 import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
-import { AlmacenadoraComponent, aAlmacenadora } from './components/almacenadora/almacenadora.component';
-import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
-import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
-import { BancosComponent } from './components/bancos/bancos.component';
-import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
-import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
-import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
-
 
 @NgModule({
   declarations: [
@@ -115,7 +118,7 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     agregarDiasInhabiles,
     LimpiezaDeArchivosComponent,
     ProductosComponent,
-
+//SAMUEL
     MotivoDeReversaComponent,
     FormasDeDesembolsoComponent,
     MotivosReferenciasClientesComponent,
@@ -126,7 +129,18 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     MontosPorPlazoComponent,
     PricipalComponent,
     SidenavComponent,
-<<<<<<< HEAD
+    SeleccionDeAgenciasPorEmpresaComponent, 
+    RegistroDeTipoDeDocumentoComponent,
+
+    agregarMotivoDeReversa,
+    editarMotivoDeReversa,
+    agregarFormasDeDesembolso,
+    editarFormasDeDesembolso,
+    agregarMotivosReferenciasClientes,
+    editarMotivosReferenciasClientes,
+    agregarRelacionTransaccionesDepositos,
+    editarRelacionTransaccionesDepositos,
+//
     AgrupacionesDeCreditoComponent,
     agregarACredito,
     AlmacenadoraComponent, 
@@ -141,16 +155,8 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     TipoDeDeduccionComponent,
     aTipoDeduc,
     TipoDePrestamoComponent, 
-    aTipoP,
-=======
-    agregarMotivoDeReversa,
-    editarMotivoDeReversa,
-    agregarFormasDeDesembolso,
-    editarFormasDeDesembolso,
-    agregarMotivosReferenciasClientes,
-    editarMotivosReferenciasClientes,
-    agregarRelacionTransaccionesDepositos,
-    editarRelacionTransaccionesDepositos,
+    aTipoP, 
+
 
     AcercamientosComponent,
     AsignacionDeCategoriasComponent,
@@ -175,8 +181,6 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     NumeroPrestamosAltasComponent,
     PasosCierreAltasComponent,
     SidebarsComponent
-
->>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
   ],
   imports: [
     BrowserModule,
@@ -253,7 +257,6 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     //////Alan
     Agregar,
     agregarDiasInhabiles,
-<<<<<<< HEAD
     agregarACredito,
     aAlmacenadora,
     aAseguradora,   
@@ -261,7 +264,6 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     agregarAprestamos,
     aTipoDeduc,
     aTipoP,
-=======
     //////Samuel
     agregarMotivoDeReversa,//
     editarMotivoDeReversa,
@@ -271,10 +273,7 @@ import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/t
     editarMotivosReferenciasClientes,
     agregarRelacionTransaccionesDepositos,//
     editarRelacionTransaccionesDepositos,
-
-
-    //////
->>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
+     //////
   ],
 
   providers: [appRoutingProviders],

@@ -7,7 +7,6 @@ import {InstitucionesCobrosAdicionalesComponent} from "./components/institucione
 import {MotivosDeAjustesComponent} from "./components/motivos-de-ajustes/motivos-de-ajustes.component";
 import { LimpiezaDeArchivosComponent } from './components/limpieza-de-archivos/limpieza-de-archivos.component';
 import { ProductosComponent } from './components/productos/productos.component';
-
 import { PricipalComponent } from './components/pricipal/pricipal.component';
 //Samuel
 import { FormasDeDesembolsoComponent } from './components/formas-de-desembolso/formas-de-desembolso.component';
@@ -18,17 +17,6 @@ import { DocumentosAPresentarPorProductoComponent } from './components/documento
 import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitudes/eventos-de-solicitudes.component';
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
-<<<<<<< HEAD
-import { PricipalComponent } from './components/pricipal/pricipal.component';
-import { AgrupacionesDeCreditoComponent } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
-import { AlmacenadoraComponent } from './components/almacenadora/almacenadora.component';
-import { AseguradoraComponent } from './components/aseguradora/aseguradora.component';
-import { LugarDeInversionComponent } from './components/lugar-de-inversion/lugar-de-inversion.component';
-import { AsesorDePrestamosComponent } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
-import { TipoDeDeduccionComponent } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
-import { TipoDePrestamoComponent } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
-=======
-
 //Ovando
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
@@ -38,7 +26,6 @@ import { PorcentajesDeFinanciamientoComponent } from './components/porcentajes-d
 import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de-plazos.component';
 import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
 import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
-
 //Muñoz
 import{NotariosComponent} from "./components/notarios/notarios.component";
 import{AltasComponent} from "./components/altas/altas.component";
@@ -52,18 +39,23 @@ import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-p
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
-
->>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
+//CHINO
+import { AgrupacionesDeCreditoComponent } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
+import { AlmacenadoraComponent } from './components/almacenadora/almacenadora.component';
+import { AseguradoraComponent } from './components/aseguradora/aseguradora.component';
+import { LugarDeInversionComponent } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { AsesorDePrestamosComponent } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
+import { TipoDeDeduccionComponent } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
+import { TipoDePrestamoComponent } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
 
 const appRoutes: Routes = [
-    //Alan
+//Alan
     {path: 'cobrosAdicionales', component: CobrosAdicionalesComponent},
     {path: 'diasInhabiles', component: DiasInhabilesComponent},
     {path: 'institucionesCobrosAdicionales', component: InstitucionesCobrosAdicionalesComponent},
     {path: 'motivosDeAjustes', component: MotivosDeAjustesComponent},
     {path: 'limpiezaDeArchivos', component: LimpiezaDeArchivosComponent},
     {path: 'productos', component: ProductosComponent},
-
     {path: 'principal', component: PricipalComponent},
 //Samuel
     {path: 'Formas-de-desembolso', component: FormasDeDesembolsoComponent},
@@ -74,17 +66,6 @@ const appRoutes: Routes = [
     {path: 'Eventos-de-solicitudes', component: EventosDeSolicitudesComponent},
     {path: 'Parametros-Adicional-por-Producto', component: ParametrosAdicionalPorProductoComponent},
     {path: 'Montos-por-Plazo', component: MontosPorPlazoComponent},
-<<<<<<< HEAD
-    {path: 'principal', component: PricipalComponent},
-    {path: 'agrupacionesDeCredito', component: AgrupacionesDeCreditoComponent},
-    {path: 'almacenadora', component: AlmacenadoraComponent},
-    {path: 'aseguradora', component:AseguradoraComponent},
-    {path: 'lugarInversion', component:LugarDeInversionComponent},
-    {path: 'asesorPrestamos',component:AsesorDePrestamosComponent}, 
-    {path: 'tipoDeduccion',component: TipoDeDeduccionComponent},
-    {path: 'tipoPrestamo',component: TipoDePrestamoComponent}
-]
-=======
 //Ovando
     {path: 'Acercamientos', component: AcercamientosComponent},
     {path: 'Asignación-de-categorias', component: AsignacionDeCategoriasComponent},
@@ -94,23 +75,29 @@ const appRoutes: Routes = [
     {path: 'Rangos-de-plazos', component: RangosDePlazosComponent},
     {path: 'Tipo-de-producto', component: TipoDeProductoComponent},
     {path: 'Tipos-de-canales-de-distribución', component: TiposDeCanalesDeDistribucionComponent},
->>>>>>> b7236796f6533da33d2ebef79715d2cb9a58fd8f
-
-  //Muñoz
-  {path: 'notarios',component:NotariosComponent},
-  {path: 'notariosAltas',component:AltasComponent},
-  {path: 'inhabiles',component:DiasInhabilesComponent},
-  {path: 'inhabilesAltas',component:DiasInhabilesAltasComponent},
-  {path: 'adicionales',component:CobrosAdicionalesComponent},
-  {path: 'adicionalesAltas',component:CobrosAdicionalesAltasComponent},
-  {path: 'ajustesinhabilesAltas',component:AjustesAltasComponent},
-  {path: 'estadosPrestamos',component:EstadosPrestamosComponent},
-  {path: 'subEstados',component:SubEstadosComponent},
-  {path: 'subEstadosAltas',component:SubEstadosAltasComponent},
-  {path: 'numeroPrestamos',component:NumeroPrestamosComponent},
-  {path: 'numeroPrestamosAltas',component:NumeroPrestamosAltasComponent},
-  {path: 'pasosCierre',component:PasosCierreComponent},
-  {path: 'pasosCierreAltas',component:PasosCierreAltasComponent},
+//Muñoz
+    {path: 'notarios',component:NotariosComponent},
+    {path: 'notariosAltas',component:AltasComponent},
+    {path: 'inhabiles',component:DiasInhabilesComponent},
+    {path: 'inhabilesAltas',component:DiasInhabilesAltasComponent},
+    {path: 'adicionales',component:CobrosAdicionalesComponent},
+    {path: 'adicionalesAltas',component:CobrosAdicionalesAltasComponent},
+    {path: 'ajustesinhabilesAltas',component:AjustesAltasComponent},
+    {path: 'estadosPrestamos',component:EstadosPrestamosComponent},
+    {path: 'subEstados',component:SubEstadosComponent},
+    {path: 'subEstadosAltas',component:SubEstadosAltasComponent},
+    {path: 'numeroPrestamos',component:NumeroPrestamosComponent},
+    {path: 'numeroPrestamosAltas',component:NumeroPrestamosAltasComponent},
+    {path: 'pasosCierre',component:PasosCierreComponent},
+    {path: 'pasosCierreAltas',component:PasosCierreAltasComponent},
+//CHINO
+    {path: 'agrupacionesDeCredito', component: AgrupacionesDeCreditoComponent},
+    {path: 'almacenadora', component: AlmacenadoraComponent},
+    {path: 'aseguradora', component:AseguradoraComponent},
+    {path: 'lugarInversion', component:LugarDeInversionComponent},
+    {path: 'asesorPrestamos',component:AsesorDePrestamosComponent}, 
+    {path: 'tipoDeduccion',component: TipoDeDeduccionComponent},
+    {path: 'tipoPrestamo',component: TipoDePrestamoComponent},
 ]
 export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
