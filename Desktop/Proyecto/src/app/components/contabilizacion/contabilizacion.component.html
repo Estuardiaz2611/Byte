@@ -1,18 +1,21 @@
-<div id= "titulo">
+<div id="titulo">
   <h1>
-    Pasos Cierre
-  </h1>
+   Contabilización
+    </h1>
 </div>
-
 <div id="fields">
-<form>
-  <mat-form-field class="field">
-    <input matInput placeholder="seleccionar En Nombre" value="">
+  <form>
+    <mat-form-field class="field">
+      <input matInput placeholder="Desembolsos de prestamos" value="">
+    </mat-form-field>
 
-  </mat-form-field>
-</form>
+
+    <mat-form-field class="field">
+      <input matInput placeholder="ENT" value="">
+    </mat-form-field>
+
+  </form>
 </div>
-
 <div>
   <mat-form-field id="filtro">
     <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
