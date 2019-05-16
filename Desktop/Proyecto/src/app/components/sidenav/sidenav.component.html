@@ -22,6 +22,26 @@
         <div>
           <h1 id="titulo">Vistas</h1>
             <hr>
+            <div id="fi">
+              <mat-form-field id="fi">
+                <input id="fi" name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+              </mat-form-field>
+            </div>
+            <div class="example-container mat-elevation-z8" id="co">
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="ta">
+                <ng-container matColumnDef="no">
+                  <th mat-header-cell *matHeaderCellDef id="tt">No.</th>
+                  <td mat-cell id="t" *matCellDef="let vis" >{{vis.no}}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef id="tt"> Vista </th>
+                  <td mat-cell role="link" routerLink="/Formas-de-desembolso" id="t" *matCellDef="let vis">{{vis.name}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+            <hr>
             <!--SAMUEL-->
             <button id="btn" class="boton-enlace" role="link" routerLink="/Formas-de-desembolso" >Formas de Desembolso</button>
             <button id="btn" class="boton-enlace" role="link" routerLink="/Motivo-de-reversa" >Motivo de Reversa</button>
