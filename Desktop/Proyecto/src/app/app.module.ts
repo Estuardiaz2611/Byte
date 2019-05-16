@@ -43,17 +43,19 @@ import { TiposDeCanalesDeDistribucionComponent, agregarTiposdeCanalesdeDistribuc
 //********************************MUÑOZ*******************/
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
 import { SidebarsComponent } from './components/sidebars/sidebars.component';
-import { NotariosComponent } from './components/notarios/notarios.component';
+import { NotariosComponent,agregarNotario } from './components/notarios/notarios.component';
 import { AltasComponent } from './components/altas/altas.component';
 import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
-import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-prestamos.component';
-import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { NumeroPrestamosComponent,agregarNumeroPrestamos } from './components/numero-prestamos/numero-prestamos.component';
+import { PasosCierreComponent,agregarPasosCierre } from './components/pasos-cierre/pasos-cierre.component';
 import { AjustesAltasComponent } from './components/ajustes-altas/ajustes-altas.component';
 import { CobrosAdicionalesAltasComponent } from './components/cobros-adicionales-altas/cobros-adicionales-altas.component';
 import { DiasInhabilesAltasComponent } from './components/dias-inhabiles-altas/dias-inhabiles-altas.component';
-import { SubEstadosComponent } from './components/sub-estados/sub-estados.component';
+import { SubEstadosComponent,agregarSubEstados } from './components/sub-estados/sub-estados.component';
 import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
+import {ContabilizacionComponent,agregarContabilizacion } from './components/contabilizacion/contabilizacion.component';
+
 
 //********************************CHINO*******************/
 import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
@@ -63,7 +65,9 @@ import { AsesorDePrestamosComponent, agregarAprestamos } from './components/ases
 import { BancosComponent } from './components/bancos/bancos.component';
 import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
-import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
+import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
+import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
+import { ContabilizacionComponent, cotabilidad1, cotabilidad2 } from './components/contabilizacion/contabilizacion.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -107,6 +111,7 @@ import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,7 +122,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     Agregar,
     agregarDiasInhabiles,
     LimpiezaDeArchivosComponent,
-    ProductosComponent,
+    ProductosComponent, 
 //SAMUEL
     MotivoDeReversaComponent,
     FormasDeDesembolsoComponent,
@@ -186,19 +191,34 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 //
     NotariosComponent,
+    agregarNotario,
     AltasComponent,
-
     EstadosPrestamosComponent,
     NumeroPrestamosComponent,
+    agregarNumeroPrestamos,
     PasosCierreComponent,
     AjustesAltasComponent,
     CobrosAdicionalesAltasComponent,
     DiasInhabilesAltasComponent,
     SubEstadosComponent,
+    agregarSubEstados,
     SubEstadosAltasComponent,
     NumeroPrestamosAltasComponent,
     PasosCierreAltasComponent,
-    SidebarsComponent
+<<<<<<< HEAD
+    SidebarsComponent,
+    ContenidosContablesComponent,
+    ContabilizacionComponent,
+    cotabilidad1,
+    cotabilidad2,
+    contenido1,
+    contenido2
+=======
+    agregarPasosCierre,
+    SidebarsComponent,
+    ContabilizacionComponent,
+    agregarContabilizacion
+>>>>>>> 8fc06b4d3ec55da972c91ab22c5de1eac432f5aa
   ],
   imports: [
     BrowserModule,
@@ -276,7 +296,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     Agregar,
     agregarDiasInhabiles,
     agregarACredito,
-    aAlmacenadora,
+    aAlmacenadora, 
+    cotabilidad1,
+    cotabilidad2, 
+    contenido1,
+    contenido2,
     aAseguradora,   
     aLuagrInv,
     agregarAprestamos,
@@ -293,6 +317,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarRelacionTransaccionesDepositos,
      //////
 
+<<<<<<< HEAD
      ////Ovando
     agregarAcercamientos,
     editarAcercamientos,
@@ -311,6 +336,16 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarTipoProducto, 
     editarTipoProducto,
 
+=======
+     ///Muñoz
+     agregarNotario,
+     agregarPasosCierre,
+     agregarNumeroPrestamos,
+     agregarSubEstados,
+     agregarACredito,
+     agregarContabilizacion
+     
+>>>>>>> 9108d5a12f661f8cdd6feefc42bf3e2b1845ec5e
   ],
 
   providers: [appRoutingProviders],

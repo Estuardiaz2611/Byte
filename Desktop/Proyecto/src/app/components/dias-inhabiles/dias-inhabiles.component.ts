@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatTableDataSource} from '@angular/material';
+import {PeriodicElement} from '../interfaces/periodic-element';
 export interface PeriodicElement {
   posicion: number;
   numero: number;
   descripcion: string;
  
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { posicion: 1, numero:1,  descripcion:'Whtas up'},
-  { posicion: 2, numero: 2, descripcion: 'hi'},
-];
+
 
 
 @Component({
@@ -19,12 +16,28 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./dias-inhabiles.component.scss']
 })
 export class DiasInhabilesComponent implements OnInit {
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   numero: number;
   descripcion: string;
 
-  constructor(public dialog: MatDialog) {}
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  title = 'Agregar';
+  selectedValue: string = "";
 
-  openDialog(): void {
+
+   
+  ngOnInit() {
+  }
+
+  
+  constructor(public dialog: MatDialog){
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+  openDialog1(): void {
     const dialogRef = this.dialog.open(agregarDiasInhabiles, {
       width: '700px',
       height: '600px',
@@ -36,26 +49,40 @@ export class DiasInhabilesComponent implements OnInit {
       this.numero = result;
     });
   }
-
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
-  title = 'Notarios';
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
-  ngOnInit() {
-  }
 }
+  
 
-@Component({
+@Component({ //Agregar
+
   selector: 'app-dias-inhabiles',
   templateUrl: './agregarDiasInhabiles.html',
-})
-export class agregarDiasInhabiles implements OnInit {
+  styleUrls:['./dias-inhabiles.component.scss']
 
-  constructor() { }
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
-  title = 'Notarios';
+})
+
+export class agregarDiasInhabiles implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+
+  constructor(){}
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
   selectedValue: string = "";
   dataSource = ELEMENT_DATA;
-  ngOnInit() {
+
+  ngOnInit(){
+
   }
 }
+
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {codigo: 1, descripcion: 'Hydrogen'},
+  {codigo: 2, descripcion: 'Helium'},
+  {codigo: 3, descripcion: 'Lithium'},
+  {codigo: 4, descripcion: 'Beryllium'},
+  {codigo: 5, descripcion: 'Boron'},
+];
+
+
