@@ -63,7 +63,9 @@ import { AsesorDePrestamosComponent, agregarAprestamos } from './components/ases
 import { BancosComponent } from './components/bancos/bancos.component';
 import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
-import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
+import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
+import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
+import { ContabilizacionComponent, cotabilidad1, cotabilidad2 } from './components/contabilizacion/contabilizacion.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -107,6 +109,7 @@ import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,7 +120,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     Agregar,
     agregarDiasInhabiles,
     LimpiezaDeArchivosComponent,
-    ProductosComponent,
+    ProductosComponent, 
 //SAMUEL
     MotivoDeReversaComponent,
     FormasDeDesembolsoComponent,
@@ -180,7 +183,13 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SubEstadosAltasComponent,
     NumeroPrestamosAltasComponent,
     PasosCierreAltasComponent,
-    SidebarsComponent
+    SidebarsComponent,
+    ContenidosContablesComponent,
+    ContabilizacionComponent,
+    cotabilidad1,
+    cotabilidad2,
+    contenido1,
+    contenido2
   ],
   imports: [
     BrowserModule,
@@ -258,7 +267,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     Agregar,
     agregarDiasInhabiles,
     agregarACredito,
-    aAlmacenadora,
+    aAlmacenadora, 
+    cotabilidad1,
+    cotabilidad2, 
+    contenido1,
+    contenido2,
     aAseguradora,   
     aLuagrInv,
     agregarAprestamos,
