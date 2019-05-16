@@ -39,6 +39,7 @@ import { NumeroPrestamosComponent } from './components/numero-prestamos/numero-p
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
+import {ContabilizacionComponent} from './components/contabilizacion/contabilizacion.component';
 //CHINO
 import { AgrupacionesDeCreditoComponent } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
 import { AlmacenadoraComponent } from './components/almacenadora/almacenadora.component';
@@ -90,6 +91,8 @@ const appRoutes: Routes = [
     {path: 'numeroPrestamosAltas',component:NumeroPrestamosAltasComponent},
     {path: 'pasosCierre',component:PasosCierreComponent},
     {path: 'pasosCierreAltas',component:PasosCierreAltasComponent},
+    {path: 'contabilizacion',component:ContabilizacionComponent},
+    
 //CHINO
     {path: 'agrupacionesDeCredito', component: AgrupacionesDeCreditoComponent},
     {path: 'almacenadora', component: AlmacenadoraComponent},

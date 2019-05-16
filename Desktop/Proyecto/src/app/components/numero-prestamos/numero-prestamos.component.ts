@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {PeriodicElement} from '../interfaces/periodic-element';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource,MatDialog} from '@angular/material';
 export interface PeriodicElement {
   descripcion: string;
   codigo: number;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: 1, descripcion: 'Hydrogen'},
-  {codigo: 2, descripcion: 'Helium'},
-  {codigo: 3, descripcion: 'Lithium'},
-  {codigo: 4, descripcion: 'Beryllium'},
-  {codigo: 5, descripcion: 'Boron'},
-];
 @Component({
   selector: 'app-numero-prestamos',
   templateUrl: './numero-prestamos.component.html',
@@ -20,34 +13,70 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class NumeroPrestamosComponent implements OnInit {
 
-  constructor() { }
+  displayedColumnss = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  numero: number;
+  descripcion: string;
+
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  title = 'Agregar';
+  selectedValue: string = "";
+
+
 
   ngOnInit() {
-  }
-  displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows; 
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+  constructor(public dialog: MatDialog) { }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
-  }
 
+  openDialog1():void{ ///AGREGAR
+    const dialogRef = this.dialog.open(agregarNumeroPrestamos,{
+      width: '650px',
+      height: '530px',
+      data: {numero: this.numero, descripcion: this.descripcion,}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+
+  }
+  
+  }
+  @Component({ //Agregar
+
+    selector: 'app-numero-prestamos',
+    templateUrl: './agregarNumeroPrestamos.html',
+    styleUrls:['./numero-prestamos.component.scss']
+  
+  })
+  
+  export class agregarNumeroPrestamos implements OnInit {
+    checked = false;
+    indeterminate = false;
+    disabled = false;
+
+    
+  constructor(){}
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+
+  ngOnInit(){
+
+  }
 }
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {codigo: 1, descripcion: 'Hydrogen'},
+  {codigo: 2, descripcion: 'Helium'},
+  {codigo: 3, descripcion: 'Lithium'},
+  {codigo: 4, descripcion: 'Beryllium'},
+  {codigo: 5, descripcion: 'Boron'},
+];

@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,10 +10,11 @@ import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
 export class SidenavComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   showFiller = false;
+  displayedColumns: string[] = ['no', 'name'];
+  dataSource = new MatTableDataSource(VISTAS_DATA);
   ngOnInit() {
   }
   
-
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
   fillerContent = Array.from({length: 50}, () =>
@@ -33,7 +35,24 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+  
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
 export class NestedMenuExample {}
+
+export interface Vistas {
+  no: number;
+  name: string;
+}
+const VISTAS_DATA: Vistas[] = [
+  {no: 1, name: 'Formas de Desembolso'},
+  {no: 2, name: 'Motivos de Reversa'},
+  {no: 3, name: 'Motivos de Referencias de Clientes'},
+  {no: 4, name: 'Relación de Transacciones de Depósitos'},
+]
