@@ -31,14 +31,14 @@ import { SeleccionDeAgenciasPorEmpresaComponent } from './components/seleccion-d
 import { RegistroDeTipoDeDocumentoComponent } from './components/registro-de-tipo-de-documento/registro-de-tipo-de-documento.component';
 //
 //*********************DANIEL OVANDO************************
-import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
-import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
-import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
-import { MediosDeContactoComponent } from './components/medios-de-contacto/medios-de-contacto.component';
-import { PorcentajesDeFinanciamientoComponent } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
-import { RangosDePlazosComponent } from './components/rangos-de-plazos/rangos-de-plazos.component';
-import { TipoDeProductoComponent } from './components/tipo-de-producto/tipo-de-producto.component';
-import { TiposDeCanalesDeDistribucionComponent } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
+import { AcercamientosComponent, agregarAcercamientos, editarAcercamientos } from './components/acercamientos/acercamientos.component';
+import { AsignacionDeCategoriasComponent, agregarAsignaciondeCategorias, editarAsignaciondeCategorias } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
+import { CanalesDeVentaComponent, agregarCanalesdeVenta, editarCanalesdeVenta } from './components/canales-de-venta/canales-de-venta.component';
+import { MediosDeContactoComponent, agregarMediosdeContacto, editarMediosdeContacto } from './components/medios-de-contacto/medios-de-contacto.component';
+import { PorcentajesDeFinanciamientoComponent, agregarPorcentajes, editarPorcentajes } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
+import { RangosDePlazosComponent, agregarRangodePlazos, editarRangodePlazos } from './components/rangos-de-plazos/rangos-de-plazos.component';
+import { TipoDeProductoComponent, agregarTipoProducto, editarTipoProducto } from './components/tipo-de-producto/tipo-de-producto.component';
+import { TiposDeCanalesDeDistribucionComponent, agregarTiposdeCanalesdeDistribucion, editarTiposdeCanalesdeDistribucion } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
 
 //********************************MUÑOZ*******************/
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
@@ -157,7 +157,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     TipoDePrestamoComponent, 
     aTipoP, 
 
-
+// DANIEL OVANDO
     AcercamientosComponent,
     AsignacionDeCategoriasComponent,
     CanalesDeVentaComponent,
@@ -166,7 +166,25 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     RangosDePlazosComponent,
     TipoDeProductoComponent,
     TiposDeCanalesDeDistribucionComponent,
+//
+    agregarAcercamientos,
+    editarAcercamientos,
+    agregarMediosdeContacto,
+    editarMediosdeContacto,
+    agregarCanalesdeVenta,
+    editarCanalesdeVenta,
+    agregarTiposdeCanalesdeDistribucion,
+    editarTiposdeCanalesdeDistribucion,
+    agregarAsignaciondeCategorias,
+    editarAsignaciondeCategorias,
+    agregarPorcentajes,
+    editarPorcentajes,
+    agregarRangodePlazos, 
+    editarRangodePlazos,
+    agregarTipoProducto, 
+    editarTipoProducto,
 
+//
     NotariosComponent,
     AltasComponent,
 
@@ -274,6 +292,25 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarRelacionTransaccionesDepositos,//
     editarRelacionTransaccionesDepositos,
      //////
+
+     ////Ovando
+    agregarAcercamientos,
+    editarAcercamientos,
+    agregarMediosdeContacto,
+    editarMediosdeContacto,
+    agregarCanalesdeVenta,
+    editarCanalesdeVenta,
+    agregarTiposdeCanalesdeDistribucion,
+    editarTiposdeCanalesdeDistribucion,
+    agregarAsignaciondeCategorias,
+    editarAsignaciondeCategorias,
+    agregarPorcentajes,
+    editarPorcentajes,
+    agregarRangodePlazos, 
+    editarRangodePlazos,
+    agregarTipoProducto, 
+    editarTipoProducto,
+
   ],
 
   providers: [appRoutingProviders],
