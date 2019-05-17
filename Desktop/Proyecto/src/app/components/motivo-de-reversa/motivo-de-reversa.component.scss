@@ -1,3 +1,9 @@
+#cont{
+  margin-left: 20%;
+  background-color: skyblue;
+  width: 830px;
+  height: auto;
+}
 #titulo{
   margin-bottom: 1%;
   margin-top: -1%;
@@ -17,25 +23,25 @@ h1{
     margin-top: -100px;
     margin-left: 5%;
   }
-
-  #fields{
-    margin-left: 20%;
-  }
   
   #filtro{
     font-size: 20px;
     width: 55%;
     margin-bottom: -10px;
-    margin-left: 23%;
+    margin-left: 5%;
   }
   
+#t{
+  max-width: auto;
+}
+
   .example-container {
     height: 300px;
     width: 770px;
     overflow: auto;
     align-items: center;
     align-content: center;
-    margin-left: 23%;
+    margin-left: 5%;
     //margin-left: 280px;
     margin-bottom: -25px;
   }
@@ -61,7 +67,7 @@ h1{
   }
 
   #botones{
-    margin-left: 40%;
+    margin-left: 30%;
     margin-bottom: -2%;
   }
   

@@ -8,6 +8,7 @@
   width: 100px;
   color: red;
   size: 3px;
+  
 }
 
 #btn{
@@ -132,21 +133,29 @@
 ///
 #fi{
   margin-left: 5%;
-  font-size: 15px;
+  font-size: 18px;
   width: 90%;
   font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
 }
 #co{
-  max-width: 300%;
-  margin-left: 5%;
+  max-width: auto;
 }
 #ta{
-  width: 100%;
-  background: lightgoldenrodyellow;
+  width: auto;
+  background: white;
 }
 #tt{
-  font-size: 20px;
+  font-size: 40px;
+  height: auto;
+  text-align: center;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  width: 500px;
 }
 #t{
-  font-size: 15px;
+  font-size: 18px;
+  height: auto;
+  font-family: 'Times New Roman', Times, serif
 }

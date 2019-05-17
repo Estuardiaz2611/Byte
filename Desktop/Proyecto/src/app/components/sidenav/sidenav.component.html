@@ -20,8 +20,6 @@
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <div>
-          <h1 id="titulo">Vistas</h1>
-            <hr>
             <div id="fi">
               <mat-form-field id="fi">
                 <input id="fi" name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
@@ -29,13 +27,9 @@
             </div>
             <div class="example-container mat-elevation-z8" id="co">
               <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="ta">
-                <ng-container matColumnDef="no">
-                  <th mat-header-cell *matHeaderCellDef id="tt">No.</th>
-                  <td mat-cell id="t" *matCellDef="let vis" >{{vis.no}}</td>
-                </ng-container>
                 <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef id="tt"> Vista </th>
-                  <td mat-cell role="link" routerLink="/Formas-de-desembolso" id="t" *matCellDef="let vis">{{vis.name}}</td>
+                  <th mat-header-cell *matHeaderCellDef id="tt">Vistas</th>
+                  <td mat-cell role="link" [routerLink]="vis.link" id="t" *matCellDef="let vis">{{vis.name}}</td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -89,6 +83,7 @@
             <button id="btn" class="boton-enlace" role="link" routerLink="/asesorPrestamos">Asesores de Préstamo</button>
             <button id="btn" class="boton-enlace" role="link" routerLink="/tipoDeduccion">Tipos de Deducciones</button>
             <button id="btn" class="boton-enlace" role="link" routerLink="/tipoPrestamo">Tipos de Préstamos</button>
+            <button id="btn" class="boton-enlace" role="link" routerLink="/bancos">Bancos</button>
             <hr>
         </div>
       </mat-nav-list>

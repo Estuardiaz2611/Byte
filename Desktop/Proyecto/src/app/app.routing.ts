@@ -48,6 +48,7 @@ import { LugarDeInversionComponent } from './components/lugar-de-inversion/lugar
 import { AsesorDePrestamosComponent } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
 import { TipoDeDeduccionComponent } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
+import { BancosComponent } from './components/bancos/bancos.component';
 
 const appRoutes: Routes = [
 //Alan
@@ -101,6 +102,7 @@ const appRoutes: Routes = [
     {path: 'asesorPrestamos',component:AsesorDePrestamosComponent}, 
     {path: 'tipoDeduccion',component: TipoDeDeduccionComponent},
     {path: 'tipoPrestamo',component: TipoDePrestamoComponent},
+    {path: 'bancos', component: BancosComponent},
 ]
 export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

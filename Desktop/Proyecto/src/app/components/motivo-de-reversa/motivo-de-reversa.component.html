@@ -1,25 +1,16 @@
-  <div id="titulo">
+<div id="cont">
+<div id="titulo">
     <h1>
       Motivo de Reversa 
     </h1>
   </div>
-    <div id="fields"> 
-    <form>
-        <mat-form-field class="field">
-          <input matInput placeholder="Name" value="">
-        </mat-form-field>
-      
-        <mat-form-field class="field">
-            <input matInput placeholder="Description" value="">
-          </mat-form-field>
-      </form>
-    </div>
+
       <div>
     <mat-form-field id="filtro">
         <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
     </div>
-      <div class="example-container mat-elevation-z8">
+      <div class="example-container mat-elevation-z8" id="t">
         <table mat-table [dataSource]="dataSource">
       
           <!-- Position Column -->
@@ -59,3 +50,4 @@
   <button class="material-icons">cancel</button>
   <button class="material-icons">?</button>
   </div>
+</div>
