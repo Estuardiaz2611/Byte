@@ -121,7 +121,7 @@ export class cotabilidad2 implements OnInit {
 
 @Component({
   selector: 'app-agregarcontabilizacion',
-  templateUrl: './contabilizacion.html',
+  templateUrl: './agregarcontabilizacion.html',
 }) 
 export class agregarcontabilizacion implements OnInit {
   
