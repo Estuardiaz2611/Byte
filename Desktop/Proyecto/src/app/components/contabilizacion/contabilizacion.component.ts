@@ -119,3 +119,15 @@ export class cotabilidad2 implements OnInit {
   }
 }
 
+@Component({
+  selector: 'app-agregarcontabilizacion',
+  templateUrl: './contabilizacion.html',
+}) 
+export class agregarcontabilizacion implements OnInit {
+  
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+

@@ -54,7 +54,7 @@ import { DiasInhabilesAltasComponent } from './components/dias-inhabiles-altas/d
 import { SubEstadosComponent,agregarSubEstados } from './components/sub-estados/sub-estados.component';
 import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
-import {ContabilizacionComponent,agregarContabilizacion } from './components/contabilizacion/contabilizacion.component';
+import {ContabilizacionComponent,agregarcontabilizacion } from './components/contabilizacion/contabilizacion.component';
 
 
 //********************************CHINO*******************/
@@ -67,7 +67,6 @@ import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inve
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
 import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
-import { ContabilizacionComponent, cotabilidad1, cotabilidad2 } from './components/contabilizacion/contabilizacion.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -205,20 +204,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SubEstadosAltasComponent,
     NumeroPrestamosAltasComponent,
     PasosCierreAltasComponent,
-<<<<<<< HEAD
     SidebarsComponent,
     ContenidosContablesComponent,
     ContabilizacionComponent,
-    cotabilidad1,
-    cotabilidad2,
     contenido1,
-    contenido2
-=======
+    contenido2,
     agregarPasosCierre,
     SidebarsComponent,
     ContabilizacionComponent,
-    agregarContabilizacion
->>>>>>> 8fc06b4d3ec55da972c91ab22c5de1eac432f5aa
+    agregarcontabilizacion,
   ],
   imports: [
     BrowserModule,
@@ -297,8 +291,6 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarDiasInhabiles,
     agregarACredito,
     aAlmacenadora, 
-    cotabilidad1,
-    cotabilidad2, 
     contenido1,
     contenido2,
     aAseguradora,   
@@ -317,7 +309,6 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarRelacionTransaccionesDepositos,
      //////
 
-<<<<<<< HEAD
      ////Ovando
     agregarAcercamientos,
     editarAcercamientos,
@@ -336,16 +327,13 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarTipoProducto, 
     editarTipoProducto,
 
-=======
      ///Muñoz
      agregarNotario,
      agregarPasosCierre,
      agregarNumeroPrestamos,
      agregarSubEstados,
      agregarACredito,
-     agregarContabilizacion
-     
->>>>>>> 9108d5a12f661f8cdd6feefc42bf3e2b1845ec5e
+     agregarcontabilizacion,     
   ],
 
   providers: [appRoutingProviders],
