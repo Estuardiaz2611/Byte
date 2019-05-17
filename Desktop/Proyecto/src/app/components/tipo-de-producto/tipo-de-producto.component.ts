@@ -1,6 +1,7 @@
 import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-tipo-de-producto',
@@ -8,43 +9,88 @@ import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
   styleUrls: ['./tipo-de-producto.component.scss']
 })
 
-export class TipoDeProductoComponent implements OnInit, OnDestroy {
-  displayedColumns: String[] =['posicion', 'codigo', 'descripcion'];
+export class TipoDeProductoComponent implements OnInit {
+  displayedColumnss = ['posicion', 'codigo', 'descripcion'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  mobileQuery: MediaQueryList;
-  showFiller = false;
-  
-  
+  codigo: number;
+  descripcion: string;
+   
+  displayedColumns = ['posicion', 'codigo', 'descripcion'];
+  title = 'Agregar';
+  selectedValue: string = "";
+  //dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+///////  
+  constructor(public dialog: MatDialog){
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
+//////
+openDialog1(): void { ///AGREGAR
+  const dialogRef = this.dialog.open(agregarTipoProducto, {
+    width: '450px',
+    height: '400px',
+    data: {codigo: this.codigo, descripcion: this.descripcion}
+  });
 
-  ngOnInit() {
-  }
-  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
-
-  fillerContent = Array.from({length: 50}, () =>
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
-
-  private _mobileQueryListener: () => void;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.codigo = result;
+  });
 }
 
+openDialog2(): void { ///EDITAR
+  const dialogRef = this.dialog.open(editarTipoProducto, {
+    width: '350px',
+    height: '200px',
+    data: {codigo: this.codigo, descripcion: this.descripcion}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.codigo = result;
+  });
+}
+}
+
+@Component({ ///AGREGAR
+  selector: 'app-tipo-de-producto',
+  templateUrl: './agregarTipoProducto.html',
+  styleUrls: ['./tipo-de-producto.component.scss']
+})
+export class agregarTipoProducto implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['posicion', 'codigo', 'descripcion'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
+
+@Component({ ///EDITAR
+  selector: 'app-tipo-de-producto',
+  templateUrl: './editarTipoProducto.html',
+  styleUrls: ['./tipo-de-producto.component.scss']
+})
+export class editarTipoProducto implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  displayedColumns = ['posicion', 'codigo', 'descripcion'];
+  selectedValue: string = "";
+  dataSource = ELEMENT_DATA;
+  ngOnInit() {
+  }
+}
 export interface PeriodicElement {
   posicion: number;
   codigo: number;

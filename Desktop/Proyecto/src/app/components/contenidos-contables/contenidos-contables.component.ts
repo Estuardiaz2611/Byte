@@ -5,7 +5,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 export interface PeriodicElement {
   descripcion: string;
   codigo: number;
-} 
+}  
 const ELEMENT_DATA: PeriodicElement[] = [
   {codigo: 1, descripcion: 'Hydrogen'},
   {codigo: 2, descripcion: 'Helium'},
@@ -14,12 +14,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {codigo: 5, descripcion: 'Boron'},
 ]; 
 @Component({
-  selector: 'app-contabilizacion',
-  templateUrl: './contabilizacion.component.html',
-  styleUrls: ['./contabilizacion.component.scss']
+  selector: 'app-contenidos-contables',
+  templateUrl: './contenidos-contables.component.html',
+  styleUrls: ['./contenidos-contables.component.scss']
 })
-export class ContabilizacionComponent implements OnInit, OnDestroy {
-
+export class ContenidosContablesComponent implements OnInit, OnDestroy {
   descripcion: string;
   codigo: number;
   mobileQuery: MediaQueryList;
@@ -64,7 +63,7 @@ export class ContabilizacionComponent implements OnInit, OnDestroy {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(cotabilidad1, {
+    const dialogRef = this.dialog.open(contenido1, {
       width: '500px',
       height: '350px',
       data: { codigo:this.codigo, descripcion: this.descripcion,}
@@ -76,7 +75,7 @@ export class ContabilizacionComponent implements OnInit, OnDestroy {
     });
   }  
   openDialog2(): void {
-    const dialogRef = this.dialog.open(cotabilidad2, {
+    const dialogRef = this.dialog.open(contenido2, {
       width: '500px',
       height: '350px',
       data: { codigo:this.codigo, descripcion: this.descripcion,}
@@ -87,13 +86,12 @@ export class ContabilizacionComponent implements OnInit, OnDestroy {
       this.codigo = result;
     });
   } 
-
 } 
 @Component({
-  selector: 'app-contabilizacion',
-  templateUrl: './cotabilida1.html',
+  selector: 'app-contenidos-contables',
+  templateUrl: './contenido1.html',
 }) 
-export class cotabilidad1 implements OnInit {
+export class contenido1 implements OnInit {
   
   constructor() { }
   displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
@@ -105,10 +103,10 @@ export class cotabilidad1 implements OnInit {
 } 
 
 @Component({
-  selector: 'app-contabilizacion',
-  templateUrl: './cotabilidad2.html',
+  selector: 'app-contenidos-contables',
+  templateUrl: './contenido2.html',
 }) 
-export class cotabilidad2 implements OnInit {
+export class contenido2 implements OnInit {
   
   constructor() { }
   displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
@@ -118,4 +116,3 @@ export class cotabilidad2 implements OnInit {
   ngOnInit() {
   }
 }
-
