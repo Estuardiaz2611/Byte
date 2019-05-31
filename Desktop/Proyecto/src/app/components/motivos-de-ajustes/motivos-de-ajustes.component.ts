@@ -125,12 +125,12 @@ export class eliminarMotivosDeAjustes implements OnInit {
 export interface PeriodicElement {
   name: string;
   position: number;
-  weight: number;
+  weight: string;
   symbol: string;
   saldo: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', saldo: 'asd'},
+  {position: 1, name: 'Hydrogen', weight: 'si', symbol: 's', saldo: 'no'},
 
 ];
