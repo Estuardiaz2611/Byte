@@ -9,6 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./formas-de-desembolso.component.scss']
 })
 export class FormasDeDesembolsoComponent implements OnInit {
+  
   displayedColumnss = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   numero: number;
