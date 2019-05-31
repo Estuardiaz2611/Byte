@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import {} from './components/pricipal/pricipal.component';
-import { MotivosDeAjustesComponent, agregarMotivosDeAjustes, editarMotivosDeAjustes } from './components/motivos-de-ajustes/motivos-de-ajustes.component';
+
+import { MotivosDeAjustesComponent, agregarMotivosDeAjustes, editarMotivosDeAjustes, eliminarMotivosDeAjustes } from './components/motivos-de-ajustes/motivos-de-ajustes.component';
 import { DiasInhabilesComponent, agregarDiasInhabiles } from './components/dias-inhabiles/dias-inhabiles.component';
 import { CobrosAdicionalesComponent, Agregar } from './components/cobros-adicionales/cobros-adicionales.component';
 import { InstitucionesCobrosAdicionalesComponent } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
@@ -117,6 +118,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MotivosDeAjustesComponent,
     agregarMotivosDeAjustes,
     editarMotivosDeAjustes,
+    eliminarMotivosDeAjustes,
     DiasInhabilesComponent,
     CobrosAdicionalesComponent,
     InstitucionesCobrosAdicionalesComponent,
@@ -293,6 +295,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarDiasInhabiles,
     agregarMotivosDeAjustes,
     editarMotivosDeAjustes,
+    eliminarMotivosDeAjustes,
     agregarACredito,
     aAlmacenadora, 
     contenido1,

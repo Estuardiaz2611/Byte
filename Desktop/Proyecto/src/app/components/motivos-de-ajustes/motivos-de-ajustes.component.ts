@@ -2,6 +2,7 @@ import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MotivoDeAjuste } from 'src/app/models/motivo-de-ajuste.model';
 
 @Component({
   selector: 'app-motivos-de-ajustes',
@@ -9,17 +10,18 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./motivos-de-ajustes.component.scss']
 })
 export class MotivosDeAjustesComponent implements OnInit {
-
+  public agregarMotivoDeAjuste: MotivoDeAjuste
   displayedColumnss = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   numero: number;
   descripcion: string;
    
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', 'weight', 'symbol', 'saldo'];
   title = 'Agregar';
   selectedValue: string = "";
   //dataSource = ELEMENT_DATA;
   ngOnInit() {
+    this.agregarMotivoDeAjuste = new MotivoDeAjuste(0, 0, '', '', '1', true);
   }
 //////
 constructor(public dialog: MatDialog){
@@ -39,10 +41,24 @@ openDialog1(): void { ///AGREGAR
     this.numero = result;
   });
 }
+
 openDialog2(): void { ///EDITAR
   const dialogRef = this.dialog.open(editarMotivosDeAjustes, {
     width: '720px',
     height: '450px',
+    data: {numero: this.numero, descripcion: this.descripcion}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.numero = result;
+  });
+}
+
+openDialog3(): void { ///ELIMINAR
+  const dialogRef = this.dialog.open(eliminarMotivosDeAjustes, {
+    width: '500px',
+    height: '250px',
     data: {numero: this.numero, descripcion: this.descripcion}
   });
 
@@ -62,12 +78,15 @@ export class agregarMotivosDeAjustes implements OnInit {
   checked = false;
   indeterminate = false;
   disabled = false;
+  l = 'w';
+  lab = 'q';
+  la = 'e';
+  public agregarMotivoDeAjuste: MotivoDeAjuste
 
   constructor() { }
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
+
   ngOnInit() {
+    this.agregarMotivoDeAjuste = new MotivoDeAjuste(0, 0, '', '', '1', true);
   }
 }
 
@@ -82,28 +101,36 @@ export class editarMotivosDeAjustes implements OnInit {
   disabled = false;
 
   constructor() { }
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
+
   ngOnInit() {
   }
 }
+
+@Component({ ///ELIMINAR
+  selector: 'app-eliminarMotivosDeAjustes',
+  templateUrl: './eliminarMotivosDeAjustes.html',
+  styleUrls: ['./motivos-de-ajustes.component.scss']
+})
+export class eliminarMotivosDeAjustes implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+
+  constructor() { }
+  
+  ngOnInit() {
+  }
+}
+
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+  saldo: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', saldo: 'asd'},
+
 ];
