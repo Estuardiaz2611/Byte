@@ -115,9 +115,7 @@ export class eliminarMotivosDeAjustes implements OnInit {
   checked = false;
   indeterminate = false;
   disabled = false;
-
   constructor() { }
-  
   ngOnInit() {
   }
 }
@@ -132,5 +130,5 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 'si', symbol: 's', saldo: 'no'},
-
+  
 ];

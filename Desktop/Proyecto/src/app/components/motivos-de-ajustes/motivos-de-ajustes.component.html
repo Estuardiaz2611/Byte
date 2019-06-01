@@ -3,16 +3,17 @@
     Motivos de Ajustes
   </h1>
 </div>
-  <div id="fields">
- 
-  </div>
-    <div>
+  
+<div id="fields"></div>
+
+<div>
   <mat-form-field id="filtro">
       <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
   </div>
+  <br>
     <div class="example-container mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" id="t">
+      <table mat-table [dataSource]="dataSource">
     
         <!-- Position Column -->
         <ng-container id="cabecera" matColumnDef="position">
@@ -49,6 +50,7 @@
       </table>
     </div>
 <br>
+
 <div id="botones">
 <button id="bn" class="material-icons" (click)="openDialog1()">add_box</button>
 <button id="bn" class="material-icons" (click)="openDialog2()">create</button>

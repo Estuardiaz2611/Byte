@@ -1,17 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
+import {MediaMatcher} from '@angular/cdk/layout';
+import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
-export interface PeriodicElement {
-  posicion: number;
-  numero: number;
-  descripcion: string;
- 
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { posicion: 1, numero:1,  descripcion:'vista'},
-  { posicion: 2, numero: 2, descripcion: 'sueño'},
-  { posicion: 3, numero: 3, descripcion: 'Hola'},
-];
 
 @Component({
   selector: 'app-cobros-adicionales',
@@ -19,15 +9,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./cobros-adicionales.component.scss']
 })
 export class CobrosAdicionalesComponent implements OnInit {
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   numero: number;
   descripcion: string;
 
-  constructor(public dialog: MatDialog) {}
+  displayedColumns: String[] =['codigo', 'descripcion', 'desReportes'];
+  title = 'Agregar';
+  selectedValue: string = "";
+  ngOnInit() {
+  }
+  //////
+  constructor(public dialog: MatDialog) {
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(Agregar, {
-      width: '700px',
-      height: '600px',
+  openDialog1(): void {
+    const dialogRef = this.dialog.open(agregarCobrosAdicionales, {
+      width: '720px',
+      height: '400px',
       data: {numero: this.numero, descripcion: this.descripcion}
     });
 
@@ -37,26 +38,84 @@ export class CobrosAdicionalesComponent implements OnInit {
     });
   }
 
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
-  title = 'Notarios';
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
-  ngOnInit() {
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(editarCobrosAdicionales, {
+      width: '720px',
+      height: '400px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
+  }
+
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(eliminarCobrosAdicionales, {
+      width: '500px',
+      height: '250px',
+      data: {numero: this.numero, descripcion: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.numero = result;
+    });
   }
 }
 
-
-@Component({
-  selector: 'app-cobros-adicionales',
-  templateUrl: './agregar.html',
+@Component({ //Agregar
+  selector: 'app-agregarCobrosAdicionales',
+  templateUrl: './agregarCobrosAdicionales.html',
+  styleUrls:['./cobros-adicionales.component.scss']
 })
-export class Agregar implements OnInit {
-
-  constructor() { }
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
-  title = 'Notarios';
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
-  ngOnInit() {
+export class agregarCobrosAdicionales implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+  constructor(){}
+  ngOnInit(){
   }
 }
+
+@Component({ //Editar
+  selector: 'app-editarCobrosAdicionales',
+  templateUrl: './editarCobrosAdicionales.html',
+  styleUrls:['./cobros-adicionales.component.scss']
+})
+export class editarCobrosAdicionales implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+  constructor(){}
+  ngOnInit(){
+  }
+}
+
+@Component({ //Eliminar
+  selector: 'app-eliminarCobrosAdicionales',
+  templateUrl: './eliminarCobrosAdicionales.html',
+  styleUrls:['./cobros-adicionales.component.scss']
+})
+export class eliminarCobrosAdicionales implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+  constructor(){}
+
+  ngOnInit(){
+  }
+}
+
+export interface PeriodicElement {
+  codigo: number;
+  descripcion: string;
+  desReportes: string;
+
+}
+const ELEMENT_DATA: PeriodicElement[] = [
+  { codigo: 1, descripcion: 'vista',  desReportes:'sueño'},
+  { codigo: 2, descripcion: 'vista', desReportes: 'sueño'},
+  { codigo: 3, descripcion: 'vista', desReportes: 'sueño'},
+];

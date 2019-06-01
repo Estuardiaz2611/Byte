@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import {} from './components/pricipal/pricipal.component';
 
 import { MotivosDeAjustesComponent, agregarMotivosDeAjustes, editarMotivosDeAjustes, eliminarMotivosDeAjustes } from './components/motivos-de-ajustes/motivos-de-ajustes.component';
-import { DiasInhabilesComponent, agregarDiasInhabiles } from './components/dias-inhabiles/dias-inhabiles.component';
-import { CobrosAdicionalesComponent, Agregar } from './components/cobros-adicionales/cobros-adicionales.component';
+import { DiasInhabilesComponent, agregarDiasInhabiles, editarDiasInhabiles, eliminarDiasInhabiles } from './components/dias-inhabiles/dias-inhabiles.component';
+import { CobrosAdicionalesComponent, agregarCobrosAdicionales, editarCobrosAdicionales, eliminarCobrosAdicionales } from './components/cobros-adicionales/cobros-adicionales.component';
 import { InstitucionesCobrosAdicionalesComponent } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
 import { LimpiezaDeArchivosComponent } from './components/limpieza-de-archivos/limpieza-de-archivos.component';
 import { routing, appRoutingProviders } from './app.routing';
@@ -120,10 +120,14 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarMotivosDeAjustes,
     eliminarMotivosDeAjustes,
     DiasInhabilesComponent,
-    CobrosAdicionalesComponent,
-    InstitucionesCobrosAdicionalesComponent,
-    Agregar,
     agregarDiasInhabiles,
+    editarDiasInhabiles,
+    eliminarDiasInhabiles,
+    CobrosAdicionalesComponent,
+    agregarCobrosAdicionales,
+    editarCobrosAdicionales,
+    eliminarCobrosAdicionales,
+    InstitucionesCobrosAdicionalesComponent,
     LimpiezaDeArchivosComponent,
     ProductosComponent, 
 //SAMUEL
@@ -291,11 +295,16 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
   entryComponents: [
     //////Alan
-    Agregar,
     agregarDiasInhabiles,
     agregarMotivosDeAjustes,
     editarMotivosDeAjustes,
     eliminarMotivosDeAjustes,
+    agregarDiasInhabiles,
+    editarDiasInhabiles,
+    eliminarDiasInhabiles,
+    agregarCobrosAdicionales,
+    eliminarCobrosAdicionales,
+    editarCobrosAdicionales,
     agregarACredito,
     aAlmacenadora, 
     contenido1,

@@ -1,46 +1,50 @@
-<h1>
-  Cobros Adicionales
-</h1>
-<div class = "ejemplo">
-<br>
-  <mat-form-field id="mat-form-field">
-  <input matInput placeholder="Seleccionar en descripcion" value = " ">
-</mat-form-field>
+<div id="titulo">
+  <h1>
+    Cobros Adicionales
+  </h1>
+</div>
 
-  <br>
-  <mat-checkbox> </mat-checkbox>
+<div id="fields"></div>
+
+<div>
+  <mat-form-field id="filtro">
+    <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+<br>
+
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
   
-<mat-form-field>
-  <input matInput placeholder=" " value = "">
-</mat-form-field>
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="posicion">
-    <th mat-header-cell *matHeaderCellDef> posicion </th>
-    <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="numero">
-    <th mat-header-cell *matHeaderCellDef> numero </th>
-    <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="descripcion">
-    <th mat-header-cell *matHeaderCellDef> descripcion </th>
-    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <!-- Position Column -->
+      <ng-container id="cabecera" matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="desReportes">
+        <th mat-header-cell *matHeaderCellDef> Descripcion Reportes </th>
+        <td mat-cell *matCellDef="let element"> {{element.desReportes}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 <br>
 
-<br>
-<div class="botones" align="center">
-<button mat-raised-button (click)="openDialog()">Registrar</button>
-<button mat-raised-button >Editar</button>
-<button mat-raised-button>Eliminar</button>
-<button mat-raised-button>Visualizar</button>
-<button mat-raised-button>Guardar</button>
-</div>
-</div>
+<div id="botones">
+  <button id="bn" class="material-icons" (click)="openDialog1()">add_box</button>
+  <button id="bn" class="material-icons" (click)="openDialog2()">create</button>
+  <button id="bn" class="material-icons">file_copy</button>
+  <button id="bn" class="material-icons">refresh</button>
+  <button id="bn" class="material-icons" (click)="openDialog3()">cancel</button>
+  <button id="bn" class="material-icons">?</button>
+  </div>
