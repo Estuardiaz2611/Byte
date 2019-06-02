@@ -61,10 +61,10 @@ import {ContabilizacionComponent,agregarcontabilizacion } from './components/con
 //********************************CHINO*******************/
 import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
 import { AlmacenadoraComponent, aAlmacenadora, bAlmacenadora, eAlmacenadora } from './components/almacenadora/almacenadora.component';
-import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
+import { AseguradoraComponent, aAseguradora, editAseguradora, elimAseguradora } from './components/aseguradora/aseguradora.component';
 import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
 import { BancosComponent } from './components/bancos/bancos.component';
-import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { LugarDeInversionComponent, aLuagrInv, editLugarInv, elimLugarInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
 import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
@@ -160,12 +160,16 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     bAlmacenadora,
     eAlmacenadora,
     AseguradoraComponent,
-    aAseguradora,
+    aAseguradora, 
+    elimAseguradora,
+    editAseguradora,
     AsesorDePrestamosComponent,
     agregarAprestamos,
     BancosComponent,
     LugarDeInversionComponent, 
     aLuagrInv,
+    editLugarInv,
+    elimAseguradora,
     TipoDeDeduccionComponent,
     aTipoDeduc,
     TipoDePrestamoComponent, 
@@ -312,6 +316,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     aAlmacenadora, 
     bAlmacenadora,
     eAlmacenadora, 
+    elimAseguradora,
+    editAseguradora, 
+    elimLugarInv,
+    editLugarInv, 
     contenido1,
     contenido2,
     aAseguradora,   
