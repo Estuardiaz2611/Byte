@@ -19,7 +19,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 //***********************SAMUEL***************************
 
 import { MotivoDeReversaComponent, agregarMotivoDeReversa, editarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
-import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
+import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso, eliminarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
 import { MotivosReferenciasClientesComponent, agregarMotivosReferenciasClientes, editarMotivosReferenciasClientes } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
 import { RelacionTransaccionesDepositosComponent, agregarRelacionTransaccionesDepositos, editarRelacionTransaccionesDepositos } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -148,6 +148,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarMotivoDeReversa,
     agregarFormasDeDesembolso,
     editarFormasDeDesembolso,
+    eliminarFormasDeDesembolso,
     agregarMotivosReferenciasClientes,
     editarMotivosReferenciasClientes,
     agregarRelacionTransaccionesDepositos,
@@ -324,6 +325,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarMotivoDeReversa,
     agregarFormasDeDesembolso,//
     editarFormasDeDesembolso,
+    eliminarFormasDeDesembolso,
     agregarMotivosReferenciasClientes,//
     editarMotivosReferenciasClientes,
     agregarRelacionTransaccionesDepositos,//
