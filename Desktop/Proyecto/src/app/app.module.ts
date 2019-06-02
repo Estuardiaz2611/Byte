@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import {} from './components/pricipal/pricipal.component';
@@ -60,7 +60,7 @@ import {ContabilizacionComponent,agregarcontabilizacion } from './components/con
 
 //********************************CHINO*******************/
 import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
-import { AlmacenadoraComponent, aAlmacenadora } from './components/almacenadora/almacenadora.component';
+import { AlmacenadoraComponent, aAlmacenadora, bAlmacenadora, eAlmacenadora } from './components/almacenadora/almacenadora.component';
 import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
 import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
 import { BancosComponent } from './components/bancos/bancos.component';
@@ -156,7 +156,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     AgrupacionesDeCreditoComponent,
     agregarACredito,
     AlmacenadoraComponent, 
-    aAlmacenadora,
+    aAlmacenadora, 
+    bAlmacenadora,
+    eAlmacenadora,
     AseguradoraComponent,
     aAseguradora,
     AsesorDePrestamosComponent,
@@ -225,7 +227,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpModule, 
+    HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
@@ -307,6 +310,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarCobrosAdicionales,
     agregarACredito,
     aAlmacenadora, 
+    bAlmacenadora,
+    eAlmacenadora, 
     contenido1,
     contenido2,
     aAseguradora,   
