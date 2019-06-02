@@ -17,17 +17,17 @@ h1{
     margin-top: -100px;
     margin-left: 5%;
   }
-
+  
   #filtro{
     font-size: 20px;
     width: 55%;
     margin-bottom: -10px;
     margin-left: 23%;
   }
-  
+
   .example-container {
     height: 300px;
-    width: 770px;
+    width: 750px;
     overflow: auto;
     align-items: center;
     align-content: center;
@@ -41,7 +41,7 @@ h1{
     width: 750px;
   }
   
-  button {
+  #bn {
     background-color: gold;
     text-align: center;
     align-content: center;
@@ -49,8 +49,6 @@ h1{
     align-self: center;
     margin-left: 10px;
     border-style: outset;
-    //border-bottom-left-radius: 20px;
-    //border-top-right-radius: 20px;
     border-radius: 100%;
     
   }
