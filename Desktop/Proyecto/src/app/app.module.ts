@@ -68,6 +68,11 @@ import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inve
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
 import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
+//*****************************EDUARDO****************/
+import { OrigenDeFondosComponent, agregarOrigenDeFondos, editarOrigenDeFondos, eliminarOrigenDeFondos } from './components/origen-de-fondos/origen-de-fondos.component';
+import { UbicacionDeGarantiaComponent, agregarUbicacionDeGarantia, editarUbicacionDeGarantia, eliminarUbicacionDeGarantia } from './components/ubicacion-de-garantia/ubicacion-de-garantia.component';
+import { FormasDePagoComponent, agregarFormasDePago, editarFormasDePago, eliminarFormasDePago } from './components/formas-de-pago/formas-de-pago.component';
+import { DestinosComponent, agregarDestinos, editarDestinos, eliminarDestinos } from './components/destinos/destinos.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -221,6 +226,24 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SidebarsComponent,
     ContabilizacionComponent,
     agregarcontabilizacion,
+  //VILLATORO
+    OrigenDeFondosComponent,
+    agregarOrigenDeFondos,
+    eliminarOrigenDeFondos,
+    editarOrigenDeFondos,
+    UbicacionDeGarantiaComponent,
+    agregarUbicacionDeGarantia, 
+    editarUbicacionDeGarantia, 
+    eliminarUbicacionDeGarantia,
+    FormasDePagoComponent, 
+    agregarFormasDePago, 
+    editarFormasDePago, 
+    eliminarFormasDePago,
+    DestinosComponent, 
+    agregarDestinos, 
+    editarDestinos, 
+    eliminarDestinos
+    
   ],
   imports: [
     BrowserModule,
@@ -350,6 +373,23 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
      agregarSubEstados,
      agregarACredito,
      agregarcontabilizacion,     
+     //VILLATORO
+    OrigenDeFondosComponent,
+    agregarOrigenDeFondos,
+    eliminarOrigenDeFondos,
+    editarOrigenDeFondos,
+    UbicacionDeGarantiaComponent,
+    agregarUbicacionDeGarantia, 
+    editarUbicacionDeGarantia, 
+    eliminarUbicacionDeGarantia,
+    FormasDePagoComponent, 
+    agregarFormasDePago, 
+    editarFormasDePago, 
+    eliminarFormasDePago,
+    DestinosComponent, 
+    agregarDestinos, 
+    editarDestinos, 
+    eliminarDestinos
   ],
 
   providers: [appRoutingProviders],

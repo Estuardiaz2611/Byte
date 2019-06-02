@@ -94,4 +94,9 @@ const VISTAS_DATA: Vistas[] = [
   {name: 'Tipo Deducción',                          link: 'tipoDeduccion'},
   {name: 'Tipo Préstamo',                           link: 'tipoPrestamo'},
   {name: 'Bancos',                                  link: 'bancos'},
+  ///VILLATORO 
+  {name: 'Origen de Fondos', link: 'origen-de-fondos'},
+  {name: 'Ubicación de Garantía', link: 'ubicacion-de-garantia'},
+  {name: 'Formas de Pago', link: 'formas-de-pago'},
+  {name: 'Destinos', link: 'destinos'}
 ]
