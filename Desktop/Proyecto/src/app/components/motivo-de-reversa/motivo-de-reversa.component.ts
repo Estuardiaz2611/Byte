@@ -9,7 +9,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   styleUrls: ['./motivo-de-reversa.component.scss']
 })
 export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
-  numero: number;
+  codigo: number;
   descripcion: string;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void; 
@@ -41,12 +41,12 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
       if (!row) {
         return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
       }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.numero + 1}`;
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
     } 
 
   ngOnInit() {
   }
-  displayedColumns: string[] = ['select', 'numero', 'descripcion'];
+  displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
   
@@ -55,14 +55,14 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
   }
   openDialog1(): void { ///AGREGAR
     const dialogRef = this.dialog.open(agregarMotivoDeReversa, {
-      width: '650px',
-      height: '530px',
-      data: {numero: this.numero, descripcion: this.descripcion}
+      width: '645px',
+      height: '535px',
+      data: {codigo: this.codigo, descripcion: this.descripcion}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.numero = result;
+      this.codigo = result;
     });
   }
 
@@ -70,12 +70,12 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     const dialogRef = this.dialog.open(editarMotivoDeReversa, {
       width: '350px',
       height: '200px',
-      data: {numero: this.numero, descripcion: this.descripcion}
+      data: {codigo: this.codigo, descripcion: this.descripcion}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.numero = result;
+      this.codigo = result;
     });
   }
 }
@@ -107,13 +107,13 @@ export class editarMotivoDeReversa implements OnInit {
 }
 
 export interface PeriodicElement {
-  numero: number,
+  codigo: number,
   descripcion: string,
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  {numero: 1, descripcion: 'Hydrogen'},
-  {numero: 2, descripcion: 'Helium'},
-  {numero: 3, descripcion: 'Lithium'},
-  {numero: 4, descripcion: 'Beryllium'},
-  {numero: 5, descripcion: 'Boron'},
+  {codigo: 1, descripcion: 'Hydrogen'},
+  {codigo: 2, descripcion: 'Helium'},
+  {codigo: 3, descripcion: 'Lithium'},
+  {codigo: 4, descripcion: 'Beryllium'},
+  {codigo: 5, descripcion: 'Boron'},
 ]; 

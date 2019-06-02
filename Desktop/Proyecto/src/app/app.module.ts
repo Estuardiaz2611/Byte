@@ -19,7 +19,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 //***********************SAMUEL***************************
 
 import { MotivoDeReversaComponent, agregarMotivoDeReversa, editarMotivoDeReversa } from './components/motivo-de-reversa/motivo-de-reversa.component';
-import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
+import { FormasDeDesembolsoComponent, agregarFormasDeDesembolso, editarFormasDeDesembolso, eliminarFormasDeDesembolso } from './components/formas-de-desembolso/formas-de-desembolso.component';
 import { MotivosReferenciasClientesComponent, agregarMotivosReferenciasClientes, editarMotivosReferenciasClientes } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
 import { RelacionTransaccionesDepositosComponent, agregarRelacionTransaccionesDepositos, editarRelacionTransaccionesDepositos } from './components/relacion-transacciones-depositos/relacion-transacciones-depositos.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -63,13 +63,18 @@ import {ContabilizacionComponent,agregarcontabilizacion } from './components/con
 //********************************CHINO*******************/
 import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
 import { AlmacenadoraComponent, aAlmacenadora, bAlmacenadora, eAlmacenadora } from './components/almacenadora/almacenadora.component';
-import { AseguradoraComponent, aAseguradora } from './components/aseguradora/aseguradora.component';
+import { AseguradoraComponent, aAseguradora, editAseguradora, elimAseguradora } from './components/aseguradora/aseguradora.component';
 import { AsesorDePrestamosComponent, agregarAprestamos } from './components/asesor-de-prestamos/asesor-de-prestamos.component';
 import { BancosComponent } from './components/bancos/bancos.component';
-import { LugarDeInversionComponent, aLuagrInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
+import { LugarDeInversionComponent, aLuagrInv, editLugarInv, elimLugarInv } from './components/lugar-de-inversion/lugar-de-inversion.component';
 import { TipoDeDeduccionComponent, aTipoDeduc } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent, aTipoP } from './components/tipo-de-prestamo/tipo-de-prestamo.component'; 
 import { ContenidosContablesComponent, contenido1, contenido2 } from './components/contenidos-contables/contenidos-contables.component';
+//*****************************EDUARDO****************/
+import { OrigenDeFondosComponent, agregarOrigenDeFondos, editarOrigenDeFondos, eliminarOrigenDeFondos } from './components/origen-de-fondos/origen-de-fondos.component';
+import { UbicacionDeGarantiaComponent, agregarUbicacionDeGarantia, editarUbicacionDeGarantia, eliminarUbicacionDeGarantia } from './components/ubicacion-de-garantia/ubicacion-de-garantia.component';
+import { FormasDePagoComponent, agregarFormasDePago, editarFormasDePago, eliminarFormasDePago } from './components/formas-de-pago/formas-de-pago.component';
+import { DestinosComponent, agregarDestinos, editarDestinos, eliminarDestinos } from './components/destinos/destinos.component';
 //----------------------- ANGULAR MATERIAL
 
 import {
@@ -149,6 +154,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarMotivoDeReversa,
     agregarFormasDeDesembolso,
     editarFormasDeDesembolso,
+    eliminarFormasDeDesembolso,
     agregarMotivosReferenciasClientes,
     editarMotivosReferenciasClientes,
     agregarRelacionTransaccionesDepositos,
@@ -161,12 +167,17 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     bAlmacenadora,
     eAlmacenadora,
     AseguradoraComponent,
-    aAseguradora,
+    aAseguradora, 
+    elimAseguradora,
+    editAseguradora,
     AsesorDePrestamosComponent,
     agregarAprestamos,
     BancosComponent,
     LugarDeInversionComponent, 
     aLuagrInv,
+    editLugarInv,
+    elimLugarInv,
+    elimAseguradora,
     TipoDeDeduccionComponent,
     aTipoDeduc,
     TipoDePrestamoComponent, 
@@ -233,8 +244,24 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SidebarsComponent,
     ContabilizacionComponent,
     agregarcontabilizacion,
-    EstatusGarantiasRealesComponent,
-    IngenierosValuadoresComponent,
+  //VILLATORO
+    OrigenDeFondosComponent,
+    agregarOrigenDeFondos,
+    eliminarOrigenDeFondos,
+    editarOrigenDeFondos,
+    UbicacionDeGarantiaComponent,
+    agregarUbicacionDeGarantia, 
+    editarUbicacionDeGarantia, 
+    eliminarUbicacionDeGarantia,
+    FormasDePagoComponent, 
+    agregarFormasDePago, 
+    editarFormasDePago, 
+    eliminarFormasDePago,
+    DestinosComponent, 
+    agregarDestinos, 
+    editarDestinos, 
+    eliminarDestinos
+    
   ],
   imports: [
     BrowserModule,
@@ -324,6 +351,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     aAlmacenadora, 
     bAlmacenadora,
     eAlmacenadora, 
+    elimAseguradora,
+    editAseguradora, 
+    elimLugarInv,
+    editLugarInv, 
     contenido1,
     contenido2,
     aAseguradora,   
@@ -336,6 +367,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarMotivoDeReversa,
     agregarFormasDeDesembolso,//
     editarFormasDeDesembolso,
+    eliminarFormasDeDesembolso,
     agregarMotivosReferenciasClientes,//
     editarMotivosReferenciasClientes,
     agregarRelacionTransaccionesDepositos,//
@@ -374,6 +406,23 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
      agregarSubEstados,
      agregarACredito,
      agregarcontabilizacion,     
+     //VILLATORO
+    OrigenDeFondosComponent,
+    agregarOrigenDeFondos,
+    eliminarOrigenDeFondos,
+    editarOrigenDeFondos,
+    UbicacionDeGarantiaComponent,
+    agregarUbicacionDeGarantia, 
+    editarUbicacionDeGarantia, 
+    eliminarUbicacionDeGarantia,
+    FormasDePagoComponent, 
+    agregarFormasDePago, 
+    editarFormasDePago, 
+    eliminarFormasDePago,
+    DestinosComponent, 
+    agregarDestinos, 
+    editarDestinos, 
+    eliminarDestinos
   ],
 
   providers: [appRoutingProviders],

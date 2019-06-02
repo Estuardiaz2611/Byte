@@ -51,6 +51,11 @@ import { AsesorDePrestamosComponent } from './components/asesor-de-prestamos/ase
 import { TipoDeDeduccionComponent } from './components/tipo-de-deduccion/tipo-de-deduccion.component';
 import { TipoDePrestamoComponent } from './components/tipo-de-prestamo/tipo-de-prestamo.component';
 import { BancosComponent } from './components/bancos/bancos.component';
+//VILLATORO
+import { OrigenDeFondosComponent } from './components/origen-de-fondos/origen-de-fondos.component';
+import { UbicacionDeGarantiaComponent } from './components/ubicacion-de-garantia/ubicacion-de-garantia.component';
+import { FormasDePagoComponent } from './components/formas-de-pago/formas-de-pago.component';
+import { DestinosComponent } from './components/destinos/destinos.component';
 
 const appRoutes: Routes = [
 //Alan
@@ -107,6 +112,11 @@ const appRoutes: Routes = [
     {path: 'tipoDeduccion',component: TipoDeDeduccionComponent},
     {path: 'tipoPrestamo',component: TipoDePrestamoComponent},
     {path: 'bancos', component: BancosComponent},
+//VILLATORO
+    {path: 'origen-de-fondos', component: OrigenDeFondosComponent},
+    {path: 'ubicacion-de-garantia', component: UbicacionDeGarantiaComponent},
+    {path: 'formas-de-pago', component: FormasDePagoComponent},
+    {path: 'destinos', component: DestinosComponent},
 ]
 export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

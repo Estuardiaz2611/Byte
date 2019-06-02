@@ -1,6 +1,6 @@
 <div id="titulo">
     <h1>
-      Motivo de Reversa 
+      Motivos de Reversa 
     </h1>
   </div>
 
@@ -30,18 +30,24 @@
         </td>
       </ng-container>
 
-          <!-- Position Column -->
-          <ng-container id="cabecera" matColumnDef="numero">
-            <th mat-header-cell *matHeaderCellDef> Código </th>
-            <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+          <!-- codigo Column -->
+          <ng-container id="cabecera" matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef>  Código </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
           </ng-container>
       
-          <!-- Name Column -->
+          <!-- descripcion Column -->
           <ng-container matColumnDef="descripcion">
             <th mat-header-cell *matHeaderCellDef> Descripción </th>
             <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
           </ng-container>
-      
+
+          <!-- Cargo Automático Column 
+          <ng-container matColumnDef="CargoA">
+            <th mat-header-cell *matHeaderCellDef> Cargo Automático	</th>
+            <td mat-cell *matCellDef="let element"> {{element.cargoa}} </td>
+          </ng-container>
+          -->
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"
           (click)="selection.toggle(row)">
