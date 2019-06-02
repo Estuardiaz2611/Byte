@@ -1,25 +1,24 @@
 <h1>
-   Aseguradora
-    </h1>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="codigo" value="">
-        </mat-form-field>
-      <br> 
-      
+  Almacenadora
+</h1>
+<form>
+  <table>
+
       <mat-form-field class="example-full-width">
-            <input matInput placeholder="Description" value=""> 
-          </mat-form-field>  
-          <br>
-      </form>  
+          <input matInput placeholder="Codigo" [(ngModel)]="data.codigo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
       <br>
-      <div align="center">
-          <button class="material-icons">add_box</button>
-          <button class="material-icons" (click)="openDialog()" >create</button>
-          <button class="material-icons">undo</button>
-          <button class="material-icons">redo</button>
-          <button class="material-icons">refresh</button>
-          <button class="material-icons">cancel</button>
-          <button class="material-icons">?</button>
-          </div>
-          
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Descripcion" [(ngModel)]="data.descripcion"
+              [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+  </table>
+  <br>
+
+  <div>
+      <button type="submit" [mat-dialog-close]="data" class="material-icons">editar</button>
+      <button class="material-icons">cancel</button>
+      <button class="material-icons">?</button>
+  </div>
+</form>
