@@ -1,6 +1,6 @@
 import { MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormasDeDesembolso } from 'src/app/models/formasDeDesembolso.model';
 import { FormasDeDesembolsoService } from 'src/app/services/formas-de-desembolso.service';
@@ -41,7 +41,7 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<FormasDeDesembolso>(this.formasDesembolsoGet);
 
   limpiarVariables() {
-    this.agregarFormasDesembolso = new FormasDeDesembolso(0, 0, '', '', '1', true);
+    this.agregarFormasDesembolso = new FormasDeDesembolso(0, 0, '', '', true);
   }
 
   public listarPagina() {
@@ -95,8 +95,8 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
 openDialog1(): void { ///AGREGAR
   const dialogRef = this.dialog.open(agregarFormasDeDesembolso, {
     width: '470px',
-    height: '520px',
-    data: {codigo: this.agregarFormasDesembolso, descripcion: this.agregarFormasDesembolso.descripcion}
+    height: '420px',
+    data: {codigo: this.agregarFormasDesembolso.codigo, descripcion: this.agregarFormasDesembolso.descripcion}
   });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -111,6 +111,7 @@ openDialog1(): void { ///AGREGAR
         console.log(response)
         if(response) {
           console.log(response)
+          this.listarPagina();
           this.status = 'ok'
         }
       },
@@ -143,8 +144,8 @@ openDialog2(): void { ///EDITAR
 
 openDialog3(): void { ///ELIMINAR
   const dialogRef = this.dialog.open(eliminarFormasDeDesembolso, {
-    width: '350px',
-    height: '200px',
+    width: '400px',
+    height: '300px',
     data: {codigo: this.editarFormasDesembolso.codigo, descripcion: this.editarFormasDesembolso.descripcion}
   });
 
@@ -208,6 +209,7 @@ delete(id) {
       if(response.code == 0){
         this.editarFormasDesembolso = response;
         console.log(this.editarFormasDesembolso)
+        this.listarPagina();
         this.status = 'ok';
       } else {
         this.status = 'ok';
@@ -240,7 +242,7 @@ export class agregarFormasDeDesembolso implements OnInit {
     this.limpiarVariables();
   }
   limpiarVariables() {
-    this.agregarFormasDesembolso = new FormasDeDesembolso(0, 0, '', '', '1', true);
+    this.agregarFormasDesembolso = new FormasDeDesembolso(0, 0, '', '', true);
   }
 }
 
@@ -270,6 +272,10 @@ export class editarFormasDeDesembolso implements OnInit {
   styleUrls: ['./formas-de-desembolso.component.scss']
 })
 export class eliminarFormasDeDesembolso implements OnInit {
+  checked = false;
+  indeterminate = false;
+  disabled = false;
+  
   public editarFormasDesembolso: FormasDeDesembolso;
   public status: string;
 

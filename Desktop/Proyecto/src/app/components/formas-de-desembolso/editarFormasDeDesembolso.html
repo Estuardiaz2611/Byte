@@ -1,8 +1,23 @@
 <h2>Editar</h2>
-<p>Seleccione el elemento que desea editar.</p>
 <hr>
+<form>
+  <table>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Codigo" [(ngModel)]="data.codigo"
+            [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Descripcion" [(ngModel)]="data.descripcion"
+            [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+  </table>
+  <br>
+
   <div align="center">
-    <button id="bn" class="material-icons">save</button>
-    <button id="bn" class="material-icons">cancel</button>
-    <button id="bn" class="material-icons">?</button>
-  </div> 
+      <button type="submit" [mat-dialog-close]="data" class="material-icons">editar</button>
+      <button class="material-icons">cancel</button>
+      <button class="material-icons">?</button>
+  </div>
+</form>

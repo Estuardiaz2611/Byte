@@ -1,36 +1,11 @@
-<h1>Eliminar</h1>
+<h1>Eliminar Formas de Desembolso</h1>
 <br>
+<div id="eliminar">
+<h3>¿Deseas Eliminar?</h3>
 
-<mat-form-field class="example full-width">
-  <input matInput placeholder="Tipo de periodo" value="">
-
-</mat-form-field>
-
-<br>
-
-<mat-form-field class="example full-width">
-  <input matInput placeholder="Descripcion" value="">
-</mat-form-field>
-
-<section id="section">
-  <label class="example-margin">Cargo variado o fijo:  </label>
-    <mat-radio-button class="sino" value="after">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="before">No</mat-radio-button>
-</section>
-<!---->
-
-<mat-form-field class="example full-width">
-  <input matInput placeholder="Fecha" value="">
-</mat-form-field>
-<br>
-
-<mat-form-field class="example full-width">
-  <input matInput placeholder="Descripcion" value="">
-</mat-form-field>
-  
+<div class="example-button-row">
+  <button type="submit" [mat-dialog-close]="data" mat-raised-button color="warn">SI</button>
+  <button mat-raised-button color="warn">NO</button>
+</div>
+</div>
 <hr>
-  <div align="center">
-    <button id="bn" class="material-icons">save</button>
-    <button id="bn" class="material-icons">cancel</button>
-    <button id="bn" class="material-icons">?</button>
-  </div>
