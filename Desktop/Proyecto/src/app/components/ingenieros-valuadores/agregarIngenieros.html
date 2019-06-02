@@ -1,0 +1,28 @@
+<h1>
+    Mantenimiento a Supervisores
+</h1>
+<form>
+    <table>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="codigo" [(ngModel)]="agregarInge.codigo" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nombre" [(ngModel)]="agregarInge.descripcion"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Registro" [(ngModel)]="agregarInge.numeroRegistro"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    </table>
+    <br>
+
+    <div>
+        <button type="submit"  [mat-dialog-close]="agregarInge" class="material-icons">save</button>
+        <button class="material-icons">cancel</button>
+        <button class="material-icons">?</button>
+    </div>
+</form>

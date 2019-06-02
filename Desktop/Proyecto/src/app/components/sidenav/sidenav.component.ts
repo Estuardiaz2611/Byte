@@ -68,10 +68,12 @@ const VISTAS_DATA: Vistas[] = [
   {name: 'Limpieza de Archivos',                    link: 'limpiezaDeArchivos'},
   {name: 'Productos',                               link: 'productos'},
   ///OVANDO
+  {name: 'Estatus Garantias Reales',                link: 'Estatus-Garantias-Reales'},
+  {name: 'Ingenieros Valuadores',                   link: 'Ingenieros-Valuadores'},
+  {name: 'Medios de Contacto',                      link: 'Medios-de-contacto'},
   {name: 'Acercamientos',                           link: 'Acercamientos'},
   {name: 'Asignación de Categorias',                link: 'Asignación-de-categorias'},
   {name: 'Canales de Venta',                        link: 'Canales-de-venta'},
-  {name: 'Medios de Contacto',                      link: 'Medios-de-contacto'},
   {name: 'Porcentajes de Financiamiento',           link: 'Porcentajes-de-financiamiento'},
   {name: 'Rangos por Plazo',                        link: 'Rangos-de-plazos'},
   {name: 'Tipos de Producto',                       link: 'Tipo-de-producto'},

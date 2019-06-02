@@ -1,0 +1,24 @@
+<h1>
+  Estatus de Garantias Reales
+</h1>
+<form>
+  <table>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Estatus" [(ngModel)]="agregarEstatus.codigo" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Descripcion" [(ngModel)]="agregarEstatus.descripcion"
+        [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+  </table>
+  <br>
+
+  <div>
+    <button type="submit" [mat-dialog-close]="agregarEstatus" class="material-icons">save</button>
+    <button class="material-icons">cancel</button>
+    <button class="material-icons">?</button>
+  </div>
+</form>

@@ -18,6 +18,8 @@ import { EventosDeSolicitudesComponent } from './components/eventos-de-solicitud
 import { ParametrosAdicionalPorProductoComponent } from './components/parametros-adicional-por-producto/parametros-adicional-por-producto.component';
 import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-por-plazo.component';
 //Ovando
+import { EstatusGarantiasRealesComponent } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
+import { IngenierosValuadoresComponent } from './components/ingenieros-valuadores/ingenieros-valuadores.component';
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
 import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
@@ -69,6 +71,8 @@ const appRoutes: Routes = [
     {path: 'Parametros-Adicional-por-Producto', component: ParametrosAdicionalPorProductoComponent},
     {path: 'Montos-por-Plazo', component: MontosPorPlazoComponent},
 //Ovando
+    {path: 'Estatus-Garantias-Reales', component: EstatusGarantiasRealesComponent},
+    {path: 'Ingenieros-Valuadores', component: IngenierosValuadoresComponent},
     {path: 'Acercamientos', component: AcercamientosComponent},
     {path: 'Asignación-de-categorias', component: AsignacionDeCategoriasComponent},
     {path: 'Canales-de-venta', component: CanalesDeVentaComponent},

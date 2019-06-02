@@ -32,10 +32,12 @@ import { SeleccionDeAgenciasPorEmpresaComponent } from './components/seleccion-d
 import { RegistroDeTipoDeDocumentoComponent } from './components/registro-de-tipo-de-documento/registro-de-tipo-de-documento.component';
 //
 //*********************DANIEL OVANDO************************
+import { MediosDeContactoComponent, agregarMediosdeContacto, editarMediosdeContacto, eliminarMediosdeContacto } from './components/medios-de-contacto/medios-de-contacto.component';
+import { EstatusGarantiasRealesComponent, agregarEstatus, editarEstatus, eliminarEstatus } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
+import { IngenierosValuadoresComponent, agregarIngenieros, editarIngenieros, eliminarIngenieros } from './components/ingenieros-valuadores/ingenieros-valuadores.component';
 import { AcercamientosComponent, agregarAcercamientos, editarAcercamientos } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent, agregarAsignaciondeCategorias, editarAsignaciondeCategorias } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
 import { CanalesDeVentaComponent, agregarCanalesdeVenta, editarCanalesdeVenta } from './components/canales-de-venta/canales-de-venta.component';
-import { MediosDeContactoComponent, agregarMediosdeContacto, editarMediosdeContacto } from './components/medios-de-contacto/medios-de-contacto.component';
 import { PorcentajesDeFinanciamientoComponent, agregarPorcentajes, editarPorcentajes } from './components/porcentajes-de-financiamiento/porcentajes-de-financiamiento.component';
 import { RangosDePlazosComponent, agregarRangodePlazos, editarRangodePlazos } from './components/rangos-de-plazos/rangos-de-plazos.component';
 import { TipoDeProductoComponent, agregarTipoProducto, editarTipoProducto } from './components/tipo-de-producto/tipo-de-producto.component';
@@ -111,7 +113,6 @@ import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -180,11 +181,14 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     RangosDePlazosComponent,
     TipoDeProductoComponent,
     TiposDeCanalesDeDistribucionComponent,
+    EstatusGarantiasRealesComponent,
+    IngenierosValuadoresComponent,
 //
     agregarAcercamientos,
     editarAcercamientos,
     agregarMediosdeContacto,
     editarMediosdeContacto,
+    eliminarMediosdeContacto,
     agregarCanalesdeVenta,
     editarCanalesdeVenta,
     agregarTiposdeCanalesdeDistribucion,
@@ -197,6 +201,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarRangodePlazos,
     agregarTipoProducto, 
     editarTipoProducto,
+    agregarEstatus,
+    editarEstatus,
+    eliminarEstatus,
+    agregarIngenieros,
+    editarIngenieros,
+    eliminarIngenieros,
 
 //
     NotariosComponent,
@@ -223,6 +233,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SidebarsComponent,
     ContabilizacionComponent,
     agregarcontabilizacion,
+    EstatusGarantiasRealesComponent,
+    IngenierosValuadoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -335,6 +347,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarAcercamientos,
     agregarMediosdeContacto,
     editarMediosdeContacto,
+    eliminarMediosdeContacto,
     agregarCanalesdeVenta,
     editarCanalesdeVenta,
     agregarTiposdeCanalesdeDistribucion,
@@ -347,6 +360,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     editarRangodePlazos,
     agregarTipoProducto, 
     editarTipoProducto,
+    agregarEstatus,
+    editarEstatus,
+    eliminarEstatus,
+    agregarIngenieros,
+    editarIngenieros,
+    eliminarIngenieros,
 
      ///Muñoz
      agregarNotario,

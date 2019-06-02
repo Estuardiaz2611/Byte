@@ -2,28 +2,28 @@ import { MatTableDataSource } from '@angular/material';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MediosService } from 'src/app/services/medio-de-contacto.service';
-import { MediodeContacto } from 'src/app/models/medio-de-contacto.model';
+import { IngenierosService } from 'src/app/services/ingenieros-valuadores.service';
+import { IngenieroValuador } from 'src/app/models/ingenieros-valuadores.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-medios-de-contacto',
-  templateUrl: './medios-de-contacto.component.html',
-  styleUrls: ['./medios-de-contacto.component.scss'],
-  providers: [MediosService]
+  selector: 'app-ingenieros-valuadores',
+  templateUrl: './ingenieros-valuadores.component.html',
+  styleUrls: ['./ingenieros-valuadores.component.scss'],
+  providers: [IngenierosService]
 })
 
-export class MediosDeContactoComponent implements OnInit, OnDestroy {
+export class IngenierosValuadoresComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-  public medioGet: MediodeContacto[];
-  public agregarMedio: MediodeContacto;
-  public editarMedio: MediodeContacto;
+  public ingeGet: IngenieroValuador[];
+  public agregarInge: IngenieroValuador;
+  public editarInge: IngenieroValuador;
   public status: string;
-  public selectedMedio: number;
+  public selectedInge: number;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _mediosService: MediosService) {
+  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _ingenierosService: IngenierosService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -40,18 +40,18 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   }
 
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
-  selection = new SelectionModel<MediodeContacto>(false, []);
-  dataSource = new MatTableDataSource<MediodeContacto>(this.medioGet);
+  selection = new SelectionModel<IngenieroValuador>(false, []);
+  dataSource = new MatTableDataSource<IngenieroValuador>(this.ingeGet);
 
   limpiarVariables() {
-    this.agregarMedio = new MediodeContacto(0, 0, '', '', '1', true);
+    this.agregarInge = new IngenieroValuador(0, 0, '', '', '1', true, '');
   }
 
   public listarPagina() {
-    this._mediosService.listPage(0, 10).subscribe(
+    this._ingenierosService.listPage(0, 10).subscribe(
       response => {
-        this.medioGet = response.content;
-        console.table(this.medioGet)
+        this.ingeGet = response.content;
+        console.table(this.ingeGet)
       },
       error => {
         var errorMessage = <any>error;
@@ -72,11 +72,11 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
-      this.medioGet.forEach(row => this.selection.select(row));
+      this.ingeGet.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: MediodeContacto): string {
+  checkboxLabel(row?: IngenieroValuador): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -84,48 +84,50 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   }
 
   imprimir() {
-    this.selectedMedio = this.selection.selected.map(row => row.codigo)[0];
-    console.log(this.selectedMedio);
-    if (this.selectedMedio) {
-      this.setMedio(this.selectedMedio);
+    this.selectedInge = this.selection.selected.map(row => row.codigo)[0];
+    console.log(this.selectedInge);
+    if (this.selectedInge) {
+      this.setMedio(this.selectedInge);
     }
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(editarMediosdeContacto, {
+    const dialogRef = this.dialog.open(editarIngenieros, {
       width: '500px',
       // height: '350px',
-      data: { codigo: this.editarMedio.codigo, descripcion: this.editarMedio.descripcion }
+      data: { codigo: this.editarInge.codigo, descripcion: this.editarInge.descripcion, numeroRegistro: this.editarInge.numeroRegistro }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result != undefined) {
-        this.editarMedio.codigo = result.codigo;
-        this.editarMedio.descripcion = result.descripcion;
+        this.editarInge.codigo = result.codigo;
+        this.editarInge.descripcion = result.descripcion;
+        this.editarInge.numeroRegistro = result.numeroRegistro;
         console.log(result);
-        console.table(this.editarMedio);
+        console.table(this.editarInge);
         this.edit();
       }
 
     });
   }
   openDialog2(): void {
-    const dialogRef = this.dialog.open(agregarMediosdeContacto, {
+    const dialogRef = this.dialog.open(agregarIngenieros, {
       width: '500px',
       // height: '350px',
-      data: { codigo: this.agregarMedio.codigo, descripcion: this.agregarMedio.descripcion }
+      data: { codigo: this.agregarInge.codigo, descripcion: this.agregarInge.descripcion, numeroRegistro: this.agregarInge.numeroRegistro }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.agregarMedio.codigo = result.codigo;
-      this.agregarMedio.descripcion = result.descripcion;
+      this.agregarInge.codigo = result.codigo;
+      this.agregarInge.descripcion = result.descripcion;
+      this.agregarInge.numeroRegistro = result.numeroRegistro;
 
-      this._mediosService.addMedio(this.agregarMedio).subscribe(
+      this._ingenierosService.addIngeniero(this.agregarInge).subscribe(
         response => {
-          console.log(this.agregarMedio)
+          console.log(this.agregarInge)
           console.log(response)
           if (response) {
             console.log(response)
@@ -142,30 +144,31 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   }
 
   openDialog3(): void {
-    const dialogRef = this.dialog.open(eliminarMediosdeContacto, {
+    const dialogRef = this.dialog.open(eliminarIngenieros, {
       width: '500px',
       height: '350px',
-      data: { codigo: this.editarMedio.codigo, descripcion: this.editarMedio.descripcion }
+      data: { codigo: this.editarInge.codigo, descripcion: this.editarInge.descripcion, numeroRegistro: this.editarInge.numeroRegistro }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result != undefined) {
-        this.editarMedio.codigo = result.codigo;
-        this.editarMedio.descripcion = result.descripcion;
+        this.editarInge.codigo = result.codigo;
+        this.editarInge.descripcion = result.descripcion;
+        this.editarInge.numeroRegistro = result.numeroRegistro;
         console.log(result);
-        console.table(this.editarMedio);
-        this.delete(this.selectedMedio);
+        console.table(this.editarInge);
+        this.delete(this.selectedInge);
       }
     });
   }
 
   setMedio(id) {
-    this._mediosService.getMedio(id).subscribe(
+    this._ingenierosService.getIngeniero(id).subscribe(
       response => {
         if (response.code == 0) {
-          this.editarMedio = response;
-          console.log(this.editarMedio);
+          this.editarInge = response;
+          console.log(this.editarInge);
           this.status = 'ok';
         } else {
           this.status = 'error';
@@ -181,7 +184,7 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   }
 
   edit() {
-    this._mediosService.editMedio(this.editarMedio).subscribe(
+    this._ingenierosService.editIngeniero(this.editarInge).subscribe(
       response => {
         console.log(response);
         this.listarPagina();
@@ -202,11 +205,11 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
   }
   delete(id) {
     // if (this.estatusGet == undefined) retu rn;
-    this._mediosService.deleteMedio(id).subscribe(
+    this._ingenierosService.deleteIngeniero(id).subscribe(
       response => {
         if (response.code == 0) {
-          this.editarMedio = response;
-          console.log(this.editarMedio);
+          this.editarInge = response;
+          console.log(this.editarInge);
           this.status = 'ok';
           this.listarPagina();
         } else {
@@ -224,49 +227,49 @@ export class MediosDeContactoComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-editarMediosdeContacto',
-  templateUrl: './editarMediosdeContacto.html',
+  selector: 'app-editarIngenieros',
+  templateUrl: './editarIngenieros.html',
 })
-export class editarMediosdeContacto implements OnInit {
-  public editarMedio: MediodeContacto;
+export class editarIngenieros implements OnInit {
+  public editarMedio: IngenieroValuador;
   public status: string
-  constructor(public dialogRef: MatDialogRef<editarMediosdeContacto>,
-    @Inject(MAT_DIALOG_DATA) public data: MediodeContacto) { }
+  constructor(public dialogRef: MatDialogRef<editarIngenieros>,
+    @Inject(MAT_DIALOG_DATA) public data: IngenieroValuador) { }
   displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
-  title = 'Medios de Contacto';
+  title = 'Mantenimiento a Supervisores';
   selectedValue: string = "";
   ngOnInit() {
   }
 }
 
 @Component({
-  selector: 'app-agregarMediosdeContacto',
-  templateUrl: './agregarMediosdeContacto.html'
+  selector: 'app-agregarIngenieros',
+  templateUrl: './agregarIngenieros.html'
 
 })
-export class agregarMediosdeContacto implements OnInit {
+export class agregarIngenieros implements OnInit {
   public status: string
-  public agregarMedio: MediodeContacto;
+  public agregarInge: IngenieroValuador;
   constructor() {
   }
   ngOnInit() {
     this.limpiarVariables();
   }
   limpiarVariables() {
-    this.agregarMedio = new MediodeContacto(0, 0, '', '', '1', true);
+    this.agregarInge = new IngenieroValuador(0, 0, '', '', '1', true, '');
   }
 }
 
 @Component({
-  selector: 'app-eliminarMediosdeContacto',
-  templateUrl: './eliminarMediosdeContacto.html',
+  selector: 'app-eliminarIngenieros',
+  templateUrl: './eliminarIngenieros.html',
 })
-export class eliminarMediosdeContacto implements OnInit {
+export class eliminarIngenieros implements OnInit {
 
-  public editarMedio: MediodeContacto;
+  public editarMedio: IngenieroValuador;
   public status: string
-  constructor(public dialogRef: MatDialogRef<eliminarMediosdeContacto>,
-    @Inject(MAT_DIALOG_DATA) public data: MediodeContacto) { }
+  constructor(public dialogRef: MatDialogRef<eliminarIngenieros>,
+    @Inject(MAT_DIALOG_DATA) public data: IngenieroValuador) { }
 
 
   ngOnInit() {
