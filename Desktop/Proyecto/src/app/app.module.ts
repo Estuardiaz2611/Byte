@@ -170,6 +170,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     LugarDeInversionComponent, 
     aLuagrInv,
     editLugarInv,
+    elimLugarInv,
     elimAseguradora,
     TipoDeDeduccionComponent,
     aTipoDeduc,

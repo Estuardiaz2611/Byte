@@ -13,8 +13,6 @@ import { FormasDeDesembolsoService } from 'src/app/services/formas-de-desembolso
   providers: [FormasDeDesembolsoService]
 })
 export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
-  // codigo: number;
-  // descripcion: string;
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -255,10 +253,10 @@ export class editarFormasDeDesembolso implements OnInit {
   public editarFormasDesembolso: FormasDeDesembolso;
   public status: string;
 
-  constructor(public dialogRef: MatDialogRef<agregarFormasDeDesembolso>,
+  constructor(public dialogRef: MatDialogRef<editarFormasDeDesembolso>,
     @Inject(MAT_DIALOG_DATA) public data: FormasDeDesembolso) { }
     displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
-    title = 'Almacenadora';
+    title = 'FormasDeDesembolso';
     selectedValue: string = "";
 
   ngOnInit() {
@@ -281,17 +279,3 @@ export class eliminarFormasDeDesembolso implements OnInit {
   ngOnInit() {
   }
 }
-/*
-export interface PeriodicElement {
-  codigo: number,
-  descripcion: string,
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: 1, descripcion: 'Hydrogen'},
-  {codigo: 2, descripcion: 'Helium'},
-  {codigo: 3, descripcion: 'Lithium'},
-  {codigo: 4, descripcion: 'Beryllium'},
-  {codigo: 5, descripcion: 'Boron'},
-];
-*/

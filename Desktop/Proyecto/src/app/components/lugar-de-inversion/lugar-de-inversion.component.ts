@@ -276,8 +276,8 @@ export class elimLugarInv implements OnInit {
   ngOnInit() { 
 
   } 
-  limpiarVariables() {
-    this.editarLugar = new Lugar(0, 0, '', '', '1', '',true);
-  } 
+  //limpiarVariables() {
+    //this.editarLugar = new Lugar(0, 0, '', '', '1', '',true);
+  //} 
   
 }
