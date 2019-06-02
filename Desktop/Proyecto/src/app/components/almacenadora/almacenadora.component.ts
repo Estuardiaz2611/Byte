@@ -4,7 +4,7 @@ import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angula
 import { SelectionModel } from '@angular/cdk/collections';
 import { AlmacenadorasService } from 'src/app/services/almacenadoras.service';
 import { Almacenadora } from 'src/app/models/almacenadoras.model';
-import { inject } from '@angular/core/testing';
+import { inject } from '@angular/core/testing'; 
 
 @Component({
   selector: 'app-almacenadora',
@@ -26,6 +26,9 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  } 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
