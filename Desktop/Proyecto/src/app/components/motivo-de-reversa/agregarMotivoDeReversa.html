@@ -1,35 +1,53 @@
 <h1>Mantenimiento a Motivo de Reversa</h1>
 <br>
 <mat-form-field class="example-full-width"> 
-    <input matInput placeholder="Motivo" value="">
+    <input matInput placeholder="Coóigo" value=""
+    [(ngModel)]="agregarMotivoDeReversa.codigo" 
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Descripción" value="">
+    <input matInput placeholder="Descripción" value=""
+    [(ngModel)]="agregarMotivoDeReversa.descripcion" 
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
 
-  <!---->
-  <section id="section">
-      <label class="example-margin">Cargo Automático:  </label>
-        <mat-radio-button class="sino" value="after">Si</mat-radio-button>
-        <mat-radio-button class="sino" value="before">No</mat-radio-button>
-    </section>
-<!---->
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Cargo Automático S/N" value=""
+    [(ngModel)]="agregarMotivoDeReversa.cobroadicional" 
+    [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Retención Cargo" value="">
+    <input matInput placeholder="Retención Cargo" value=""
+    [(ngModel)]="agregarMotivoDeReversa.tiporetencion" 
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Institución" value="">
+    <input matInput placeholder="Institución" value=""
+    [(ngModel)]="agregarMotivoDeReversa.institucion" 
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Referencias" value="">
+    <input matInput placeholder="referencia1" value=""
+    [(ngModel)]="agregarMotivoDeReversa.referencia1" 
+    [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="referencia2" value=""
+    [(ngModel)]="agregarMotivoDeReversa.referencia2" 
+    [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="referencia3" value=""
+    [(ngModel)]="agregarMotivoDeReversa.referencia3" 
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
 <hr>
   <div align="center">
-    <button id="bn" class="material-icons">save</button>
+    <button id="bn" type="submit"  [mat-dialog-close]="agregarMotivoDeReversa" class="material-icons">save</button>
     <button id="bn" class="material-icons">cancel</button>
     <button id="bn" class="material-icons">?</button>
   </div>

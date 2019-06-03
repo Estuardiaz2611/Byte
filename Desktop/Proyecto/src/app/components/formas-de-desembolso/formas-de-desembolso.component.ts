@@ -2,7 +2,7 @@ import { MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@a
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { FormasDeDesembolso } from 'src/app/models/formasDeDesembolso.model';
+import { FormasDeDesembolso } from 'src/app/models/formas-de-desembolso.model';
 import { FormasDeDesembolsoService } from 'src/app/services/formas-de-desembolso.service';
 
 
@@ -111,8 +111,9 @@ openDialog1(): void { ///AGREGAR
         console.log(response)
         if(response) {
           console.log(response)
-          this.listarPagina();
           this.status = 'ok'
+          this.listarPagina();
+
         }
       },
       error => {
@@ -203,16 +204,16 @@ edit() {
 }
 
 delete(id) {
-  if(this.formasDesembolsoGet == undefined) return;
+  //if(this.formasDesembolsoGet == undefined) return;
   this._formasDeDesembolsoService.deleteFormasDesembolso(id).subscribe(
     response => {
       if(response.code == 0){
         this.editarFormasDesembolso = response;
         console.log(this.editarFormasDesembolso)
+        this.status = 'ok';
         this.listarPagina();
-        this.status = 'ok';
       } else {
-        this.status = 'ok';
+        this.status = 'error';
       }
     }, error => {
       let errorMessage = <any>error;
@@ -257,7 +258,7 @@ export class editarFormasDeDesembolso implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<editarFormasDeDesembolso>,
     @Inject(MAT_DIALOG_DATA) public data: FormasDeDesembolso) { }
-    displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
+    displayedColumns: String[] = ['posicion', 'codigo', 'descripcion'];
     title = 'FormasDeDesembolso';
     selectedValue: string = "";
 
@@ -272,10 +273,7 @@ export class editarFormasDeDesembolso implements OnInit {
   styleUrls: ['./formas-de-desembolso.component.scss']
 })
 export class eliminarFormasDeDesembolso implements OnInit {
-  checked = false;
-  indeterminate = false;
-  disabled = false;
-  
+
   public editarFormasDesembolso: FormasDeDesembolso;
   public status: string;
 
