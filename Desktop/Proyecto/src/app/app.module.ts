@@ -46,7 +46,7 @@ import { TiposDeCanalesDeDistribucionComponent, agregarTiposdeCanalesdeDistribuc
 //********************************MUÑOZ*******************/
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
 import { SidebarsComponent } from './components/sidebars/sidebars.component';
-import { NotariosComponent,agregarNotario } from './components/notarios/notarios.component';
+import { NotariosComponent,agregarNotarios,editarNotario,eliminarNotarios } from './components/notarios/notarios.component';
 import { AltasComponent } from './components/altas/altas.component';
 import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
 import { NumeroPrestamosComponent,agregarNumeroPrestamos } from './components/numero-prestamos/numero-prestamos.component';
@@ -221,8 +221,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 //
     NotariosComponent,
-    agregarNotario,
-    AltasComponent,
+    agregarNotarios,
+    editarNotario,
+    eliminarNotarios, 
+     AltasComponent,
     EstadosPrestamosComponent,
     NumeroPrestamosComponent,
     agregarNumeroPrestamos,
@@ -400,7 +402,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     eliminarIngenieros,
 
      ///Muñoz
-     agregarNotario,
+     agregarNotarios,
+     eliminarNotarios,
+     editarNotario,
      agregarPasosCierre,
      agregarNumeroPrestamos,
      agregarSubEstados,

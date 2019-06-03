@@ -1,12 +1,10 @@
-<h1>Mantenimientos Notarios
-
+<h1>
+    Manteminento a Notarios
 </h1>
-<br>
 
 <form>
-<table>
-
-    <mat-form-field class="example-full-width">
+    <table>
+      <mat-form-field class="example-full-width">
         <input matInput placeholder="cheque" [(ngModel)]="agregarNotarios.cheque"[ngModelOptions]="{standalone: true}">    
       </mat-form-field>
       <br>
@@ -90,13 +88,12 @@
   <input matInput placeholder="tipoCuenta" [(ngModel)]="agregarNotarios.tipoCuenta" [ngModelOptions]="{standalone: true}">  
 </mat-form-field>
 <br>
-</table>
-<br>
-<div>
-  <button type="submit" [mat-dialog-close]="agregarNotarios" class="material-icons">save</button>
-  <button class="material-icons">cancel</button>
-  <button class="material-icons">?</button>
-  </div>
-  </form>
-
-
+    </table>
+    <br>
+    
+    <div>
+        <button type="submit" [mat-dialog-close]="data" class="material-icons">editar</button>
+        <button class="material-icons">cancel</button>
+        <button class="material-icons">?</button>
+    </div>
+</form>
