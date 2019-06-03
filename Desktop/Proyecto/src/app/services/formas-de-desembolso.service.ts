@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GLOBAL } from './global.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormasDeDesembolso } from '../models/formasDeDesembolso.model';
+import { FormasDeDesembolso } from '../models/formas-de-desembolso.model';
 
 @Injectable()
 export class FormasDeDesembolsoService {

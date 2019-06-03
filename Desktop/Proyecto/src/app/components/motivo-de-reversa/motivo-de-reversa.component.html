@@ -10,7 +10,7 @@
       </mat-form-field>
     </div>
       <div class="example-container mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+        <table mat-table (click)="imprimir()" [dataSource]="motivoDeReversaGet">
       
           <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
@@ -41,13 +41,7 @@
             <th mat-header-cell *matHeaderCellDef> Descripción </th>
             <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
           </ng-container>
-
-          <!-- Cargo Automático Column 
-          <ng-container matColumnDef="CargoA">
-            <th mat-header-cell *matHeaderCellDef> Cargo Automático	</th>
-            <td mat-cell *matCellDef="let element"> {{element.cargoa}} </td>
-          </ng-container>
-          -->
+          
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"
           (click)="selection.toggle(row)">
@@ -59,6 +53,6 @@
   <button id="bn" class="material-icons" (click)="openDialog2()">create</button>
   <button id="bn" class="material-icons">navigate_before</button>
   <button id="bn" class="material-icons">navigate_next</button>
-  <button id="bn" class="material-icons">delete</button>
+  <button id="bn" class="material-icons" (click)="openDialog3()">delete</button>
   <button id="bn" class="material-icons">?</button>
   </div>
