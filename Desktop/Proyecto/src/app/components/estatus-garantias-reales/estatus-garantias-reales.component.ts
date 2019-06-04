@@ -228,12 +228,12 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   templateUrl: './editarEstatus.html',
 })
 export class editarEstatus implements OnInit {
-  public editarMedio: EstatusGarantiaReal;
+  public editarEstatus: EstatusGarantiaReal;
   public status: string
   constructor(public dialogRef: MatDialogRef<editarEstatus>,
     @Inject(MAT_DIALOG_DATA) public data: EstatusGarantiaReal) { }
   displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
-  title = 'Medios de Contacto';
+  title = 'Estatus Garantias Reales';
   selectedValue: string = "";
   ngOnInit() {
   }
@@ -263,7 +263,7 @@ export class agregarEstatus implements OnInit {
 })
 export class eliminarEstatus implements OnInit {
 
-  public editarMedio: EstatusGarantiaReal;
+  public editarEstatus: EstatusGarantiaReal;
   public status: string
   constructor(public dialogRef: MatDialogRef<eliminarEstatus>,
     @Inject(MAT_DIALOG_DATA) public data: EstatusGarantiaReal) { }

@@ -71,6 +71,8 @@ const VISTAS_DATA: Vistas[] = [
   {name: 'Estatus Garantias Reales',                link: 'Estatus-Garantias-Reales'},
   {name: 'Ingenieros Valuadores',                   link: 'Ingenieros-Valuadores'},
   {name: 'Medios de Contacto',                      link: 'Medios-de-contacto'},
+  {name: 'Categorias SIB',                          link: 'Categoria-Sib'},
+  {name: 'Estatus Avaluo',                          link: 'Estatus-Avaluo'},
   {name: 'Acercamientos',                           link: 'Acercamientos'},
   {name: 'Asignación de Categorias',                link: 'Asignación-de-categorias'},
   {name: 'Canales de Venta',                        link: 'Canales-de-venta'},

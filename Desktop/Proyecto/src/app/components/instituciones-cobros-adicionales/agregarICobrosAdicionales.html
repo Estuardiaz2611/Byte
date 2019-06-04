@@ -1,0 +1,21 @@
+<h1>Agregar Cobros Adicionales</h1>
+<br>
+<br>
+<br>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="codigo" [(ngModel)]="agregarICobro.codigo" [ngModelOptions]="{standalone: true}">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Descripcion" [(ngModel)]="agregarICobro.descripcion"
+      [ngModelOptions]="{standalone: true}">
+</mat-form-field>
+<br>
+
+<br>
+<hr>
+<div class="botones">
+  <button id="bn" class="material-icons" [mat-dialog-close]="agregarICobro">save</button>
+  <button id="bn" class="material-icons">cancel</button>
+  <button id="bn" class="material-icons">?</button>
+</div>

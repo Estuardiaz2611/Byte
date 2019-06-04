@@ -15,7 +15,8 @@ export class MotivoDeReversaService {
 
   listPage(paginaNumero, paginaTam): Observable<any>{
     return this._http.get(`${this.url}/motivoReversionPago/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`, {headers: this.headers});
-  } 
+  }
+
   addMotivo(motivodereversa: MotivoDeReversa): Observable<any> {
     let params =  JSON.stringify(motivodereversa)  
     return this._http.post(this.url+'/motivoReversionPago/create', params,{headers: this.headers})

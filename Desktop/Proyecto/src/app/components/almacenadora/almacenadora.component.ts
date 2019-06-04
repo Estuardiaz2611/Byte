@@ -229,6 +229,7 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
 @Component({
   selector: 'app-aalmacenadora',
   templateUrl: './aAlmacenadora.html',
+  styleUrls: ['./almacenadora.component.scss'],
 })
 export class aAlmacenadora implements OnInit {
   public editarAlmacenadora: Almacenadora; 
@@ -247,7 +248,8 @@ export class aAlmacenadora implements OnInit {
 
 @Component({
   selector: 'app-balmacenadora',
-  templateUrl: './balmacenadora.html'
+  templateUrl: './balmacenadora.html',
+  styleUrls: ['./almacenadora.component.scss'],
 
 })
 export class bAlmacenadora implements OnInit {
@@ -265,7 +267,8 @@ export class bAlmacenadora implements OnInit {
 
 @Component({
   selector: 'app-eAlmacenadora',
-  templateUrl: './eAlmacenadora.html',
+  templateUrl: './eAlmacenadora.html', 
+  styleUrls: ['./almacenadora.component.scss'],
 })
 export class eAlmacenadora implements OnInit {
  

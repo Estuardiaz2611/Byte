@@ -2,20 +2,20 @@
 <br>
 <br>
 <br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="codigo" [(ngModel)]="agregarCobro.codigo" [ngModelOptions]="{standalone: true}">
 </mat-form-field>
 <br>
-<br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion Reportes" value="">
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Descripcion" [(ngModel)]="agregarCobro.descripcion"
+      [ngModelOptions]="{standalone: true}">
 </mat-form-field>
 <br>
 
 <br>
 <hr>
 <div class="botones">
-  <button id="bn" class="material-icons" [mat-dialog-close]="agregarMotivoDeAjuste">save</button>
+  <button id="bn" class="material-icons" [mat-dialog-close]="agregarCobro">save</button>
   <button id="bn" class="material-icons">cancel</button>
   <button id="bn" class="material-icons">?</button>
 </div>

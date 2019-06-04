@@ -20,6 +20,8 @@ import { MontosPorPlazoComponent } from './components/montos-por-plazo/montos-po
 //Ovando
 import { EstatusGarantiasRealesComponent } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
 import { IngenierosValuadoresComponent } from './components/ingenieros-valuadores/ingenieros-valuadores.component';
+import { CategoriaSibComponent } from './components/categoria-sib/categoria-sib.component';
+import { EstatusAvaluoComponent } from './components/estatus-avaluo/estatus-avaluo.component';
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
 import { CanalesDeVentaComponent } from './components/canales-de-venta/canales-de-venta.component';
@@ -80,6 +82,8 @@ const appRoutes: Routes = [
 //Ovando
     {path: 'Estatus-Garantias-Reales', component: EstatusGarantiasRealesComponent},
     {path: 'Ingenieros-Valuadores', component: IngenierosValuadoresComponent},
+    {path: 'Categoria-Sib', component: CategoriaSibComponent},
+    {path: 'Estatus-Avaluo', component: EstatusAvaluoComponent},
     {path: 'Acercamientos', component: AcercamientosComponent},
     {path: 'Asignación-de-categorias', component: AsignacionDeCategoriasComponent},
     {path: 'Canales-de-venta', component: CanalesDeVentaComponent},

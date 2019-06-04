@@ -14,12 +14,14 @@ export class MediosService {
   }
 
   listPage(paginaNumero, paginaTam): Observable<any>{
-    return this._http.get(`${this.url}/medio/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`, {headers: this.headers});
+    return this._http.get(`${this.url}/medio/listPage?page=${paginaNumero}&size=${paginaTam}asc&query=id.empresa==1`, {headers: this.headers});
   } 
+
   addMedio(medio: MediodeContacto): Observable<any> {
     let params =  JSON.stringify(medio)  
     return this._http.post(this.url+'/medio/create', params,{headers: this.headers})
   }
+  
   getMedio(idMedio): Observable<any> {
     return this._http.get(this.url+'/medio/read?empresa=1&codigo='+idMedio);
   }

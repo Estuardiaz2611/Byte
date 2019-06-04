@@ -1,96 +1,224 @@
 import {MatTableDataSource} from '@angular/material';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component,OnInit, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component,OnInit, OnDestroy, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Destino } from 'src/app/models/destinos.model';
+import { DestinoService } from 'src/app/services/destino.service';
 
 @Component({
   selector: 'app-destinos',
   templateUrl: './destinos.component.html',
-  styleUrls: ['./destinos.component.scss']
+  styleUrls: ['./destinos.component.scss'],
+  providers: [DestinoService]
 })
 
 export class DestinosComponent implements OnInit {
-  codigo: number;
-  descripcion: string;
-  title = 'Agregar';
-  selectedValue: string = "";
   mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void; 
-  
-  constructor(public dialog: MatDialog,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {  
+  private _mobileQueryListener: () => void;
+  public destinoGet: Destino[];
+  public agregardestino:  Destino;
+  public editarDestino: Destino;
+  public status: string;
+  public selectedDestino: number;
+
+  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _destinoService: DestinoService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  } 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected() {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource.data.length;
-      return numSelected === numRows; 
-    }
-    
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      this.isAllSelected() ?
-          this.selection.clear() :
-          this.dataSource.data.forEach(row => this.selection.select(row));
-    }
-    
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: PeriodicElement): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-      }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
-    } 
-
   ngOnInit() {
-  }
-  displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.listarPagina();
+    this.limpiarVariables();
   }
 
-  openDialog1(): void { ///AGREGAR
+  displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
+  selection = new SelectionModel<Destino>(false, []); 
+  dataSource = new MatTableDataSource<Destino>(this.destinoGet);
+
+  limpiarVariables() {
+    this.agregardestino = new Destino(0, 0, '', '', '1', true);
+  }
+
+  public listarPagina() {
+    this._destinoService.listPage(0, 10).subscribe(
+      response => {
+        this.destinoGet = response.content;
+        console.table(this.destinoGet)
+      },
+      error => {
+        var errorMessage = <any>error;
+        console.log(errorMessage)
+      }
+    )
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length; 
+   //const numRows = this.almacenadoraGet.length;
+    return numSelected === numRows; 
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.destinoGet.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Destino): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
+  }
+  
+  imprimir() {
+    this.selectedDestino = this.selection.selected.map(row => row.codigo)[0];
+    console.log(this.selectedDestino);
+    if(this.selectedDestino) {
+      this.setCobro(this.selectedDestino);
+    }
+  }
+
+  openDialog1(): void {
     const dialogRef = this.dialog.open(agregarDestinos, {
-      width: '650px',
-      height: '320px',
-      data: {codigo: this.codigo, descripcion: this.descripcion}
+      width: '720px',
+      height: '400px',
+      data: { codigo: this.agregardestino.codigo, descripcion: this.agregardestino.descripcion }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.agregardestino.codigo = result.codigo;
+      this.agregardestino.descripcion = result.descripcion;
+      
+      this._destinoService.addDestino(this.agregardestino).subscribe(
+        response => { 
+          console.log(this.agregardestino)
+          console.log(response)
+          if (response) {
+            console.log(response)
+            this.status = 'ok'
+          }
+        },
+        error => {
+          var errorMessage = <any>error;
+          console.log(errorMessage)
+        }
+      )
     });
   }
-    openDialog2(): void { ///EDITAR
-      const dialogRef = this.dialog.open(editarDestinos, {
-        width: '550px',
-       height: '300px',
-        data: {codigo: this.codigo, descripcion: this.descripcion}
-      });
 
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.codigo = result;
-      });
-    }
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(editarDestinos, {
+      width: '720px',
+      height: '400px',
+      data: { codigo: this.editarDestino.codigo, descripcion: this.editarDestino.descripcion }
+    });
 
-    openDialog3(): void { ///ELIMINAR
-      const dialogRef = this.dialog.open(eliminarDestinos, {
-        width: '500px',
-        height: '250px',
-        data: {codigo: this.codigo, descripcion: this.descripcion}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.codigo = result;
-      });
-    }
-}
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        this.editarDestino.codigo = result.codigo;
+        this.editarDestino.descripcion = result.descripcion;
+        console.log(result);
+        console.table(this.editarDestino);
+        this.edit();
+      }
+
+    });
+  }
+
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(eliminarDestinos, {
+      width: '500px',
+      height: '250px',
+      data: { codigo: this.editarDestino.codigo, descripcion: this.editarDestino.descripcion }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        this.editarDestino.codigo = result.codigo;
+        this.editarDestino.descripcion = result.descripcion;
+        console.log(result);
+        console.table(this.editarDestino);
+        this.delete(this.selectedDestino);
+      }
+    });
+  } 
+  setCobro(id) {
+    this._destinoService.getDestino(id).subscribe(
+      response => {
+        if(response.code == 0) {
+          this.editarDestino = response;
+          console.log(this.editarDestino);
+          this.status='ok';
+        } else {
+          this.status = 'error';
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if(errorMessage != null) {
+          this.status = 'error';
+        }
+      }
+    );
+  } 
+
+  edit() {
+    this._destinoService.editDestino(this.editarDestino).subscribe(
+      response => {
+        console.log(response);
+        this.listarPagina();
+        if (response.code == 0) {
+          this.status = 'ok';
+        } else {
+          alert(response.description);
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          alert(error.description);
+          this.status = 'error';
+        }
+      }
+    );
+  }
+  delete(id){
+  if(this.destinoGet == undefined) return;
+    this._destinoService.deleteDestino(id).subscribe(
+      response => {
+        if (response.code == 0) {
+          this.editarDestino = response;
+          console.log(this.editarDestino)
+          this.status = 'ok';
+        } else {
+          this.status = 'error';
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = 'error';
+        }
+      }
+    );
+  }
+} 
 
 @Component({//AGREGAR
   selector: 'app-destinos',
@@ -99,16 +227,17 @@ export class DestinosComponent implements OnInit {
 })
 
 export class agregarDestinos implements OnInit {
-  checked = false;
-  indeterminate = false;
-  disabled = false;
+  public status: string
+  public agregardestino: Destino
   constructor(){
   }
-  displayedColumns = ['codigo', 'descripcion'];
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
-  ngOnInit(){}
   
+  ngOnInit(){ 
+    this.limpiarVariables()
+  }
+  limpiarVariables() {
+    this.agregardestino = new Destino(0, 0, '', '', '1', true);
+  }
 }
 
 @Component({//EDITAR
@@ -118,14 +247,13 @@ export class agregarDestinos implements OnInit {
 })
 
 export class editarDestinos implements OnInit {
-  checked = false;
-  indeterminate = false;
-  disabled = false;
+  public editarDestino: Destino 
+  public status: string 
 
-  constructor() { }
-  displayedColumns = ['codigo', 'descripcion'];
-  selectedValue: string = "";
-  dataSource = ELEMENT_DATA;
+
+  constructor(public dialogRef: MatDialogRef<editarDestinos>,
+    @Inject(MAT_DIALOG_DATA) public data: Destino) { }
+ 
   ngOnInit() {
   }
 }
@@ -136,22 +264,13 @@ export class editarDestinos implements OnInit {
   styleUrls: ['./destinos.component.scss']
 })
 export class eliminarDestinos implements OnInit {
-  checked = false;
-  indeterminate = false;
-  disabled = false;
-  constructor(){}
+  public editarDestino: Destino 
+  public status: string 
 
-  ngOnInit(){
+
+  constructor(public dialogRef: MatDialogRef<eliminarDestinos>,
+    @Inject(MAT_DIALOG_DATA) public data: Destino) { }
+ 
+  ngOnInit() {
   }
 }
-
-export interface PeriodicElement {
-  codigo: number;
-  descripcion: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: 1, descripcion:"asdf"},
-  {codigo: 2, descripcion:"ñlkj"},
-  {codigo: 3, descripcion:"jhgf"},
-];
