@@ -2,39 +2,37 @@
 <br>
 <br>
 <mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
+  <input matInput placeholder="Codigo" value=""
+  [(ngModel)]="agregarMotivoDeAjuste.Codigo"
+  [(ngModelOptions)]="{standalone: true}">
+</mat-form-field>
+<br>
+<mat-form-field class="example full-width" id="filtro">
+  <input matInput placeholder="Descripcion" value=""
+  [(ngModel)]="agregarMotivoDeAjuste.Descripcion"
+  [(ngModelOptions)]="{standalone: true}">>
 </mat-form-field>
 <br>
 <br>
-<br>
- 
-<section id="section">
-  <label class="example-margin">Afecta Saldo Capital:</label>
-  <mat-radio-group [(ngModel)]="l">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
+<section class="example-section">
+  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
+  [(ngModel)]="checked" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoCapital">Si</mat-checkbox>
 </section>
 <br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Interes:</label>
-  <mat-radio-group [(ngModel)]="lab">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
+<section class="example-section">
+  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
+  [(ngModel)]="checked2" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoInterez">Si</mat-checkbox>
 </section>
 <br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Mora:  </label>
-  <mat-radio-group [(ngModel)]="la">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
+<section class="example-section">
+  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
+  [(ngModel)]="checked3" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoMora">Si</mat-checkbox>
 </section>
+
 <br>
 <hr>
 <div align="center">
-  <button id="bn" class="material-icons" [mat-dialog-close]="agregarMotivoDeAjuste">save</button>
+  <button id="bn" type="submit"  [mat-dialog-close]="agregarMotivoDeAjuste" class="material-icons">save</button>
   <button id="bn" class="material-icons">cancel</button>
   <button id="bn" class="material-icons">?</button>
 </div>
