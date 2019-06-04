@@ -1,33 +1,37 @@
 <h1>Editar Motivos de Ajustes</h1>
 <br>
 <br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
-</mat-form-field>
-<br>
-<br>
-<br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Capital:</label>
-    <mat-radio-button class="sino" value="after">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="before">No</mat-radio-button>
-</section>
-<br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Interes:</label>
-    <mat-radio-button class="sino" value="after">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="before">No</mat-radio-button>
-</section>
-<br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Mora:  </label>
-    <mat-radio-button class="sino" value="after">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="before">No</mat-radio-button>
-</section>
-<br>
-<hr>
-<div align="center">
-  <button id="bn" class="material-icons">save</button>
-  <button id="bn" class="material-icons">cancel</button>
-  <button id="bn" class="material-icons">?</button>
-</div>
+<form>
+    <table>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Codigo" [(ngModel)]="data.codigo" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion" [(ngModel)]="data.descripcion"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion" [(ngModel)]="data.afectaSaldoCapital"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion" [(ngModel)]="data.afectaSaldoInterez"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion" [(ngModel)]="data.afectaSaldoMora"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+    </table>
+    <br>
+    <div>
+        <button type="submit" [mat-dialog-close]="data" class="material-icons">editar</button>
+        <button class="material-icons">cancel</button>
+        <button class="material-icons">?</button>
+    </div>
+  </form>

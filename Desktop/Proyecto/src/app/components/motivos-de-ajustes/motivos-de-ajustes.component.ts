@@ -15,15 +15,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class MotivosDeAjustesComponent implements OnInit, OnDestroy {
  
-  //checkbox
-  checked = false;
-  checked2 = false;
-  checked3 = false;
-  public CheckASC: string;
-  public CheckASI: string;
-  public CheckASM: string
-  //
-
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public MotivoAjusteGet: MotivoDeAjuste[];
@@ -101,7 +92,7 @@ export class MotivosDeAjustesComponent implements OnInit, OnDestroy {
     }
 
 openDialog(): void { ///editar
-  const dialogRef = this.dialog.open(agregarMotivosDeAjustes, {
+  const dialogRef = this.dialog.open(editarMotivosDeAjustes, {
     width: '720px',
     height: '455px',
     data: {codigo: this.editarMotivoAjuste.codigo, 
@@ -127,7 +118,7 @@ openDialog(): void { ///editar
 }
 
 openDialog2(): void { ///agregar
-  const dialogRef = this.dialog.open(editarMotivosDeAjustes, {
+  const dialogRef = this.dialog.open(agregarMotivosDeAjustes, {
     width: '720px',
     height: '455px',
     data: {codigo: this.agregarMotivoAjuste.codigo, 
@@ -141,31 +132,11 @@ openDialog2(): void { ///agregar
     console.log('The dialog was closed');
     console.log(result);
 
-    //check
-    if(result.afectaSaldoCapita == true) {
-      result.CheckASC = 'S'
-    }
-    if(result.afectaSaldoCapita == false){
-      result.CheckASC = 'N'
-    }
-    if(result.afectaSaldoInterez == true) {
-      result.CheckASI = 'S'
-    }
-    if(result.afectaSaldoInterez == false){
-      result.CheckASI = 'N'
-    }
-    if(result.afectaSaldMora == true) {
-      result.CheckASM = 'S'
-    }
-    if(result.afectaSaldMora == false){
-      result.CheckASM = 'N'
-    }
-    //
     this.agregarMotivoAjuste.codigo = result.codigo;
     this.agregarMotivoAjuste.descripcion = result.descripcion;
-    this.agregarMotivoAjuste.afectaSaldoCapital = result.CheckASC;
-    this.agregarMotivoAjuste.afectaSaldoInterez = result.CheckASI;
-    this.agregarMotivoAjuste.afectaSaldoMora = result.CheckASM;
+    this.agregarMotivoAjuste.afectaSaldoCapital = result.afectaSaldoCapita;
+    this.agregarMotivoAjuste.afectaSaldoInterez = result.afectaSaldoInterez;
+    this.agregarMotivoAjuste.afectaSaldoMora = result.afectaSaldMora;
     
     this._motivoDeAjusteService.addMotivoAjuste(this.agregarMotivoAjuste).subscribe(
       response =>{

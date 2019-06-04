@@ -1,38 +1,39 @@
-<h1>Agregar Motivos de Ajustes</h1>
+<h1>
+  Agregar Motivos de Ajustes
+</h1>
 <br>
-<br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Codigo" value=""
-  [(ngModel)]="agregarMotivoDeAjuste.Codigo"
-  [(ngModelOptions)]="{standalone: true}">
+<form>
+  <table>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="codigo" [(ngModel)]="agregarMotivoAjuste.codigo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Descripcion" [(ngModel)]="agregarMotivoAjuste.descripcion"
+              [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="afectaSaldoCapital" [(ngModel)]="agregarMotivoAjuste.afectaSaldoCapital"
+            [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="afectaSaldoInterez" [(ngModel)]="agregarMotivoAjuste.afectaSaldoInterez"
+          [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="afectaSaldoMora" [(ngModel)]="agregarMotivoAjuste.afectaSaldoMora"
+        [ngModelOptions]="{standalone: true}">
 </mat-form-field>
 <br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value=""
-  [(ngModel)]="agregarMotivoDeAjuste.Descripcion"
-  [(ngModelOptions)]="{standalone: true}">>
-</mat-form-field>
-<br>
-<br>
-<section class="example-section">
-  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
-  [(ngModel)]="checked" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoCapital">Si</mat-checkbox>
-</section>
-<br>
-<section class="example-section">
-  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
-  [(ngModel)]="checked2" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoInterez">Si</mat-checkbox>
-</section>
-<br>
-<section class="example-section">
-  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
-  [(ngModel)]="checked3" [(ngModel)]="agregarMotivoDeAjuste.afectaSaldoMora">Si</mat-checkbox>
-</section>
+  </table>
+  <br>
 
-<br>
-<hr>
-<div align="center">
-  <button id="bn" type="submit"  [mat-dialog-close]="agregarMotivoDeAjuste" class="material-icons">save</button>
-  <button id="bn" class="material-icons">cancel</button>
-  <button id="bn" class="material-icons">?</button>
-</div>
+  <div>
+      <button type="submit"  [mat-dialog-close]="agregarMotivoAjuste" class="material-icons">save</button>
+      <button class="material-icons">cancel</button>
+      <button class="material-icons">?</button>
+  </div>
+</form>
