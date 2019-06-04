@@ -20,12 +20,11 @@
   [(ngModel)]="checked" [(ngModel)]="agregarMotivoDeReversa.cobroAdicional ">Si</mat-checkbox>
 </section>
 <!--Check-->
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Retención Cargo" value=""
-    [(ngModel)]="agregarMotivoDeReversa.tiporetencion" 
-    [ngModelOptions]="{standalone: true}">
-  </mat-form-field>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Retención" value=""
+  [(ngModel)]="agregarMotivoDeReversa.tipoRetencion" 
+  [ngModelOptions]="{standalone: true}">
+</mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Institución" value=""
@@ -48,6 +47,7 @@
     [(ngModel)]="agregarMotivoDeReversa.referencia3" 
     [ngModelOptions]="{standalone: true}">
   </mat-form-field>
+
 <hr>
   <div align="center">
     <button id="bn" type="submit"  [mat-dialog-close]="agregarMotivoDeReversa" class="material-icons">save</button>
