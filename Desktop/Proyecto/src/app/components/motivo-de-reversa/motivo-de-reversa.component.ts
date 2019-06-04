@@ -15,6 +15,11 @@ import { MotivoDeReversaService } from 'src/app/services/motivo-de-reversa.servi
 })
 export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
 
+  //checkbox
+  checked = false;
+  public CheckCobroAdicional: string;
+  //
+
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public motivoDeReversaGet: MotivoDeReversa[];
@@ -58,6 +63,7 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     )
   }
 
+  
     /** Whether the number of selected elements matches the total number of rows. */
     isAllSelected() {
       const numSelected = this.selection.selected.length;
@@ -109,7 +115,18 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.agregarMotivoDeReversa.cobroAdicional = result.cobroAdicional;
+
+
+            //check
+            if(result.cobroAdicional == true) {
+              result.CheckCobroAdicional = 'S'
+            }
+      
+            if(result.CheckCobroAdicional == false){
+              result.CheckCobroAdicional = 'N'
+            }
+            //
+      this.agregarMotivoDeReversa.cobroAdicional = result.CheckCobroAdicional; ///CHECKBOX
       this.agregarMotivoDeReversa.codigo = result.codigo;
       this.agregarMotivoDeReversa.descripcion = result.descripcion;
       this.agregarMotivoDeReversa.institucion = result.institucion;
@@ -117,6 +134,7 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
       this.agregarMotivoDeReversa.referencia2 = result.referencia2;
       this.agregarMotivoDeReversa.referencia3 = result.referencia3;
       this.agregarMotivoDeReversa.tipoRetencion = result.tipoRetencion;
+
     
       this._motivoDeReversaService.addMotivo(this.agregarMotivoDeReversa).subscribe(
         response => {
