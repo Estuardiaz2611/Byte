@@ -1,15 +1,17 @@
 <h1>Mantenimiento a Destinos</h1>
 <br>
 <mat-form-field class="example-full-width">
-    <input matInput placeholder="Código" value="">
+    <input matInput placeholder="Código" [(ngModel)]="agregardestino.codigo"
+    [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Descripción" value="">
+    <input matInput placeholder="Descripción" [(ngModel)]="agregardestino.descripcion"
+    [ngModelOptions]="{standalone: true}" >
   </mat-form-field>
 <hr>
   <div align="center">
-    <button id="bn" class="material-icons">save</button> 
+    <button id="bn" class="material-icons" [mat-dialog-close]="agregardestino">save</button> 
     <button id="bn" class="material-icons">cancel</button>
     <button id="bn" class="material-icons">?</button>
   </div> 

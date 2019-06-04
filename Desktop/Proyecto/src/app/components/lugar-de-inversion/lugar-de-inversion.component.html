@@ -49,8 +49,8 @@
       <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
     </ng-container> 
 
-    <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+    <ng-container matColumnDef="equivalencia">
+      <th mat-header-cell *matHeaderCellDef> equivalencia </th>
       <td mat-cell *matCellDef="let element"> {{element.equivalencia}} </td>
     </ng-container>
 
@@ -61,8 +61,8 @@
 </div>
 <br>
 <div align="center">
-  <button class="material-icons" (click)="openDialog2()">add_box</button>
-  <button class="material-icons" (click)="openDialog()">create</button>
+  <button class="material-icons" (click)="openDialog()">add_box</button>
+  <button class="material-icons" (click)="openDialog2()">create</button>
   <button class="material-icons">undo</button>
   <button class="material-icons">redo</button>
   <button class="material-icons">refresh</button>

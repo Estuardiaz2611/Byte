@@ -3,15 +3,20 @@
 <br>
 <br>
 
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Código" [(ngModel)]="data.codigo"
+  [ngModelOptions]="{standalone: true}">
 </mat-form-field>
 <br>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Descripción" [(ngModel)]="data.descripcion"
+  [ngModelOptions]="{standalone: true}" >
+</mat-form-field>
 
 <br>
 <hr>
 <div class="botones">
-  <button id="bn" class="material-icons" [mat-dialog-close]="agregarMotivoDeAjuste">save</button>
+  <button id="bn" class="material-icons" [mat-dialog-close]="data">save</button>
   <button id="bn" class="material-icons">cancel</button>
   <button id="bn" class="material-icons">?</button>
 </div>

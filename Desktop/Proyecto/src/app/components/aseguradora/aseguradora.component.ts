@@ -217,6 +217,7 @@ export class AseguradoraComponent implements OnInit, OnDestroy {
 @Component({
   selector: 'app-aseguradora',
   templateUrl: './aAseguradora.html',
+  styleUrls: ['./aseguradora.component.scss'],
 })
 export class aAseguradora implements OnInit {
   public status: string;
@@ -237,6 +238,7 @@ export class aAseguradora implements OnInit {
 @Component({
   selector: 'app-aseguradora',
   templateUrl: './editAseguradora.html',
+  styleUrls: ['./aseguradora.component.scss'],
 })
 export class editAseguradora implements OnInit {
 public editarAseguradora: Aseguradora;
@@ -253,6 +255,7 @@ public status: string;
 @Component({
   selector: 'app-aseguradora',
   templateUrl: './elimAseguradora.html',
+  styleUrls: ['./aseguradora.component.scss'],
 })
 export class elimAseguradora implements OnInit {
 public editarAseguradora: Aseguradora;

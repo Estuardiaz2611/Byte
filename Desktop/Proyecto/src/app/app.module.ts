@@ -11,7 +11,7 @@ import {} from './components/pricipal/pricipal.component';
 import { MotivosDeAjustesComponent, agregarMotivosDeAjustes, editarMotivosDeAjustes, eliminarMotivosDeAjustes } from './components/motivos-de-ajustes/motivos-de-ajustes.component';
 import { DiasInhabilesComponent, agregarDiasInhabiles, editarDiasInhabiles, eliminarDiasInhabiles } from './components/dias-inhabiles/dias-inhabiles.component';
 import { CobrosAdicionalesComponent, agregarCobrosAdicionales, editarCobrosAdicionales, eliminarCobrosAdicionales } from './components/cobros-adicionales/cobros-adicionales.component';
-import { InstitucionesCobrosAdicionalesComponent } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
+import { InstitucionesCobrosAdicionalesComponent, eliminarICobrosAdicionales, editarICobrosAdicionales, agregarICobrosAdicionales } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
 import { LimpiezaDeArchivosComponent } from './components/limpieza-de-archivos/limpieza-de-archivos.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { ProductosComponent } from './components/productos/productos.component';
@@ -246,7 +246,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarPasosCierre,
     SidebarsComponent,
     ContabilizacionComponent,
-    agregarcontabilizacion,
+    agregarcontabilizacion, 
+    eliminarICobrosAdicionales,
+    editarICobrosAdicionales,
+    agregarICobrosAdicionales,
   //VILLATORO
     OrigenDeFondosComponent,
     agregarOrigenDeFondos,
@@ -428,7 +431,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DestinosComponent, 
     agregarDestinos, 
     editarDestinos, 
-    eliminarDestinos
+    eliminarDestinos ,
+    eliminarICobrosAdicionales,
+    editarICobrosAdicionales,
+    agregarICobrosAdicionales,
   ],
 
   providers: [appRoutingProviders],
