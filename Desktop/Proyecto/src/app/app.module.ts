@@ -35,6 +35,8 @@ import { RegistroDeTipoDeDocumentoComponent } from './components/registro-de-tip
 import { MediosDeContactoComponent, agregarMediosdeContacto, editarMediosdeContacto, eliminarMediosdeContacto } from './components/medios-de-contacto/medios-de-contacto.component';
 import { EstatusGarantiasRealesComponent, agregarEstatus, editarEstatus, eliminarEstatus } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
 import { IngenierosValuadoresComponent, agregarIngenieros, editarIngenieros, eliminarIngenieros } from './components/ingenieros-valuadores/ingenieros-valuadores.component';
+import { CategoriaSibComponent, agregarCategoria, editarCategoria, eliminarCategoria } from './components/categoria-sib/categoria-sib.component';
+import { EstatusAvaluoComponent, agregarAvaluo, editarAvaluo, eliminarAvaluo } from './components/estatus-avaluo/estatus-avaluo.component';
 import { AcercamientosComponent, agregarAcercamientos, editarAcercamientos } from './components/acercamientos/acercamientos.component';
 import { AsignacionDeCategoriasComponent, agregarAsignaciondeCategorias, editarAsignaciondeCategorias } from './components/asignacion-de-categorias/asignacion-de-categorias.component';
 import { CanalesDeVentaComponent, agregarCanalesdeVenta, editarCanalesdeVenta } from './components/canales-de-venta/canales-de-venta.component';
@@ -189,6 +191,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     AsignacionDeCategoriasComponent,
     CanalesDeVentaComponent,
     MediosDeContactoComponent,
+    CategoriaSibComponent,
+    EstatusAvaluoComponent,
     PorcentajesDeFinanciamientoComponent,
     RangosDePlazosComponent,
     TipoDeProductoComponent,
@@ -219,6 +223,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarIngenieros,
     editarIngenieros,
     eliminarIngenieros,
+    agregarCategoria, 
+    editarCategoria, 
+    eliminarCategoria,
+    agregarAvaluo, 
+    editarAvaluo, 
+    eliminarAvaluo,
 
 //
     NotariosComponent,
@@ -266,7 +276,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DestinosComponent, 
     agregarDestinos, 
     editarDestinos, 
-    eliminarDestinos
+    eliminarDestinos, 
     
   ],
   imports: [
@@ -405,6 +415,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarIngenieros,
     editarIngenieros,
     eliminarIngenieros,
+    agregarCategoria, 
+    editarCategoria, 
+    eliminarCategoria,
+    agregarAvaluo, 
+    editarAvaluo, 
+    eliminarAvaluo,
 
      ///Muñoz
      agregarNotarios,

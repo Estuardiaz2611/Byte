@@ -1,5 +1,6 @@
 <h1>Mantenimiento a Motivo de Reversa</h1>
 <br>
+
 <mat-form-field class="example-full-width"> 
     <input matInput placeholder="Coóigo" value=""
     [(ngModel)]="agregarMotivoDeReversa.codigo" 
@@ -12,11 +13,12 @@
     [ngModelOptions]="{standalone: true}">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Cargo Automático S/N" value=""
-    [(ngModel)]="agregarMotivoDeReversa.cobroadicional" 
-    [ngModelOptions]="{standalone: true}">
-  </mat-form-field>
+<!--Check-->
+<section class="example-section">
+  <mat-checkbox value="S" class="example-margin" [ngModelOptions]="{standalone: true}"
+  [(ngModel)]="checked" [(ngModel)]="agregarMotivoDeReversa.cobroAdicional ">Si</mat-checkbox>
+</section>
+<!--Check-->
 
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Retención Cargo" value=""
