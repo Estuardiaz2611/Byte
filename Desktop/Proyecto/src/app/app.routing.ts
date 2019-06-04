@@ -56,6 +56,8 @@ import { OrigenDeFondosComponent } from './components/origen-de-fondos/origen-de
 import { UbicacionDeGarantiaComponent } from './components/ubicacion-de-garantia/ubicacion-de-garantia.component';
 import { FormasDePagoComponent } from './components/formas-de-pago/formas-de-pago.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
+import { PoderComponent } from './components/poder/poder.component';
+import { InstanciasComponent } from './components/instancias/instancias.component';
 
 const appRoutes: Routes = [
 //Alan
@@ -102,6 +104,8 @@ const appRoutes: Routes = [
     {path: 'pasosCierre',component:PasosCierreComponent},
     {path: 'pasosCierreAltas',component:PasosCierreAltasComponent},
     {path: 'contabilizacion',component:ContabilizacionComponent},
+    {path: 'poder',component:PoderComponent},
+    {path: 'instancia',component:InstanciasComponent},
     
 //CHINO
     {path: 'agrupacionesDeCredito', component: AgrupacionesDeCreditoComponent},

@@ -87,6 +87,9 @@ const VISTAS_DATA: Vistas[] = [
   {name: 'Número Prestamos',                        link: 'numeroPrestamos'},
   {name: 'Pasos Cierre',                            link: 'pasosCierre'},
   {name: 'Contabilización',                         link: 'contabilizacion'},
+  {name: 'Poder',                                   link: 'poder'},
+  {name: 'Instancias',                              link: 'instancia'},
+  
   ///CHINO
   {name: 'Almacenadora',                            link: 'almacenadora'},
   {name: 'Aseguradora',                             link: 'aseguradora'},

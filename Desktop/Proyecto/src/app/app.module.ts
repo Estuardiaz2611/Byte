@@ -44,6 +44,7 @@ import { TipoDeProductoComponent, agregarTipoProducto, editarTipoProducto } from
 import { TiposDeCanalesDeDistribucionComponent, agregarTiposdeCanalesdeDistribucion, editarTiposdeCanalesdeDistribucion } from './components/tipos-de-canales-de-distribucion/tipos-de-canales-de-distribucion.component';
 
 //********************************MUÑOZ*******************/
+import { InstanciasComponent,aInstancia,bInstancia,eInstancia } from './components/instancias/instancias.component';
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
 import { SidebarsComponent } from './components/sidebars/sidebars.component';
 import { NotariosComponent,agregarNotarios,editarNotario,eliminarNotarios } from './components/notarios/notarios.component';
@@ -58,8 +59,7 @@ import { SubEstadosComponent,agregarSubEstados } from './components/sub-estados/
 import { SubEstadosAltasComponent } from './components/sub-estados-altas/sub-estados-altas.component';
 import { NumeroPrestamosAltasComponent } from './components/numero-prestamos-altas/numero-prestamos-altas.component';
 import {ContabilizacionComponent,agregarcontabilizacion } from './components/contabilizacion/contabilizacion.component';
-
-
+import {PoderComponent,aPoder,bPoder,ePoder} from './components/poder/poder.component';
 //********************************CHINO*******************/
 import { AgrupacionesDeCreditoComponent, agregarACredito } from './components/agrupaciones-de-credito/agrupaciones-de-credito.component';
 import { AlmacenadoraComponent, aAlmacenadora, bAlmacenadora, eAlmacenadora } from './components/almacenadora/almacenadora.component';
@@ -117,6 +117,8 @@ import {
 import { PricipalComponent } from './components/pricipal/pricipal.component';
 import { from } from 'rxjs';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+
+
 
 @NgModule({
   declarations: [
@@ -247,6 +249,13 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     SidebarsComponent,
     ContabilizacionComponent,
     agregarcontabilizacion,
+    PoderComponent,
+    aPoder,
+    bPoder,
+    ePoder,
+    aInstancia,
+    bInstancia,
+    eInstancia,
   //VILLATORO
     OrigenDeFondosComponent,
     agregarOrigenDeFondos,
@@ -263,7 +272,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DestinosComponent, 
     agregarDestinos, 
     editarDestinos, 
-    eliminarDestinos
+    eliminarDestinos, PoderComponent, InstanciasComponent
     
   ],
   imports: [
@@ -412,6 +421,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
      agregarSubEstados,
      agregarACredito,
      agregarcontabilizacion,     
+     aPoder,
+     bPoder,
+     ePoder,
+     aInstancia,
+     bInstancia,
+     eInstancia,
      //VILLATORO
     OrigenDeFondosComponent,
     agregarOrigenDeFondos,
