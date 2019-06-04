@@ -2,28 +2,27 @@ import { MatTableDataSource } from '@angular/material';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { EstatusService } from 'src/app/services/estatus-garantias-reales.service';
-import { EstatusGarantiaReal } from 'src/app/models/estatus-garantias-reales.model';
+import { CategoriaService } from 'src/app/services/categoria-sib.service';
+import { CategoriaSib } from 'src/app/models/Categoria-sib.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-estatus-garantias-reales',
-  templateUrl: './estatus-garantias-reales.component.html',
-  styleUrls: ['./estatus-garantias-reales.component.scss'],
-  providers: [EstatusService]
+  selector: 'app-categoria-sib',
+  templateUrl: './categoria-sib.component.html',
+  styleUrls: ['./categoria-sib.component.scss'],
+  providers: [CategoriaService]
 })
-
-export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
+export class CategoriaSibComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-  public estatusGet: EstatusGarantiaReal[];
-  public agregarEstatus: EstatusGarantiaReal;
-  public editarEstatus: EstatusGarantiaReal;
+  public categoriaGet: CategoriaSib[];
+  public agregarCategoria: CategoriaSib;
+  public editarCategoria: CategoriaSib;
   public status: string;
-  public selectedEstatus: string;
+  public selectedCategoria: string;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _estatusService: EstatusService) {
+  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _categoriasService: CategoriaService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -40,19 +39,19 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   }
 
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
-  selection = new SelectionModel<EstatusGarantiaReal>(false, []);
-  dataSource = new MatTableDataSource<EstatusGarantiaReal>(this.estatusGet);
+  selection = new SelectionModel<CategoriaSib>(false, []);
+  dataSource = new MatTableDataSource<CategoriaSib>(this.categoriaGet);
 
   limpiarVariables() {
-    this.agregarEstatus = new EstatusGarantiaReal(0, '', '', '', true);
+    this.agregarCategoria = new CategoriaSib(0, '', '', '', '1', true);
   }
 
   public listarPagina() {
-    this._estatusService.listPage(0, 10).subscribe(
+    this._categoriasService.listPage(0, 10).subscribe(
       response => {
         if (response.content) {
-          this.estatusGet = response.content;
-          console.table(this.estatusGet);
+          this.categoriaGet = response.content;
+          console.table(this.categoriaGet);
         }
       },
       error => {
@@ -74,11 +73,11 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
-      this.estatusGet.forEach(row => this.selection.select(row));
+      this.categoriaGet.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: EstatusGarantiaReal): string {
+  checkboxLabel(row?: CategoriaSib): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -86,48 +85,48 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   }
 
   imprimir() {
-    this.selectedEstatus = this.selection.selected.map(row => row.codigo.toString())[0];
-    console.log(this.selectedEstatus);
-    if (this.selectedEstatus) {
-      this.setEstatus(this.selectedEstatus);
+    this.selectedCategoria = this.selection.selected.map(row => row.codigo.toString())[0];
+    console.log(this.selectedCategoria);
+    if (this.selectedCategoria) {
+      this.setEstatus(this.selectedCategoria);
     }
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(editarEstatus, {
+    const dialogRef = this.dialog.open(editarCategoria, {
       width: '500px',
       // height: '350px',
-      data: { codigo: this.editarEstatus.codigo, descripcion: this.editarEstatus.descripcion }
+      data: { codigo: this.editarCategoria.codigo, descripcion: this.editarCategoria.descripcion }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result != undefined) {
-        this.editarEstatus.codigo = result.codigo;
-        this.editarEstatus.descripcion = result.descripcion;
+        this.editarCategoria.codigo = result.codigo;
+        this.editarCategoria.descripcion = result.descripcion;
         console.log(result);
-        console.table(this.editarEstatus);
+        console.table(this.editarCategoria);
         this.edit();
       }
 
     });
   }
   openDialog2(): void {
-    const dialogRef = this.dialog.open(agregarEstatus, {
+    const dialogRef = this.dialog.open(agregarCategoria, {
       width: '500px',
       // height: '350px',
-      data: { codigo: this.agregarEstatus.codigo, descripcion: this.agregarEstatus.descripcion }
+      data: { codigo: this.agregarCategoria.codigo, descripcion: this.agregarCategoria.descripcion }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.agregarEstatus.codigo = result.codigo;
-      this.agregarEstatus.descripcion = result.descripcion;
+      this.agregarCategoria.codigo = result.codigo;
+      this.agregarCategoria.descripcion = result.descripcion;
 
-      this._estatusService.addEstatus(this.agregarEstatus).subscribe(
+      this._categoriasService.addCategoria(this.agregarCategoria).subscribe(
         response => {
-          console.log(this.agregarEstatus);
+          console.log(this.agregarCategoria);
           console.log(response);
           if (response) {
             console.log(response);
@@ -144,27 +143,27 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   }
 
   openDialog3(): void {
-    const dialogRef = this.dialog.open(eliminarEstatus, {
+    const dialogRef = this.dialog.open(eliminarCategoria, {
       width: '500px',
       height: '350px',
-      data: { codigo: this.editarEstatus.codigo, descripcion: this.editarEstatus.descripcion }
+      data: { codigo: this.editarCategoria.codigo, descripcion: this.editarCategoria.descripcion }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result != undefined) {
         console.log(result)
-        this.delete(this.selectedEstatus);
+        this.delete(this.selectedCategoria);
       }
     });
   }
   
   setEstatus(id) {
-    this._estatusService.getEstatus(id).subscribe(
+    this._categoriasService.getCategoria(id).subscribe(
       response => {
         if (response.code == 0) {
-          this.editarEstatus = response;
-          console.log(this.editarEstatus);
+          this.editarCategoria = response;
+          console.log(this.editarCategoria);
           this.status = 'ok';
         } else {
           this.status = 'error';
@@ -180,7 +179,7 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
     }
     
     edit() {
-      this._estatusService.editEstatus(this.editarEstatus).subscribe(
+      this._categoriasService.editCategoria(this.editarCategoria).subscribe(
         response => {
           console.log(response);
           this.listarPagina();
@@ -200,15 +199,16 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
         );
       }
       delete(id) {
-        // if (this.estatusGet == undefined) retu rn;
-        this._estatusService.deleteEstatus(id).subscribe(
+        // if (this.categoriaGet == undefined) return;
+        this._categoriasService.deleteCategoria(id).subscribe(
           response => {
             if (response.code == 0) {
-              this.editarEstatus = response;
-              console.log(this.editarEstatus);
+              this.editarCategoria = response;
+              console.log(this.editarCategoria);
               this.status = 'ok';
               this.listarPagina();
             } else {
+              console.log(response.description)
               this.status = 'error';
             }
           }, error => {
@@ -224,49 +224,49 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-editarEstatus',
-  templateUrl: './editarEstatus.html',
+  selector: 'app-editarCategoria',
+  templateUrl: './editarCategoria.html',
 })
-export class editarEstatus implements OnInit {
-  public editarEstatus: EstatusGarantiaReal;
+export class editarCategoria implements OnInit {
+  public editarCategoria: CategoriaSib;
   public status: string
-  constructor(public dialogRef: MatDialogRef<editarEstatus>,
-    @Inject(MAT_DIALOG_DATA) public data: EstatusGarantiaReal) { }
+  constructor(public dialogRef: MatDialogRef<editarCategoria>,
+    @Inject(MAT_DIALOG_DATA) public data: CategoriaSib) { }
   displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
-  title = 'Estatus Garantias Reales';
+  title = 'Mantenimiento a Categorias';
   selectedValue: string = "";
   ngOnInit() {
   }
 }
 
 @Component({
-  selector: 'app-agregarEstatus',
-  templateUrl: './agregarEstatus.html'
+  selector: 'app-agregarCategoria',
+  templateUrl: './agregarCategoria.html'
 
 })
-export class agregarEstatus implements OnInit {
+export class agregarCategoria implements OnInit {
   public status: string
-  public agregarEstatus: EstatusGarantiaReal;
+  public agregarCategoria: CategoriaSib;
   constructor() {
   }
   ngOnInit() {
     this.limpiarVariables();
   }
   limpiarVariables() {
-    this.agregarEstatus = new EstatusGarantiaReal(0, '', '', '', true);
+    this.agregarCategoria = new CategoriaSib(0, '', '', '', '1', true);
   }
 }
 
 @Component({
-  selector: 'app-eliminarEstatus',
-  templateUrl: './eliminarEstatus.html',
+  selector: 'app-eliminarCategoria',
+  templateUrl: './eliminarCategoria.html',
 })
-export class eliminarEstatus implements OnInit {
+export class eliminarCategoria implements OnInit {
 
-  public editarEstatus: EstatusGarantiaReal;
+  public editarCategoria: CategoriaSib;
   public status: string
-  constructor(public dialogRef: MatDialogRef<eliminarEstatus>,
-    @Inject(MAT_DIALOG_DATA) public data: EstatusGarantiaReal) { }
+  constructor(public dialogRef: MatDialogRef<eliminarCategoria>,
+    @Inject(MAT_DIALOG_DATA) public data: CategoriaSib) { }
 
 
   ngOnInit() {
