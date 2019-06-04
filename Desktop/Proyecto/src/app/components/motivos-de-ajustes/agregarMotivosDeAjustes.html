@@ -1,40 +1,39 @@
-<h1>Agregar Motivos de Ajustes</h1>
+<h1>
+  Agregar Motivos de Ajustes
+</h1>
 <br>
-<br>
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
+<form>
+  <table>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="codigo" [(ngModel)]="agregarMotivoAjuste.codigo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Descripcion" [(ngModel)]="agregarMotivoAjuste.descripcion"
+              [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="afectaSaldoCapital" [(ngModel)]="agregarMotivoAjuste.afectaSaldoCapital"
+            [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="afectaSaldoInterez" [(ngModel)]="agregarMotivoAjuste.afectaSaldoInterez"
+          [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="afectaSaldoMora" [(ngModel)]="agregarMotivoAjuste.afectaSaldoMora"
+        [ngModelOptions]="{standalone: true}">
 </mat-form-field>
 <br>
-<br>
-<br>
- 
-<section id="section">
-  <label class="example-margin">Afecta Saldo Capital:</label>
-  <mat-radio-group [(ngModel)]="l">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
-</section>
-<br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Interes:</label>
-  <mat-radio-group [(ngModel)]="lab">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
-</section>
-<br>
-<section id="section">
-  <label class="example-margin">Afecta Saldo Mora:  </label>
-  <mat-radio-group [(ngModel)]="la">
-    <mat-radio-button class="sino" value="si">Si</mat-radio-button>
-    <mat-radio-button class="sino" value="no">No</mat-radio-button>
-  </mat-radio-group>
-</section>
-<br>
-<hr>
-<div align="center">
-  <button id="bn" class="material-icons" [mat-dialog-close]="agregarMotivoDeAjuste">save</button>
-  <button id="bn" class="material-icons">cancel</button>
-  <button id="bn" class="material-icons">?</button>
-</div>
+  </table>
+  <br>
+
+  <div>
+      <button type="submit"  [mat-dialog-close]="agregarMotivoAjuste" class="material-icons">save</button>
+      <button class="material-icons">cancel</button>
+      <button class="material-icons">?</button>
+  </div>
+</form>

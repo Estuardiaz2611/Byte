@@ -28,9 +28,11 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  ngOnInit() {
+  ngOnInit() { 
+    this.listarPagina();
+    this.limpiarVariables();
   }
-  displayedColumns: string[] = ['select', 'codigo', 'descripcion', 'equibalente'];
+  displayedColumns: string[] = ['select', 'codigo', 'descripcion', 'equivalencia'];
   dataSource = new MatTableDataSource<Lugar>(this.lugarGet);
   selection = new SelectionModel<Lugar>(false, []); 
 
@@ -143,10 +145,11 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
       if (result != undefined) {
         this.editarLugar.codigo = result.codigo;
         this.editarLugar.descripcion = result.descripcion; 
-        this.editarLugar.equivalencia = result.equibalecia
+        this.editarLugar.equivalencia = result.equivalecia
         console.log(result);
         console.table(this.editarLugar);
         this.edit();
+        console.log(this.edit)
       }
 
     });
@@ -164,7 +167,7 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
       if (result != undefined) {
         this.editarLugar.codigo = result.codigo;
         this.editarLugar.descripcion = result.descripcion; 
-        this.editarLugar.equivalencia = result.equibalecia
+        this.editarLugar.equivalencia = result.equivalecia
         console.log(result);
         console.table(this.editarLugar);
         this.delete(this.selectedLugar);
@@ -175,8 +178,9 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
   edit() {
     this._lugarService.editLugar(this.editarLugar).subscribe(
       response => {
-        console.log(response);
-        this.listarPagina();
+        console.log(response); 
+
+        this.listarPagina(); 
         if (response.code == 0) {
           this.status = 'ok';
         } else {
@@ -220,15 +224,13 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
 @Component({
   selector: 'app-lugar-de-inversion',
   templateUrl: './aLugarInv.html',
+  styleUrls: ['./lugar-de-inversion.component.scss'],
 })
 export class aLuagrInv implements OnInit {
   public agregarLugar: Lugar 
   public status: string
   constructor() { }
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
-  title = 'Notarios';
-  selectedValue: string = "";
- 
+  
   ngOnInit() { 
     this.limpiarVariables()
   } 
@@ -240,30 +242,28 @@ export class aLuagrInv implements OnInit {
 @Component({
   selector: 'app-lugar-de-inversion',
   templateUrl: './editLugarInv.html',
+  styleUrls: ['./lugar-de-inversion.component.scss'],
 })
 export class editLugarInv implements OnInit {
    public editarLugar: Lugar
    public status: string
   constructor(public dialogRef: MatDialogRef<editLugarInv>,
-    @Inject(MAT_DIALOG_DATA) public data: Lugar
-
-  ) { }
-  displayedColumns: String[] =['posicion',  'numero',  'descripcion'];
+    @Inject(MAT_DIALOG_DATA) public data: Lugar) { }
+  displayedColumns: String[] =['posicion',  'numero',  'descripcion','equivalencia'];
   title = 'Lugar';
   selectedValue: string = "";
  
   ngOnInit() { 
 
   } 
-  limpiarVariables() {
-    this.editarLugar = new Lugar(0, 0, '', '', '1', '',true);
-  } 
+  
   
 }
 
 @Component({
   selector: 'app-lugar-de-inversion',
   templateUrl: './elimLugarInv.html',
+  styleUrls: ['./lugar-de-inversion.component.scss'],
 })
 export class elimLugarInv implements OnInit {
    public editarLugar: Lugar
