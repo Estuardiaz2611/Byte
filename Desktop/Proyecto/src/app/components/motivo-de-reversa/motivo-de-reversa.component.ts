@@ -115,8 +115,6 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-
-
             //check
             if(result.cobroAdicional == true) {
               result.CheckCobroAdicional = 'S'
@@ -171,7 +169,7 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result != undefined){        
-      this.editarMotivo.cobroAdicional = result.cobroAdicional;
+      this.editarMotivo.cobroAdicional = result.CheckCobroAdicional;
       this.editarMotivo.codigo = result.codigo;
       this.editarMotivo.descripcion = result.descripcion;
       this.editarMotivo.institucion = result.institucion;
@@ -203,7 +201,7 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result != undefined){
-        this.editarMotivo.cobroAdicional = result.cobroAdicional;
+        this.editarMotivo.cobroAdicional = result.CheckCobroAdicional;
         this.editarMotivo.codigo = result.codigo;
         this.editarMotivo.descripcion = result.descripcion;
         this.editarMotivo.institucion = result.institucion;
