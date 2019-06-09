@@ -258,7 +258,6 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     agregarPasosCierre,
     SidebarsComponent,
     ContabilizacionComponent,
-<<<<<<< HEAD
     agregarcontabilizacion,
     PoderComponent,
     aPoder,
@@ -267,12 +266,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     aInstancia,
     bInstancia,
     eInstancia,
-=======
     agregarcontabilizacion, 
     eliminarICobrosAdicionales,
     editarICobrosAdicionales,
     agregarICobrosAdicionales,
->>>>>>> c2855a7d9db32a4da9ad1fcbc153f0122c27440a
   //VILLATORO
     OrigenDeFondosComponent,
     agregarOrigenDeFondos,
@@ -289,11 +286,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DestinosComponent, 
     agregarDestinos, 
     editarDestinos, 
-<<<<<<< HEAD
     eliminarDestinos, PoderComponent, InstanciasComponent
-=======
-    eliminarDestinos, 
->>>>>>> c2855a7d9db32a4da9ad1fcbc153f0122c27440a
     
   ],
   imports: [
