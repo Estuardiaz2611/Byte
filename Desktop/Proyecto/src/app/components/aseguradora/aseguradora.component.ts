@@ -30,7 +30,9 @@ export class AseguradoraComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  ngOnInit() {
+  ngOnInit() { 
+    this.listarPagina() 
+    this.limpiarVariables()
   }
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
   dataSource = new MatTableDataSource<Aseguradora>(this.aseguradoraGet);

@@ -15,22 +15,22 @@ export class InstitucionesCobrosAdicionalesService {
   }
 
   listPage(paginaNumero, paginaTam): Observable<any>{
-    return this._http.get(`${this.url}/almacenadoras/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`, {headers: this.headers});
+    return this._http.get(`${this.url}/institucionCobroAdicional/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`, {headers: this.headers});
   } 
   addICobrosA(institucionesCobrosAdicionales: InstitucionesCobrosAdicionales): Observable<any> {
     let params =  JSON.stringify(institucionesCobrosAdicionales)  
-    return this._http.post(this.url+'/almacenadoras/create', params,{headers: this.headers})
+    return this._http.post(this.url+'/institucionCobroAdicional/create', params,{headers: this.headers})
   }
   getICobrosA(idInstitucionesCobrosAdicionales): Observable<any> {
-    return this._http.get(this.url+'/almacenadoras/read?empresa=1&codigo='+idInstitucionesCobrosAdicionales);
+    return this._http.get(this.url+'/institucionCobroAdicional/read?empresa=1&codigo='+idInstitucionesCobrosAdicionales);
   }
   
   editICobrosA(institucionesCobrosAdicionales: InstitucionesCobrosAdicionales):Observable<any>{
     var params = JSON.stringify(institucionesCobrosAdicionales)
-    return this._http.patch(this.url + '/almacenadoras/update', params, {headers: this.headers});
+    return this._http.put(this.url + '/institucionCobroAdicional/update', params, {headers: this.headers});
   }
  
   deleteICobrosA(idInstitucionesCobrosAdicionales):Observable<any>{
-    return this._http.delete(this.url + '/almacenadoras/delete?empresa=1&codigo='+idInstitucionesCobrosAdicionales);
+    return this._http.delete(this.url + '/institucionCobroAdicional/delete?empresa=1&codigo='+idInstitucionesCobrosAdicionales);
   }
 }

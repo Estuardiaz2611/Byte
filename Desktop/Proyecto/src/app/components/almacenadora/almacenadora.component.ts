@@ -6,6 +6,8 @@ import { AlmacenadorasService } from 'src/app/services/almacenadoras.service';
 import { Almacenadora } from 'src/app/models/almacenadoras.model';
 import { inject } from '@angular/core/testing'; 
 
+
+
 @Component({
   selector: 'app-almacenadora',
   templateUrl: './almacenadora.component.html',
@@ -20,34 +22,75 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
   public agregarAlmacenadora: Almacenadora;
   public editarAlmacenadora: Almacenadora;
   public status: string;
-  public selectedAlmacenadora: number;
-
+  public selectedAlmacenadora: number;  
+  public e :string[];
+  public m : number;
+  public n : number; 
+ 
+  
+  
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _almacenadorasService: AlmacenadorasService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.addListener(this._mobileQueryListener);  
+     
+
   } 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+   
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   ngOnInit() {
     this.listarPagina();
-    this.limpiarVariables();
+    this.limpiarVariables(); 
+   
   }
-
+  
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
   selection = new SelectionModel<Almacenadora>(false, []); 
-  dataSource = new MatTableDataSource<Almacenadora>(this.almacenadoraGet);
-
+  dataSource = new MatTableDataSource<Almacenadora>(this.almacenadoraGet); 
+  
+   
+  dataSource1 = new MatTableDataSource() 
   limpiarVariables() {
-    this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true);
-  }
+    this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true); 
+    
+  } 
+  public mas(){
+   if(this.m >=0){ 
+    this.m =  this.m + 1 ; 
+    console.log(this.m) 
+    
+   }else{   
+  
+     if(this.m = 0){
+      this.m =  this.m + 1 ; 
+      console.log(this.m)
+     }
+    console.log(this.m)
+   }  
+   this.listarPagina()
+  }  
+  public menos(){
+    if(this.m > 0){ 
+     this.m =  this.m - 1 ; 
+     console.log(this.m) 
+     
+    }else{   
+   
+      if(this.m == 0){
+        
+       console.log("es igual a zero")
+      }
+     console.log(this.m)
+    }  
+    this.listarPagina()
+   } 
+
 
   public listarPagina() {
-    this._almacenadorasService.listPage(0, 10).subscribe(
+    this._almacenadorasService.listPage(this.m, 10).subscribe(
       response => {
         this.almacenadoraGet = response.content;
         console.table(this.almacenadoraGet)
@@ -56,7 +99,14 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
         var errorMessage = <any>error;
         console.log(errorMessage)
       }
-    )
+    ) 
+  }   
+  
+  
+  applyFilter(filterValue: string) { 
+     
+    this.dataSource1.filter = filterValue.trim().toLowerCase(); 
+   // console.log("sip")
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
