@@ -1,6 +1,7 @@
 import { Component, OnInit,OnDestroy ,Inject,ChangeDetectorRef} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Notarios } from 'src/app/models/notarios.model';
@@ -39,10 +40,11 @@ private _mobileQueryListener:() => void;
 
   timeLeft: number;
   interval;
-  dialog: any;
 
-  constructor( public changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, dialog: MatDialog, private _notarioService: notariosService) {
-    this.limpiarVariables();
+  constructor(public dialog: MatDialog,  public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _notarioService: notariosService) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   applyFilter(filterValue: string) {
@@ -134,6 +136,7 @@ startTimer() {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      console.log(result);
       if (result != undefined) {
         this.notarioModel.codigo  = result.codigo;
         this.notarioModel.direccion = result.direccion;
@@ -145,7 +148,26 @@ startTimer() {
         this.notarioModel.fax = result.fax;
         console.log(result);
         console.table(this.notarioModel);
-        this.agregar();
+
+        this._notarioService.addNotarios(this.notarioModel).subscribe(
+          response => {
+            console.log(this.notarioModel)
+            console.log(response)
+            if(response) {
+              this.snackBar.open('Agregado correctamente', '', {duration: 2500});
+              console.log(response)
+              this.status = 'ok';
+              this.listarPagina();
+            }else {
+              this.snackBar.open(response.description, '', {duration: 2500})
+            }
+          },
+          error => {
+            var errorMessage = <any>error;
+            console.log(errorMessage)
+          }
+        )
+        //this.agregar();
       }
     });
   }

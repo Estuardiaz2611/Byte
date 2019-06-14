@@ -10,18 +10,7 @@ matRipple
 <h1>
 ABOGADOS Y NOTARIOS
 </h1>
-<!-- <mat-toolbar class="encabezado" class="color" >Notarios</mat-toolbar> -->
-<div id="fields">
-  <form>
-    <mat-form-field class="field">
-      <input matInput placeholder="Nombre" value="">
-    </mat-form-field>
 
-    <mat-form-field class="field">
-      <input matInput placeholder="Descripcion" value="">
-    </mat-form-field>
-  </form>
-</div>
 <div>
   <mat-form-field id="filtro">
     <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -32,7 +21,7 @@ ABOGADOS Y NOTARIOS
 <br>
 
 
-<table width="80%" mat-table (click)="imprimir()" [dataSource]="dataSource2" class="centroTabla">
+<table width="80%" mat-table (click)="imprimir()" [dataSource]="dataSource2" id="tabla">
 
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -68,7 +57,7 @@ ABOGADOS Y NOTARIOS
   <br>
   <br>
 
-<div class="centro">
+<div class="centro" align="center">
   <button class="material-icons" (click)="openDialog()">add_box</button>
   <button class="material-icons" (click)="openDialogEdit()">create</button>
   <button class="material-icons">undo</button>

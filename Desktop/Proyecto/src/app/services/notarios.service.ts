@@ -25,7 +25,7 @@ export class notariosService{
 
      //ELIMINAR
      deleteNotarios(idNotarios): Observable<any>{
-        return this._http.delete(this.url+'/abogadosNotarios/delete?codigo='+idNotarios);
+        return this._http.delete(this.url+'/abogadosNotarios/delete?empresa=1&codigo='+idNotarios);
         
     }
 
@@ -36,7 +36,7 @@ export class notariosService{
    
     ///MOSTRAR
     getNotarios(idNotarios): Observable<any>{
-        return this._http.get(this.url+'/abogadosNotarios/read?codigo='+idNotarios);
+        return this._http.get(this.url+'/abogadosNotarios/read?empresa=1&codigo='+idNotarios);
     }
 
     //ACTUALIZAR
