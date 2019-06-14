@@ -1,4 +1,5 @@
 import { MatTableDataSource } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -23,12 +24,18 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public motivoDeReversaGet: MotivoDeReversa[];
+  public motivoDeReversas: MotivoDeReversa[];
   public agregarMotivoDeReversa: MotivoDeReversa;
   public editarMotivo: MotivoDeReversa;
   public status: string;
   public selectedMotivoDeReversa: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
  
-  constructor(public dialog: MatDialog,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _motivoDeReversaService: MotivoDeReversaService) {  
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _motivoDeReversaService: MotivoDeReversaService) {  
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -50,10 +57,29 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
     this.agregarMotivoDeReversa = new MotivoDeReversa('', 0, 0, '', '', '1', true, 0, '','','','')
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._motivoDeReversaService.listPage(0, 10).subscribe(
+    this._motivoDeReversaService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.motivoDeReversaGet = response.content;
+        this.motivoDeReversas = this.motivoDeReversaGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.motivoDeReversaGet)
       },
       error => {
@@ -61,6 +87,16 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
         console.log(errorMessage)
       }
     )
+  }
+
+
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.motivoDeReversas = this.motivoDeReversaGet.filter(motivoDeReversa => motivoDeReversa.codigo == filterValue);
+    } else {
+      this.motivoDeReversas = this.motivoDeReversaGet;
+    }
+    // console.log("sip")
   }
 
   
@@ -85,10 +121,6 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
       }
       return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
     } 
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
   imprimir() {
     this.selectedMotivoDeReversa = this.selection.selected.map(row => row.codigo)[0];
@@ -139,9 +171,12 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
           console.log(this.agregarMotivoDeReversa)
           console.log(response)
           if(response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response)
             this.status = 'ok'
             this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -242,8 +277,10 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
         console.log(response);
         this.listarPagina();
         if(response.code == 0){
+          this.snackBar.open('Actualizado correctamente','',{duration: 2500});
           this.status = 'ok';
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           alert(response.description);
         }
       }, error => {
@@ -266,7 +303,9 @@ export class MotivoDeReversaComponent implements OnInit, OnDestroy  {
           console.log(this.editarMotivo)
           this.status = 'ok'
           this.listarPagina();
+          this.snackBar.open('Eliminado correctamente','',{duration: 2500});
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           this.status = 'error';
         }
       }, error => {

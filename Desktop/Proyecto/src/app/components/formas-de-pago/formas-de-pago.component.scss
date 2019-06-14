@@ -10,10 +10,6 @@ h1{
   margin-bottom: -5px;
 }
 
-#t {
-  max-width: auto;
-}
-
 .field {
     font-size: 20px;
     width: 30%;
@@ -35,7 +31,7 @@ h1{
   
   .example-container {
     height: 300px;
-    width: 750px;
+    width: 770px;
     overflow: auto;
     align-items: center;
     align-content: center;
@@ -49,8 +45,8 @@ h1{
     height: 100%;
     width: 750px;
   }
-
-  #bn {
+  
+  button {
     background-color: gold;
     text-align: center;
     align-content: center;
@@ -61,6 +57,7 @@ h1{
     //border-bottom-left-radius: 20px;
     //border-top-right-radius: 20px;
     border-radius: 100%;
+    
   }
 
   #botones{
@@ -111,12 +108,4 @@ h1{
   .example-full-width{
     width: 50%;
     margin-left: 10%;
-  }
-  .example-button-row button,
-  .example-button-row a {
-    margin-left: 2%;
-  }
-
-  #eliminar{
-    margin-left: 30%;
   }

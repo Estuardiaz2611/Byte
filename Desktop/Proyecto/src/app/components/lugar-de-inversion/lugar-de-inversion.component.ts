@@ -1,4 +1,5 @@
 import {MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy, Inject} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -15,12 +16,18 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;  
   public lugarGet: Lugar[];
+  public lugares: Lugar[];
   public agregarLugar: Lugar;
   public editarLugar: Lugar;
   public status: string;
   public selectedLugar: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
 
-  constructor(public dialog:MatDialog,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _lugarService : LugarService) { 
+  constructor(public dialog:MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _lugarService : LugarService) { 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -37,12 +44,31 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
   selection = new SelectionModel<Lugar>(false, []); 
 
   limpiarVariables() {
-    this.agregarLugar = new Lugar(0, 0, '', '', '1','', true);
+    this.agregarLugar = new Lugar(0, 0, '', '', '','', true);
   }
+
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
   public listarPagina() {
-    this._lugarService.listPage(0, 10).subscribe(
+    this._lugarService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.lugarGet = response.content;
+        this.lugares = this.lugarGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.lugarGet)
       },
       error => {
@@ -52,6 +78,14 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
     )
   }
 
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.lugares = this.lugarGet.filter(lugar => lugar.codigo == filterValue);
+    } else {
+      this.lugares = this.lugarGet;
+    }
+    // console.log("sip")
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -82,8 +116,29 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
     }
   }
 
-
   openDialog(): void {
+    const dialogRef = this.dialog.open(editLugarInv, {
+      width: '500px',
+      // height: '350px',
+      data: { codigo: this.editarLugar.codigo, descripcion: this.editarLugar.descripcion, equivalencia: this.editarLugar.equivalencia }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        this.editarLugar.codigo = result.codigo;
+        this.editarLugar.descripcion = result.descripcion; 
+        this.editarLugar.equivalencia = result.equivalecia
+        console.log(result);
+        console.table(this.editarLugar);
+        this.edit();
+        console.log(this.edit)
+      }
+
+    });
+  }  
+
+  openDialog2(): void {
     const dialogRef = this.dialog.open(aLuagrInv, {
       width: '500px',
       height: '350px',
@@ -101,8 +156,12 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
           console.log(this.agregarLugar)
           console.log(response)
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response)
             this.status = 'ok'
+            this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -132,28 +191,9 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
         }
       }
     );
-  }  
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(editLugarInv, {
-      width: '500px',
-      // height: '350px',
-      data: { codigo: this.editarLugar.codigo, descripcion: this.editarLugar.descripcion, equivalencia: this.editarLugar.equivalencia }
-    });
+  } 
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result != undefined) {
-        this.editarLugar.codigo = result.codigo;
-        this.editarLugar.descripcion = result.descripcion; 
-        this.editarLugar.equivalencia = result.equivalecia
-        console.log(result);
-        console.table(this.editarLugar);
-        this.edit();
-        console.log(this.edit)
-      }
-
-    });
-  }  
+  
 
   openDialog3(): void {
     const dialogRef = this.dialog.open(elimLugarInv, {
@@ -179,11 +219,12 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
     this._lugarService.editLugar(this.editarLugar).subscribe(
       response => {
         console.log(response); 
-
         this.listarPagina(); 
         if (response.code == 0) {
+          this.snackBar.open('Actualizado correctamente','',{duration: 2500});
           this.status = 'ok';
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           alert(response.description);
         }
       }, error => {
@@ -195,7 +236,8 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
         }
       }
     );
-  }  
+  } 
+
   delete(id){
     if(this.lugarGet == undefined) return;
       this._lugarService.deleteLugar(id).subscribe(
@@ -204,7 +246,10 @@ export class LugarDeInversionComponent implements OnInit, OnDestroy{
             this.editarLugar= response;
             console.log(this.editarLugar)
             this.status = 'ok';
+            this.listarPagina();
+            this.snackBar.open('Eliminado correctamente','',{duration: 2500});
           } else {
+            this.snackBar.open(response.description, '',{duration: 2500});
             this.status = 'error';
           }
         }, error => {
@@ -235,7 +280,7 @@ export class aLuagrInv implements OnInit {
     this.limpiarVariables()
   } 
   limpiarVariables() {
-    this.agregarLugar= new Lugar(0, 0, '', '', '1','', true);
+    this.agregarLugar= new Lugar(0, 0, '', '', '','', true);
   }
 } 
 

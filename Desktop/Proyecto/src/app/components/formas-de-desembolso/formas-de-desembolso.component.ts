@@ -1,4 +1,5 @@
 import { MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -17,12 +18,18 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public formasDesembolsoGet: FormasDeDesembolso[];
+  public formasDesembolsos: FormasDeDesembolso[];
   public agregarFormasDesembolso: FormasDeDesembolso;
   public editarFormasDesembolso: FormasDeDesembolso;
   public status: string;
   public selectedFormasDesembolso: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
  
-  constructor(public dialog: MatDialog,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _formasDeDesembolsoService: FormasDeDesembolsoService) {  
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _formasDeDesembolsoService: FormasDeDesembolsoService) {  
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -44,10 +51,29 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
     this.agregarFormasDesembolso = new FormasDeDesembolso(0, 0, '', '', true);
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._formasDeDesembolsoService.listPage(0, 10).subscribe(
+    this._formasDeDesembolsoService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.formasDesembolsoGet = response.content;
+        this.formasDesembolsos = this.formasDesembolsoGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.formasDesembolsoGet)
       },
       error => {
@@ -55,6 +81,16 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
         console.log(errorMessage)
       }
     )
+  }
+
+
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.formasDesembolsos = this.formasDesembolsoGet.filter(formasDesembolso => formasDesembolso.codigo == filterValue);
+    } else {
+      this.formasDesembolsos = this.formasDesembolsoGet;
+    }
+    // console.log("sip")
   }
 
     /** Whether the number of selected elements matches the total number of rows. */
@@ -78,10 +114,6 @@ export class FormasDeDesembolsoComponent implements OnInit, OnDestroy {
       }
       return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
     } 
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
   imprimir() {
     this.selectedFormasDesembolso = this.selection.selected.map(row => row.codigo)[0];
@@ -110,10 +142,12 @@ openDialog1(): void { ///AGREGAR
         console.log(this.agregarFormasDesembolso)
         console.log(response)
         if(response) {
+          this.snackBar.open('Agregado correctamente','',{duration: 2500});
           console.log(response)
           this.status = 'ok'
           this.listarPagina();
-
+        }else{
+          this.snackBar.open(response.description, '',{duration: 2500});
         }
       },
       error => {
@@ -188,8 +222,10 @@ edit() {
       console.log(response);
       this.listarPagina();
       if(response.code == 0){
+        this.snackBar.open('Actualizado correctamente','',{duration: 2500});
         this.status = 'ok';
       } else {
+        this.snackBar.open(response.description, '',{duration: 2500});
         alert(response.description);
       }
     }, error => {
@@ -212,7 +248,9 @@ delete(id) {
         console.log(this.editarFormasDesembolso)
         this.status = 'ok';
         this.listarPagina();
+        this.snackBar.open('Eliminado correctamente','',{duration: 2500});
       } else {
+        this.snackBar.open(response.description, '',{duration: 2500});
         this.status = 'error';
       }
     }, error => {

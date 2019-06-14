@@ -15,7 +15,7 @@
 
  <!-- Checkbox Column  acaca hay modificacion  -->
 <div class="example-container mat-elevation-z8" align="center">
-  <table width="80%" mat-table (click)="imprimir()" [dataSource]="cobrosAdicionalesGet" class="mat-elevation-z8">
+  <table width="80%" mat-table (click)="imprimir()" [dataSource]="cobrosAdicionales" class="mat-elevation-z8">
 
     <!-- Checkbox Column  -->
     <ng-container matColumnDef="select">
@@ -50,12 +50,12 @@
 </div>
 <br>
 
-<div id="botones">
-  <button id="bn" class="material-icons" (click)="openDialog1()">add_box</button>
-  <button id="bn" class="material-icons" (click)="openDialog2()">create</button>
-  <button class="material-icons">undo</button>
-  <button class="material-icons">redo</button>
+<div align="center">
+  <button class="material-icons" (click)="openDialog1()">add_box</button>
+  <button class="material-icons" (click)="openDialog2()">create</button>
+  <button class="material-icons" (click)="menos()" >undo</button>
+  <button class="material-icons" (click)="mas()">redo</button>
   <button class="material-icons">refresh</button>
-  <button id="bn" class="material-icons" (click)="openDialog3()">cancel</button>
-  <button id="bn" class="material-icons">?</button>
-  </div>
+  <button class="material-icons"(click)="openDialog3()" >cancel</button>
+  <button class="material-icons"  >?</button>
+</div>

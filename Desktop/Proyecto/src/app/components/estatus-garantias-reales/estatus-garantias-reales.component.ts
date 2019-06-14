@@ -1,4 +1,5 @@
 import { MatTableDataSource } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -18,19 +19,23 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public estatusGet: EstatusGarantiaReal[];
+  public estatus: EstatusGarantiaReal[];
   public agregarEstatus: EstatusGarantiaReal;
   public editarEstatus: EstatusGarantiaReal;
   public status: string;
   public selectedEstatus: string;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _estatusService: EstatusService) {
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _estatusService: EstatusService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -47,20 +52,47 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
     this.agregarEstatus = new EstatusGarantiaReal(0, '', '', '', true);
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._estatusService.listPage(0, 10).subscribe(
+    this._estatusService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
-        if (response.content) {
-          this.estatusGet = response.content;
-          console.table(this.estatusGet);
-        }
+        this.estatusGet = response.content;
+        this.estatus = this.estatusGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
+        console.table(this.estatusGet)
       },
       error => {
         var errorMessage = <any>error;
-        console.log(errorMessage);
+        console.log(errorMessage)
       }
     )
   }
+
+
+  //applyFilter(filterValue: number) {
+  //  if (filterValue) {
+  //    this.estatus = this.estatusGet.filter(estatu => estatu.codigo == filterValue);
+  //  } else {
+  //    this.estatus = this.estatusGet;
+  //  }
+    // console.log("sip")
+  //}
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -130,9 +162,12 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
           console.log(this.agregarEstatus);
           console.log(response);
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response);
             this.status = 'ok';
             this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -185,8 +220,10 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
           console.log(response);
           this.listarPagina();
           if (response.code == 0) {
+            this.snackBar.open('Actualizado correctamente','',{duration: 2500});
             this.status = 'ok';
           } else {
+            this.snackBar.open(response.description, '',{duration: 2500});
             alert(response.description);
           }
         }, error => {
@@ -208,7 +245,9 @@ export class EstatusGarantiasRealesComponent implements OnInit, OnDestroy {
               console.log(this.editarEstatus);
               this.status = 'ok';
               this.listarPagina();
+              this.snackBar.open('Eliminado correctamente','',{duration: 2500});
             } else {
+              this.snackBar.open(response.description, '',{duration: 2500});
               this.status = 'error';
             }
           }, error => {

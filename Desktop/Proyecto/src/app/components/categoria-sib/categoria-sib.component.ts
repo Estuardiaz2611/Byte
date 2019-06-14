@@ -1,4 +1,5 @@
 import { MatTableDataSource } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -17,19 +18,23 @@ export class CategoriaSibComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public categoriaGet: CategoriaSib[];
+  public categorias: CategoriaSib[];
   public agregarCategoria: CategoriaSib;
   public editarCategoria: CategoriaSib;
   public status: string;
   public selectedCategoria: string;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _categoriasService: CategoriaService) {
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _categoriasService: CategoriaService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -46,20 +51,47 @@ export class CategoriaSibComponent implements OnInit, OnDestroy {
     this.agregarCategoria = new CategoriaSib(0, '', '', '', '1', true);
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._categoriasService.listPage(0, 10).subscribe(
+    this._categoriasService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
-        if (response.content) {
-          this.categoriaGet = response.content;
-          console.table(this.categoriaGet);
-        }
+        this.categoriaGet = response.content;
+        this.categorias = this.categoriaGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
+        console.table(this.categoriaGet)
       },
       error => {
         var errorMessage = <any>error;
-        console.log(errorMessage);
+        console.log(errorMessage)
       }
     )
   }
+
+
+  //applyFilter(filterValue: number) {
+  //  if (filterValue) {
+  //    this.categorias = this.categoriaGet.filter(categoria => categoria.codigo == filterValue);
+  //  } else {
+  //    this.categorias = this.categoriaGet;
+  //  }
+    // console.log("sip")
+  //}
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -129,9 +161,12 @@ export class CategoriaSibComponent implements OnInit, OnDestroy {
           console.log(this.agregarCategoria);
           console.log(response);
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response);
             this.status = 'ok';
             this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -184,8 +219,10 @@ export class CategoriaSibComponent implements OnInit, OnDestroy {
           console.log(response);
           this.listarPagina();
           if (response.code == 0) {
+            this.snackBar.open('Actualizado correctamente','',{duration: 2500});
             this.status = 'ok';
           } else {
+            this.snackBar.open(response.description, '',{duration: 2500});
             alert(response.description);
           }
         }, error => {
@@ -207,7 +244,9 @@ export class CategoriaSibComponent implements OnInit, OnDestroy {
               console.log(this.editarCategoria);
               this.status = 'ok';
               this.listarPagina();
+              this.snackBar.open('Eliminado correctamente','',{duration: 2500});
             } else {
+              this.snackBar.open(response.description, '',{duration: 2500});
               console.log(response.description)
               this.status = 'error';
             }

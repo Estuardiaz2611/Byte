@@ -1,12 +1,10 @@
 import { MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AlmacenadorasService } from 'src/app/services/almacenadoras.service';
 import { Almacenadora } from 'src/app/models/almacenadoras.model';
-import { inject } from '@angular/core/testing'; 
-
-
 
 @Component({
   selector: 'app-almacenadora',
@@ -14,75 +12,94 @@ import { inject } from '@angular/core/testing';
   styleUrls: ['./almacenadora.component.scss'],
   providers: [AlmacenadorasService]
 })
+
 export class AlmacenadoraComponent implements OnInit, OnDestroy {
- 
+
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public almacenadoraGet: Almacenadora[];
+  public almacenadoras: Almacenadora[];
   public agregarAlmacenadora: Almacenadora;
   public editarAlmacenadora: Almacenadora;
   public status: string;
-  public selectedAlmacenadora: number;  
-   
- 
-  
-  
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _almacenadorasService: AlmacenadorasService) {
+  public selectedAlmacenadora: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
+
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _almacenadorasService: AlmacenadorasService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);  
-     
-
-  } 
-   
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
   ngOnInit() {
     this.listarPagina();
-    this.limpiarVariables(); 
-   
+    this.limpiarVariables();
   }
-  
+
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
-  selection = new SelectionModel<Almacenadora>(false, []); 
-  dataSource = new MatTableDataSource<Almacenadora>(this.almacenadoraGet); 
-  
-   
-  dataSource1 = new MatTableDataSource() 
+  selection = new SelectionModel<Almacenadora>(false, []);
+  dataSource = new MatTableDataSource<Almacenadora>(this.almacenadoraGet);
+
+
+  dataSource1 = new MatTableDataSource()
   limpiarVariables() {
-    this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true); 
-    
-  } 
-  
+    this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true);
+  }
+
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
 
   public listarPagina() {
-    this._almacenadorasService.listPage(0, 10).subscribe(
+    this._almacenadorasService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.almacenadoraGet = response.content;
+        this.almacenadoras = this.almacenadoraGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.almacenadoraGet)
       },
       error => {
         var errorMessage = <any>error;
         console.log(errorMessage)
       }
-    ) 
-  }   
-  
-  
-  applyFilter(filterValue: string) { 
-     
-    this.dataSource1.filter = filterValue.trim().toLowerCase(); 
-   // console.log("sip")
+    )
+  }
+
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.almacenadoras = this.almacenadoraGet.filter(almacenadora => almacenadora.codigo == filterValue);
+    } else {
+      this.almacenadoras = this.almacenadoraGet;
+    }
+    // console.log("sip")
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length; 
-   //const numRows = this.almacenadoraGet.length;
-    return numSelected === numRows; 
+    const numRows = this.dataSource.data.length;
+    //const numRows = this.almacenadoraGet.length;
+    return numSelected === numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -103,7 +120,7 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
   imprimir() {
     this.selectedAlmacenadora = this.selection.selected.map(row => row.codigo)[0];
     console.log(this.selectedAlmacenadora);
-    if(this.selectedAlmacenadora) {
+    if (this.selectedAlmacenadora) {
       this.setAlmacenadora(this.selectedAlmacenadora);
     }
   }
@@ -127,6 +144,7 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
 
     });
   }
+
   openDialog2(): void {
     const dialogRef = this.dialog.open(bAlmacenadora, {
       width: '500px',
@@ -139,14 +157,18 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
       console.log(result);
       this.agregarAlmacenadora.codigo = result.codigo;
       this.agregarAlmacenadora.descripcion = result.descripcion;
-      
+
       this._almacenadorasService.addAlmacenadora(this.agregarAlmacenadora).subscribe(
-        response => { 
+        response => {
           console.log(this.agregarAlmacenadora)
           console.log(response)
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response)
-            this.status = 'ok'
+            this.status = 'ok';
+            this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -155,13 +177,13 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
         }
       )
     });
-  } 
+  }
 
   openDialog3(): void {
     const dialogRef = this.dialog.open(eAlmacenadora, {
       width: '500px',
       height: '350px',
-      data: {codigo: this.editarAlmacenadora.codigo, descripcion: this.editarAlmacenadora.descripcion}
+      data: { codigo: this.editarAlmacenadora.codigo, descripcion: this.editarAlmacenadora.descripcion }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -179,22 +201,22 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
   setAlmacenadora(id) {
     this._almacenadorasService.getAlmacenadora(id).subscribe(
       response => {
-        if(response.code == 0) {
+        if (response.code == 0) {
           this.editarAlmacenadora = response;
           console.log(this.editarAlmacenadora);
-          this.status='ok';
+          this.status = 'ok';
         } else {
           this.status = 'error';
         }
       }, error => {
         let errorMessage = <any>error;
         console.log(errorMessage);
-        if(errorMessage != null) {
+        if (errorMessage != null) {
           this.status = 'error';
         }
       }
     );
-  } 
+  }
 
   edit() {
     this._almacenadorasService.editAlmacenadora(this.editarAlmacenadora).subscribe(
@@ -202,8 +224,10 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
         console.log(response);
         this.listarPagina();
         if (response.code == 0) {
+          this.snackBar.open('Actualizado correctamente','',{duration: 2500});
           this.status = 'ok';
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           alert(response.description);
         }
       }, error => {
@@ -216,15 +240,19 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
       }
     );
   }
-  delete(id){
-  if(this.almacenadoraGet == undefined) return;
+
+  delete(id) {
+    if (this.almacenadoraGet == undefined) return;
     this._almacenadorasService.deleteAlmacenadora(id).subscribe(
       response => {
         if (response.code == 0) {
           this.editarAlmacenadora = response;
           console.log(this.editarAlmacenadora)
           this.status = 'ok';
+          this.listarPagina();
+          this.snackBar.open('Eliminado correctamente','',{duration: 2500});
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           this.status = 'error';
         }
       }, error => {
@@ -235,14 +263,9 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
         }
       }
     );
-  
-  } 
 
-
-
-} 
- 
-
+  }
+}
 
 @Component({
   selector: 'app-aalmacenadora',
@@ -250,18 +273,16 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
   styleUrls: ['./almacenadora.component.scss'],
 })
 export class aAlmacenadora implements OnInit {
-  public editarAlmacenadora: Almacenadora; 
+  public editarAlmacenadora: Almacenadora;
   public status: string
-  constructor( public dialogRef: MatDialogRef<aAlmacenadora>,
+  constructor(public dialogRef: MatDialogRef<aAlmacenadora>,
     @Inject(MAT_DIALOG_DATA) public data: Almacenadora) { }
   displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
   title = 'Almacenadora';
   selectedValue: string = "";
-  ngOnInit() { 
-    
-  }  
+  ngOnInit() {
 
-  
+  }
 }
 
 @Component({
@@ -281,27 +302,25 @@ export class bAlmacenadora implements OnInit {
   limpiarVariables() {
     this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true);
   }
-} 
+}
 
 @Component({
   selector: 'app-eAlmacenadora',
-  templateUrl: './eAlmacenadora.html', 
+  templateUrl: './eAlmacenadora.html',
   styleUrls: ['./almacenadora.component.scss'],
 })
 export class eAlmacenadora implements OnInit {
- 
-  public editarAlmacenadora: Almacenadora; 
+
+  public editarAlmacenadora: Almacenadora;
   public status: string
-  constructor( public dialogRef: MatDialogRef<eAlmacenadora>,
+  constructor(public dialogRef: MatDialogRef<eAlmacenadora>,
     @Inject(MAT_DIALOG_DATA) public data: Almacenadora) { }
 
 
   ngOnInit() {
     //this.limpiarVariables();
   }
- //limpiarVariables() {
-   // this.editarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true);
- // } 
-
-  
+  //limpiarVariables() {
+  // this.editarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true);
+  // } 
 }  

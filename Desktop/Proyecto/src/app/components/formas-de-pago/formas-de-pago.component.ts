@@ -1,4 +1,5 @@
 import { MatTableDataSource } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -18,19 +19,23 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public formaGet: FormasDePago [];
+  public formas: FormasDePago [];
   public agregarForma: FormasDePago ;
   public editarForma: FormasDePago ;
   public status: string;
   public selectedForma: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _FormasService: FormasDePagoService) {
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _FormasService: FormasDePagoService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -47,10 +52,29 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
     this.agregarForma = new FormasDePago(0, '', '1');
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._FormasService.listPage(0, 10).subscribe(
+    this._FormasService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.formaGet = response.content;
+        this.formas = this.formaGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.formaGet)
       },
       error => {
@@ -58,6 +82,16 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
         console.log(errorMessage)
       }
     )
+  }
+
+
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.formas = this.formaGet.filter(forma => forma.codigo == filterValue);
+    } else {
+      this.formas = this.formaGet;
+    }
+    // console.log("sip")
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -128,9 +162,12 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
           console.log(this.agregarForma)
           console.log(response)
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response)
             this.status = 'ok';
             this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -186,8 +223,10 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
         console.log(response);
         this.listarPagina();
         if (response.code == 0) {
+          this.snackBar.open('Actualizado correctamente','',{duration: 2500});
           this.status = 'ok';
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           alert(response.description);
         }
       }, error => {
@@ -209,7 +248,9 @@ export class FormasDePagoComponent implements OnInit, OnDestroy {
           console.log(this.editarForma);
           this.status = 'ok';
           this.listarPagina();
+          this.snackBar.open('Eliminado correctamente','',{duration: 2500});
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           this.status = 'error';
         }
       }, error => {

@@ -12,7 +12,7 @@
 
 <!---->
     <div class="example-container mat-elevation-z8">
-      <table mat-table (click)="imprimir()" [dataSource]="formasDesembolsoGet">
+      <table mat-table (click)="imprimir()" [dataSource]="formasDesembolsos">
     
         <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
@@ -47,10 +47,11 @@
     </div>
 <br>
 <div align="center">
-<button id="bn" class="material-icons" (click)="openDialog1()">add</button>
-<button id="bn" class="material-icons" (click)="openDialog2()">create</button>
-<button id="bn" class="material-icons">navigate_before</button>
-<button id="bn" class="material-icons">navigate_next</button>
-<button id="bn" class="material-icons" (click)="openDialog3()">delete</button>
-<button id="bn" class="material-icons">?</button>
+  <button class="material-icons" (click)="openDialog1()">add_box</button>
+  <button class="material-icons" (click)="openDialog2()">create</button>
+  <button class="material-icons" (click)="menos()" >undo</button>
+  <button class="material-icons" (click)="mas()">redo</button>
+  <button class="material-icons">refresh</button>
+  <button class="material-icons"(click)="openDialog3()" >cancel</button>
+  <button class="material-icons"  >?</button>
 </div>

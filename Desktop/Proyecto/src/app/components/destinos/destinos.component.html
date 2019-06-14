@@ -11,26 +11,26 @@
       <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" >
     </mat-form-field>
   </div>
-  <br>
-    <div class="example-container mat-elevation-z8">
-      <table width="80%" mat-table (click)="imprimir()" [dataSource]="destinoGet" class="mat-elevation-z8">
-          <ng-container matColumnDef="select">
-              <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                              [checked]="selection.hasValue() && isAllSelected()"
-                              [indeterminate]="selection.hasValue() && !isAllSelected()"
-                              [aria-label]="checkboxLabel()">
-                </mat-checkbox>
-              </th>
-              <td mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                              (change)="$event ? selection.toggle(row) : null;imprimir() "
-                              [checked]="selection.isSelected(row)"
-                              [aria-label]="checkboxLabel(row)">
-                </mat-checkbox>
-              </td>
-            </ng-container>
-    
+
+<!-- Checkbox Column  acaca hay modificacion  -->
+<div class="example-container mat-elevation-z8" align="center">
+  <table width="80%" mat-table (click)="imprimir()" [dataSource]="destinos" class="mat-elevation-z8">
+
+    <!-- Checkbox Column  -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; imprimir()"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+        <!-- Position Column -->
         <ng-container matColumnDef="codigo">
           <th mat-header-cell *matHeaderCellDef> Código </th>
           <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
@@ -46,12 +46,12 @@
       </table>
     </div>
 <br>
-<div id="botones">
-<button id="bn" class="material-icons" (click)="openDialog1()">add_box</button>
-<button id="bn"class="material-icons" (click)="openDialog2()">create</button>
-<button class="material-icons">undo</button>
-  <button class="material-icons">redo</button>
+<div align="center">
+  <button class="material-icons" (click)="openDialog2()">add_box</button>
+  <button class="material-icons" (click)="openDialog()">create</button>
+  <button class="material-icons" (click)="menos()" >undo</button>
+  <button class="material-icons" (click)="mas()">redo</button>
   <button class="material-icons">refresh</button>
-<button id="bn" class="material-icons" (click)="openDialog3()">cancel</button>
-<button id="bn" class="material-icons">?</button>
+  <button class="material-icons"(click)="openDialog3()" >cancel</button>
+  <button class="material-icons"  >?</button>
 </div>  

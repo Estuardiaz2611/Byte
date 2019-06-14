@@ -1,4 +1,5 @@
 import {MatTableDataSource} from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnInit, OnDestroy, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -17,22 +18,27 @@ export class DestinosComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public destinoGet: Destino[];
+  public destinos: Destino[];
   public agregardestino:  Destino;
   public editarDestino: Destino;
   public status: string;
   public selectedDestino: number;
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosPorPagina;
+  public cantidadDefinidaDeElementos: number = 10;
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _destinoService: DestinoService) {
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _destinoService: DestinoService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   } 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
   ngOnInit() {
     this.listarPagina();
     this.limpiarVariables();
@@ -46,10 +52,29 @@ export class DestinosComponent implements OnInit {
     this.agregardestino = new Destino(0, 0, '', '', '1', true);
   }
 
+  public mas() {
+    if (!this.lastPage) {
+      ++this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+  public menos() {
+    if (!this.firstPage) {
+      --this.numeroDePagina;
+      this.listarPagina();
+    }
+  }
+
+
   public listarPagina() {
-    this._destinoService.listPage(0, 10).subscribe(
+    this._destinoService.listPage(this.numeroDePagina, this.cantidadDefinidaDeElementos).subscribe(
       response => {
         this.destinoGet = response.content;
+        this.destinos = this.destinoGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosPorPagina = response.numberOfElements;
         console.table(this.destinoGet)
       },
       error => {
@@ -57,6 +82,16 @@ export class DestinosComponent implements OnInit {
         console.log(errorMessage)
       }
     )
+  }
+
+
+  applyFilter(filterValue: number) {
+    if (filterValue) {
+      this.destinos = this.destinoGet.filter(destino => destino.codigo == filterValue);
+    } else {
+      this.destinos = this.destinoGet;
+    }
+    // console.log("sip")
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -90,7 +125,27 @@ export class DestinosComponent implements OnInit {
     }
   }
 
-  openDialog1(): void {
+  openDialog(): void {
+    const dialogRef = this.dialog.open(editarDestinos, {
+      width: '720px',
+      height: '400px',
+      data: { codigo: this.editarDestino.codigo, descripcion: this.editarDestino.descripcion }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        this.editarDestino.codigo = result.codigo;
+        this.editarDestino.descripcion = result.descripcion;
+        console.log(result);
+        console.table(this.editarDestino);
+        this.edit();
+      }
+
+    });
+  }
+
+  openDialog2(): void {
     const dialogRef = this.dialog.open(agregarDestinos, {
       width: '720px',
       height: '400px',
@@ -108,8 +163,12 @@ export class DestinosComponent implements OnInit {
           console.log(this.agregardestino)
           console.log(response)
           if (response) {
+            this.snackBar.open('Agregado correctamente','',{duration: 2500});
             console.log(response)
-            this.status = 'ok'
+            this.status = 'ok';
+            this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error => {
@@ -117,26 +176,6 @@ export class DestinosComponent implements OnInit {
           console.log(errorMessage)
         }
       )
-    });
-  }
-
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(editarDestinos, {
-      width: '720px',
-      height: '400px',
-      data: { codigo: this.editarDestino.codigo, descripcion: this.editarDestino.descripcion }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result != undefined) {
-        this.editarDestino.codigo = result.codigo;
-        this.editarDestino.descripcion = result.descripcion;
-        console.log(result);
-        console.table(this.editarDestino);
-        this.edit();
-      }
-
     });
   }
 
@@ -184,8 +223,10 @@ export class DestinosComponent implements OnInit {
         console.log(response);
         this.listarPagina();
         if (response.code == 0) {
+          this.snackBar.open('Actualizado correctamente','',{duration: 2500});
           this.status = 'ok';
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           alert(response.description);
         }
       }, error => {
@@ -206,7 +247,10 @@ export class DestinosComponent implements OnInit {
           this.editarDestino = response;
           console.log(this.editarDestino)
           this.status = 'ok';
+          this.listarPagina();
+          this.snackBar.open('Eliminado correctamente','',{duration: 2500});
         } else {
+          this.snackBar.open(response.description, '',{duration: 2500});
           this.status = 'error';
         }
       }, error => {
