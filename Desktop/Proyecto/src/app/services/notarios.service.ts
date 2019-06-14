@@ -15,22 +15,35 @@ export class notariosService{
         this.url = GLOBAL.url;
 
     }
-    listPage(paginaNumero, paginaTam): Observable<any>{
-        return  this._http.get(`${this.url}/abogadosNotarios/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`,{headers: this.headers});       
-    }
+
+
+    ///AGREGAR
     addNotarios(notarios: Notarios):Observable<any>{
         let params = JSON.stringify(notarios)
         return this._http.post(this.url+'/abogadosNotarios/create',params,{headers: this.headers})
     }
+
+     //ELIMINAR
+     deleteNotarios(idNotarios): Observable<any>{
+        return this._http.delete(this.url+'/abogadosNotarios/delete?codigo='+idNotarios);
+        
+    }
+
+    ///LISTAR
+    listPage(paginaNumero, paginaTam): Observable<any>{
+        return  this._http.get(`${this.url}/abogadosNotarios/listPage?page=${paginaNumero}&size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`,{headers: this.headers});       
+    }
+   
+    ///MOSTRAR
     getNotarios(idNotarios): Observable<any>{
         return this._http.get(this.url+'/abogadosNotarios/read?codigo='+idNotarios);
     }
+
+    //ACTUALIZAR
     editNotarios(notarios:Notarios):Observable <any>{
         var params = JSON.stringify(notarios)
         return this._http.put(this.url+'/abogadosNotarios/update',params,{headers: this.headers});
     }
-    deleteNotarios(idNotarios): Observable<any>{
-        return this._http.delete(this.url+'/abogadosNotarios/delete?codigo='+idNotarios);
-        
-    }
+
+   
 }

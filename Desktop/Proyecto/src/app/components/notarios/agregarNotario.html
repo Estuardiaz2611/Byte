@@ -6,94 +6,42 @@
 <form>
 <table>
 
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="cheque" [(ngModel)]="agregarNotarios.cheque"[ngModelOptions]="{standalone: true}">    
-      </mat-form-field>
-      <br>
-    
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="codigo" [(ngModel)]="agregarNotarios.codigo"[ngModelOptions]="{standalone: true}">    
-  </mat-form-field>
-  <br>
 
-  
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="colegiado" [(ngModel)]="agregarNotarios.colegiado"[ngModelOptions]="{standalone: true}">
+  <input matInput placeholder="codigo" [(ngModel)]="notarioModel.codigo" [ngModelOptions]="{standalone: true}">  
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="nombre" [(ngModel)]="notarioModel.nombre" [ngModelOptions]="{standalone: true}">  
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="colegiado No." [(ngModel)]="notarioModel.colegiado" [ngModelOptions]="{standalone: true}">  
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="direccion" [(ngModel)]="notarioModel.direccion" [ngModelOptions]="{standalone: true}">  
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="telefono" [(ngModel)]="notarioModel.telefono" [ngModelOptions]="{standalone: true}">  
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="fax" [(ngModel)]="notarioModel.fax" [ngModelOptions]="{standalone: true}">  
 </mat-form-field>
 <br>
 
 
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="direccion" [(ngModel)]="agregarNotarios.direccion" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="direccionDos" [(ngModel)]="agregarNotarios.direccionDos" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="email" [(ngModel)]="agregarNotarios.email" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="empresa" [(ngModel)]="agregarNotarios.empresa" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="fax" [(ngModel)]="agregarNotarios.fax" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="identificacion" [(ngModel)]="agregarNotarios.identificacion" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="isr" [(ngModel)]="agregarNotarios.isr" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="nombre" [(ngModel)]="agregarNotarios.nombre" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="numeroCuenta" [(ngModel)]="agregarNotarios.numeroCuenta" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="telefono" [(ngModel)]="agregarNotarios.telefono" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
-
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="tipoCuenta" [(ngModel)]="agregarNotarios.tipoCuenta" [ngModelOptions]="{standalone: true}">  
-</mat-form-field>
-<br>
 </table>
 <br>
 <div>
-  <button type="submit" [mat-dialog-close]="agregarNotarios" class="material-icons">save</button>
+  <button type="submit" [mat-dialog-close]="notarioModel" class="material-icons">save</button>
   <button class="material-icons">cancel</button>
   <button class="material-icons">?</button>
   </div>

@@ -5,11 +5,11 @@
         <table>
     
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="codigoInstancia" [(ngModel)]="agregarInstancia.codigoInstancia" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="codigo" id="codigoinstancia" name="codigoInstancia" #codigoInstancia="ngModel" [(ngModel)]="agregarInstancia.codigoInstancia" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Descripcion" [(ngModel)]="agregarInstancia.descripcion"
+                <input matInput placeholder="Descripcion" id="descripcion" name="descripcion" #descripcion ="ngModel" [(ngModel)]="agregarInstancia.descripcion"  
                     [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <br>

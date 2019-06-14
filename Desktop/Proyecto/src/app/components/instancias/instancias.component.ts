@@ -38,7 +38,7 @@ export class InstanciasComponent implements OnInit,OnDestroy {
     this.listarPagina();
     this.limpiarVariables();
   }
-  displayedColumns: string[] =['select','codigoInstancia','descripcion'];
+  displayedColumns: string[] =['select','codigo','descripcion'];
   selection = new SelectionModel<Instancia>(false,[]);
   dataSource = new MatTableDataSource<Instancia>(this.instanciaGet);
   limpiarVariables(){
@@ -102,7 +102,7 @@ export class InstanciasComponent implements OnInit,OnDestroy {
     dialogRef.afterClosed().subscribe(result =>{
       console.log('the dialog was closed');
       if(result !=undefined){
-        this.editarInstancia.codigoInstancia = result.codigoInstancia;
+        this.editarInstancia.codigoInstancia = result.codigo;
         this.editarInstancia.descripcion = result.descripcion;
         console.log(result);
         console.table(this.editarInstancia);
@@ -155,7 +155,7 @@ export class InstanciasComponent implements OnInit,OnDestroy {
   dialogRef.afterClosed().subscribe(result =>{
     console.log('the dialog was closed');
     if(result !=undefined){
-      this.editarInstancia.codigoInstancia = result.codigoInstancia;
+      this.editarInstancia.codigoInstancia = result.codigo;
       this.editarInstancia.descripcion = result.descripcion;
       console.log(result);
       console.table(this.editarInstancia);
@@ -241,10 +241,8 @@ export class aInstancia  implements OnInit{
     displayedColumns: String[] = ['posicion', 'numero', 'descripcion'];
     title = 'Instancia';
     selectedValue: string = "";
-    ngOnInit() { 
-      
-    }  
-    
+    ngOnInit() {
+    }
 }
 
 
@@ -255,7 +253,7 @@ export class aInstancia  implements OnInit{
 
 export class bInstancia  implements OnInit{
   public status: string
-  public agregarIntancia: Instancia
+  public agregarInstancia: Instancia
   constructor(){
 
   }
@@ -263,7 +261,7 @@ export class bInstancia  implements OnInit{
     this.limpiarVariables();
   }
   limpiarVariables(){
-    this.agregarIntancia = new Instancia(0,'','','','1',true);
+    this.agregarInstancia = new Instancia(0,'','','','1',true);
   }
 }
 

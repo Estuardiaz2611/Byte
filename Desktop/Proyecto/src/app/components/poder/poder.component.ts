@@ -5,7 +5,7 @@ import {poderService} from 'src/app/services/poder.service';
 import {Poder} from 'src/app/models/poder.model';
 import { MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { resource } from 'selenium-webdriver/http';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-poder',
   templateUrl: './poder.component.html',
@@ -17,18 +17,28 @@ export class PoderComponent implements OnInit,OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public poderGet: Poder[];
+  public poder: Poder[];
   public agregarPoder: Poder;
   public editarPoder: Poder;
   public status: string;
   public selectedPoder: number;
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _poderService: poderService) {
+  public numeroDePagina: number = 0;
+  public lastPage: boolean;
+  public firstPage: boolean;
+  public elementosDePagina: number = 0;
+  public cantidadDeFinidaDeElementos: number = 10;
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _poderService: poderService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
    }
 
-   applyFilter(filterValue: string){
-     this.dataSource.filter = filterValue.trim().toLowerCase();
+   applyFilter(filterValue: number){
+    if(filterValue){
+      this.poder = this.poderGet.filter(almacenadora => almacenadora.codigo == filterValue);
+    }else{
+      this.poder = this.poderGet
+    }
 
    }
    ngOnDestroy(): void{
@@ -50,10 +60,32 @@ export class PoderComponent implements OnInit,OnDestroy {
     this.agregarPoder = new Poder(0,'','1')
   }
 
+  public mas(){
+    if(!this.lastPage){
+      ++this.numeroDePagina;
+      this.listarPagina();
+
+    }
+  }
+
+  
+  public menos(){
+    if(!this.firstPage){
+      --this.numeroDePagina;
+      this.listarPagina();
+
+    }
+  }
+  
   public listarPagina(){
-    this._poderService.listPage(1,10).subscribe(
+    this._poderService.listPage(this.numeroDePagina,this.cantidadDeFinidaDeElementos).subscribe(
       response =>{
         this.poderGet = response.content;
+        this.poder = this.poderGet;
+        this.lastPage = response.last;
+        this.firstPage = response.first;
+        this.elementosDePagina =response.numberOfElements;
+
         console.table(this.poderGet)
       },
       error =>{
@@ -132,8 +164,12 @@ export class PoderComponent implements OnInit,OnDestroy {
           console.log(this.agregarPoder)
           console.log(response)
           if(response){
+            this.snackBar.open('Agregado Correctamente','',{duration: 2500});
             console.log(response)
             this.status = 'ok'
+            this.listarPagina();
+          }else{
+            this.snackBar.open(response.description, '',{duration: 2500});
           }
         },
         error =>{
@@ -191,8 +227,10 @@ export class PoderComponent implements OnInit,OnDestroy {
          console.log(response);
          this.listarPagina();
          if (response.code ==0){
+          this.snackBar.open('Actualizado Correctamente','',{duration: 2500});
            this.status = 'ok';
          }else{
+          this.snackBar.open(response.description, '',{duration: 2500});
            alert(response.description);
          }
        },error =>{
@@ -211,10 +249,13 @@ export class PoderComponent implements OnInit,OnDestroy {
     this._poderService.deletePoder(id).subscribe(
       response =>{
         if(response.code == 0){
+          this.snackBar.open('Eliminado Correctamente','',{duration: 2500});
           this.editarPoder = response;
           console.log(this.editarPoder)
           this.status = 'ok';
         }else{
+          this.snackBar.open(response.description, '',{duration: 2500});
+           alert(response.description);
           this.status = 'error';
         }
       }, error =>{

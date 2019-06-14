@@ -1,132 +1,84 @@
-<div id="titulo">
-  <h1>
-    Notarios
-  </h1>
+<body id="titulo"  class="example-ripple-container"
+matRipple
+[matRippleCentered]="centered"
+[matRippleDisabled]="disabled"
+[matRippleUnbounded]="unbounded"
+[matRippleRadius]="35"
+[matRippleColor]="color">
+
+
+<h1>
+ABOGADOS Y NOTARIOS
+</h1>
+<!-- <mat-toolbar class="encabezado" class="color" >Notarios</mat-toolbar> -->
+<div id="fields">
+  <form>
+    <mat-form-field class="field">
+      <input matInput placeholder="Nombre" value="">
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <input matInput placeholder="Descripcion" value="">
+    </mat-form-field>
+  </form>
 </div>
 <div>
   <mat-form-field id="filtro">
     <input name="filtro" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<!-- Checkbox Column  acaca hay modificacion  -->
-<div class="example-container mat-elevation-z8" align="center">
-  <table width="80%" mat-table (click)="imprimir()" [dataSource]="notariosGet" class="mat-elevation-z8">
 
-    <!-- Checkbox Column  -->
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
-          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null; imprimir()"
-          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>
-
-    <!-- Position Column -->
-
-    
-    <ng-container matColumnDef="cheque">
-        <th mat-header-cell *matHeaderCellDef>cheque </th>
-        <td mat-cell *matCellDef="let element"> {{element.cheque}} </td>
-      </ng-container>
-      &nbsp;
-      &nbsp;
-    <ng-container matColumnDef="codigo">
-      <th mat-header-cell *matHeaderCellDef>codigo </th>
-      <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <!-- Name Column -->
-    <ng-container matColumnDef="colegiado">
-      <th mat-header-cell *matHeaderCellDef> Colegiado </th>
-      <td mat-cell *matCellDef="let element"> {{element.colegiado}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-<ng-container matColumnDef="direccion">
-      <th mat-header-cell *matHeaderCellDef> Direccion </th>
-      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <ng-container matColumnDef="direccionDos">
-      <th mat-header-cell *matHeaderCellDef> DireccionDos </th>
-      <td mat-cell *matCellDef="let element"> {{element.direccionDos}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <ng-container matColumnDef="empresa">
-      <th mat-header-cell *matHeaderCellDef> empresa </th>
-      <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <ng-container matColumnDef="fax">
-      <th mat-header-cell *matHeaderCellDef> fax </th>
-      <td mat-cell *matCellDef="let element"> {{element.fax}} </td>
-    </ng-container>
-    &nbsp;
-    &nbsp;
-    <ng-container matColumnDef="identificacion">
-      <th mat-header-cell *matHeaderCellDef> identificacion </th>
-      <td mat-cell *matCellDef="let element"> {{element.identificacion}} </td>
-    </ng-container>
-         &nbsp;
-         &nbsp;
-         <ng-container matColumnDef="isr">
-          <th mat-header-cell *matHeaderCellDef> isr </th>
-          <td mat-cell *matCellDef="let element"> {{element.isr}} </td>
-        </ng-container>
-             &nbsp;
-             &nbsp;
-             <ng-container matColumnDef="nombre">
-              <th mat-header-cell *matHeaderCellDef> nombre </th>
-              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-            </ng-container>
-                 &nbsp;
-                 &nbsp;
-                 <ng-container matColumnDef="numeroCuenta">
-                  <th mat-header-cell *matHeaderCellDef> numeroCuenta </th>
-                  <td mat-cell *matCellDef="let element"> {{element.numeroCuenta}} </td>
-                </ng-container>
-                     &nbsp;
-                     &nbsp;
-                     <ng-container matColumnDef="telefono">
-                      <th mat-header-cell *matHeaderCellDef> telefono </th>
-                      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
-                    </ng-container>
-                         &nbsp;
-                         &nbsp;
-                         <ng-container matColumnDef="tipoCuenta">
-                          <th mat-header-cell *matHeaderCellDef> tipoCuenta </th>
-                          <td mat-cell *matCellDef="let element"> {{element.tipoCuenta}} </td>
-                        </ng-container>
-                             &nbsp;
-                             &nbsp;
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
-    </tr>
-  </table>
-</div>
 <br>
-<div id="botones">
+<br>
+
+
+<table width="80%" mat-table (click)="imprimir()" [dataSource]="dataSource2" class="centroTabla">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row): null; imprimir()"
+        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" >
+      </mat-checkbox>
+    </td> 
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef> Codigo </th>
+    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Direccion </th>
+    <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+  </tr>
+</table>
+  <br>
+  <br>
+
+<div class="centro">
   <button class="material-icons" (click)="openDialog()">add_box</button>
-  <button class="material-icons" (click)="openDialog2()">create</button>
+  <button class="material-icons" (click)="openDialogEdit()">create</button>
   <button class="material-icons">undo</button>
   <button class="material-icons">redo</button>
   <button class="material-icons">refresh</button>
-  <button class="material-icons" (click)="openDialog3()">cancel</button>
-  <button class="material-icons">?</button>
+  <button class="material-icons"(click)="openDialogDelete()" >cancel</button>
+  <button class="material-icons"  >?</button>
+  
   </div>
+<br>
+<br>
 
+  </body>

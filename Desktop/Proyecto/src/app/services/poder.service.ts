@@ -14,7 +14,8 @@ import { Poder } from '../models/poder.model';
       }
 ///LIST PAGE
       listPage(paginaNumero,paginaTam): Observable<any>{
-          return this._http.get(`${this.url}/poder/listPage?page =${paginaNumero} &size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`,{headers:this.headers});
+          return this._http.get(`${this.url}/poder/listPage?page =${paginaNumero} &size=${paginaTam}&sort=id.codigo,asc&query=id.empresa==1`,
+          {headers:this.headers});
 
       }
 

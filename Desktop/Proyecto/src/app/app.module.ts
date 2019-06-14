@@ -49,7 +49,7 @@ import { TiposDeCanalesDeDistribucionComponent, agregarTiposdeCanalesdeDistribuc
 import { InstanciasComponent,aInstancia,bInstancia,eInstancia } from './components/instancias/instancias.component';
 import { PasosCierreAltasComponent } from './components/pasos-cierre-altas/pasos-cierre-altas.component';
 import { SidebarsComponent } from './components/sidebars/sidebars.component';
-import { NotariosComponent,agregarNotarios,editarNotario,eliminarNotarios } from './components/notarios/notarios.component';
+import { NotariosComponent,DialogNotario,DialogActualizarNotario,DialogEliminarNotario } from './components/notarios/notarios.component';
 import { AltasComponent } from './components/altas/altas.component';
 import { EstadosPrestamosComponent } from './components/estados-prestamos/estados-prestamos.component';
 import { NumeroPrestamosComponent,agregarNumeroPrestamos } from './components/numero-prestamos/numero-prestamos.component';
@@ -234,9 +234,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 //
     NotariosComponent,
-    agregarNotarios,
-    editarNotario,
-    eliminarNotarios, 
+    DialogNotario,
+   DialogActualizarNotario,
+    DialogEliminarNotario,
      AltasComponent,
     EstadosPrestamosComponent,
     NumeroPrestamosComponent,
@@ -281,6 +281,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     eliminarUbicacionDeGarantia,
     FormasDePagoComponent, 
     agregarFormasDePago, 
+    
     editarFormasDePago, 
     eliminarFormasDePago,
     DestinosComponent, 
@@ -433,9 +434,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     eliminarAvaluo,
 
      ///Muñoz
-     agregarNotarios,
-     eliminarNotarios,
-     editarNotario,
+     DialogNotario,
+     DialogActualizarNotario,
+      DialogEliminarNotario,
      agregarPasosCierre,
      agregarNumeroPrestamos,
      agregarSubEstados,
