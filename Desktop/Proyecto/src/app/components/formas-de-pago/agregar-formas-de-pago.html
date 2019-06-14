@@ -1,15 +1,24 @@
-<h1>Mantenimiento a Formas de Pago</h1>
-<br>
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Código" value="">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Descripción" value="">
-  </mat-form-field>
-<hr>
-  <div align="center">
-    <button id="bn" class="material-icons">save</button> 
-    <button id="bn" class="material-icons">cancel</button>
-    <button id="bn" class="material-icons">?</button>
-  </div> 
+<h1>
+    Mantenimiento a Formas de Pago
+</h1>
+<form>
+    <table>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="codigo" [(ngModel)]="agregarForma.codigo" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion" [(ngModel)]="agregarForma.descripcion"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+    </table>
+    <br>
+
+    <div>
+        <button id="bn" type="submit"  [mat-dialog-close]="agregarForma" class="material-icons">save</button>
+        <button id="bn" class="material-icons">cancel</button>
+        <button id="bn" class="material-icons">?</button>
+    </div>
+</form>  

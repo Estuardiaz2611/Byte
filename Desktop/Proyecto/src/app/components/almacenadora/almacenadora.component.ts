@@ -23,9 +23,7 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
   public editarAlmacenadora: Almacenadora;
   public status: string;
   public selectedAlmacenadora: number;  
-  public e :string[];
-  public m : number;
-  public n : number; 
+   
  
   
   
@@ -57,40 +55,10 @@ export class AlmacenadoraComponent implements OnInit, OnDestroy {
     this.agregarAlmacenadora = new Almacenadora(0, 0, '', '', '1', true); 
     
   } 
-  public mas(){
-   if(this.m >=0){ 
-    this.m =  this.m + 1 ; 
-    console.log(this.m) 
-    
-   }else{   
   
-     if(this.m = 0){
-      this.m =  this.m + 1 ; 
-      console.log(this.m)
-     }
-    console.log(this.m)
-   }  
-   this.listarPagina()
-  }  
-  public menos(){
-    if(this.m > 0){ 
-     this.m =  this.m - 1 ; 
-     console.log(this.m) 
-     
-    }else{   
-   
-      if(this.m == 0){
-        
-       console.log("es igual a zero")
-      }
-     console.log(this.m)
-    }  
-    this.listarPagina()
-   } 
-
 
   public listarPagina() {
-    this._almacenadorasService.listPage(this.m, 10).subscribe(
+    this._almacenadorasService.listPage(0, 10).subscribe(
       response => {
         this.almacenadoraGet = response.content;
         console.table(this.almacenadoraGet)

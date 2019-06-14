@@ -1,17 +1,24 @@
-<h1>Editar Formas de Pago</h1>
-<br>
-<br>
-<br>
+<h1>
+  Mantenimiento a Formas de Pago
+</h1>
+<form>
+  <table>
 
-<mat-form-field class="example full-width" id="filtro">
-  <input matInput placeholder="Descripcion" value="">
-</mat-form-field>
-<br>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Codigo" [(ngModel)]="data.codigo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Descripcion" [(ngModel)]="data.descripcion"
+              [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <br>
+  </table>
+  <br>
 
-<br>
-<hr>
-<div class="botones">
-  <button id="bn" class="material-icons" [mat-dialog-close]="agregarMotivoDeAjuste">save</button>
-  <button id="bn" class="material-icons">cancel</button>
-  <button id="bn" class="material-icons">?</button>
-</div>
+  <div>
+      <button id="bn" type="submit" [mat-dialog-close]="data" class="material-icons">editar</button>
+      <button id="bn" class="material-icons">cancel</button>
+      <button id="bn" class="material-icons">?</button>
+  </div>
+</form>
